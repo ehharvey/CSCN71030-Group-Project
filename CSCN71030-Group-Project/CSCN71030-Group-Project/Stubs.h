@@ -2,7 +2,12 @@
 #include <string>
 #include <vector>
 
-// Character
+// The placeholders (need to define even in stubs eventually!)
+typedef void* GAME_STATE; // Placeholder
+typedef void* ITEM; // Placeholder
+
+
+// Character ------------------------------------------------------------------
 class Character {
 	std::string name;
 	
@@ -12,20 +17,23 @@ class Character {
 	
 public:
 	Character(std::string name); // New character
+	
+	// Cpp has a built-in regex library; can use to represent
+	//   Characters as a string (e.g., delimited string)
 	Character(std::string restore); // Restore from saving
 
 	void setHealth(int health);
+	int getHealth();
 	
 	int getAttack();
 
-	explicit operator std::string();
+	explicit operator std::string(); // To typecast a character to a string
 };
+// ----------------------------------------------------------------------------
 
-// ReadWrite
+
+// ReadWrite ------------------------------------------------------------------
 // NOTE: A filesystem module is available, but only for c++17
-
-typedef void* GAME_STATE; // Placeholder
-
 class LoadEntry {
 	std::string name;
 	std::string full_path;
@@ -59,15 +67,14 @@ public:
 	bool name_is_unique();
 	bool was_successful();
 };
+// ----------------------------------------------------------------------------
 
 
 
-// Object 
+// OLD!
+
+// Object ---------------------------------------------------------------------
 // Note: We are planning to remove Objects from the product!
-
-
-typedef void* ITEM; // Placeholder
-
 
 class ItemSlot {
 	ITEM item; // TODO: change to &item
@@ -93,5 +100,6 @@ public:
 
 	std::vector<void*> getContainer(); // Returns copy of container
 };
+// ----------------------------------------------------------------------------
 
-
+// We are also thinking of dropping items
