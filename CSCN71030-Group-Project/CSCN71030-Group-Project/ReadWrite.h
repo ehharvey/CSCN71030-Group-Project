@@ -7,6 +7,18 @@
 
 typedef void* GAME_STATE; // Placeholder
 
+// Possible implementation of game state
+class GameState {
+	std::string character_as_str;
+	int current_area;
+public:
+	GameState(std::string character_as_str, int current_area);
+
+	std::string get_character();
+	int get_current_area();
+};
+
+
 class LoadEntry {
 	std::string name;
 	std::string full_path;
