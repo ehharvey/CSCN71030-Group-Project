@@ -14,9 +14,13 @@ class Character {
 	int health;
 	
 	int attack;
+
+	std::string character_class;		// might make into enum or another class....
+
+	Character* Character_PTR;
 	
 public:
-	Character(std::string name); // New character
+	Character(std::string name, std::string character_class); // New character
 	
 	// Cpp has a built-in regex library; can use to represent
 	//   Characters as a string (e.g., delimited string)
@@ -30,6 +34,28 @@ public:
 	explicit operator std::string(); // To typecast a character to a string
 };
 // ----------------------------------------------------------------------------
+
+// UI -------------------------------------------------------------------------
+class UI {
+	std::string User_character_Sprite;
+	std::string Enemy_Sprite;
+
+public:
+	//void new_event(Character* character_ptr, Character* enemy_ptr, event_type); // event type should be from game logic but I'm not sure what the form of it is yet
+	void new_turn();
+	int get_input();
+	void get_sprite(Character* character_ptr);
+	void get_sprite(Character* character_ptr, Character* enemy_ptr);
+
+};
+
+
+
+// ----------------------------------------------------------------------------
+
+
+
+
 
 
 // ReadWrite ------------------------------------------------------------------
