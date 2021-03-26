@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <filesystem>
 
 
 // NOTE: A filesystem module is available, but only for c++17
