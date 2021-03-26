@@ -142,6 +142,9 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="ReadWrite.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ReadWrite.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
