@@ -3,6 +3,8 @@
 #include <vector>
 #include <filesystem>
 
+#define DEFAULT_PATH "saves"
+
 
 // NOTE: A filesystem module is available, but only for c++17
 
@@ -20,11 +22,12 @@ public:
 };
 
 
+// Emil: Maybe a load entry should have the option to save e.g., it is a generic entry
 class LoadEntry {
 	std::string name;
-	std::string full_path;
+	std::filesystem::path full_path;
 public:
-	LoadEntry(std::string name, std::string full_path);
+	LoadEntry(std::filesystem::path full_path);
 	~LoadEntry();
 
 	std::string getName();
@@ -33,9 +36,10 @@ public:
 
 
 class Loader {
-	std::string root;
+	std::filesystem::path root;
 	std::vector<LoadEntry&> load_entries;
 public:
+	Loader();
 	Loader(std::string root);
 	~Loader();
 
