@@ -1,7 +1,9 @@
 #include <iostream>
+#include <nlohmann/json.hpp>
 #include "ReadWrite.h"
 
 namespace fs = std::filesystem;
+using json = nlohmann::json;
 
 Loader::Loader() 
 {
@@ -23,7 +25,7 @@ Loader::Loader()
             // Creating a file could fail, catch it!
             try
             {
-                load_entries.push_back(LoadEntry(entry));
+                load_entries.push_back(SaveEntry(entry));
             }
             catch(const std::exception& e)
             {
@@ -34,7 +36,10 @@ Loader::Loader()
     }
 }
 
-LoadEntry::LoadEntry(std::filesystem::path full_path) 
+SaveEntry::SaveEntry(std::filesystem::path full_path) 
 {
+    json j = json::parse(full_path);
+    json character = j["Character"];
     
+
 }

@@ -2,6 +2,9 @@
 #include <string>
 #include <vector>
 #include <filesystem>
+#include <nlohmann/json.hpp>
+
+using json = nlohmann::json;
 
 #define DEFAULT_PATH "saves"
 
@@ -12,39 +15,42 @@ typedef void* GAME_STATE; // Placeholder
 
 // Possible implementation of game state
 class GameState {
-	std::string character_as_str;
+	json character_json;
 	int current_area;
 public:
 	GameState(std::string character_as_str, int current_area);
 
-	std::string get_character();
+	json get_character();
 	int get_current_area();
 };
 
 
 // Emil: Maybe a load entry should have the option to save e.g., it is a generic entry
-class LoadEntry {
+class SaveEntry {
 	std::string name;
 	std::filesystem::path full_path;
+	GameState current_state;
+
 public:
-	LoadEntry(std::filesystem::path full_path);
-	~LoadEntry();
+	SaveEntry(std::filesystem::path full_path);
+	~SaveEntry();
 
 	std::string getName();
-	GAME_STATE loadEntry();
+	GameState loadEntry();
 };
 
 
 class Loader {
 	std::filesystem::path root;
-	std::vector<LoadEntry&> load_entries;
+	std::vector<SaveEntry&> load_entries;
 public:
 	Loader();
 	Loader(std::string root);
 	~Loader();
 
-	std::vector<LoadEntry&> get_entries();
+	std::vector<SaveEntry&> get_entries();
 };
+
 
 class Save {
 	std::string root;
@@ -54,6 +60,6 @@ class Save {
 public:
 	Save(std::string root, std::string name);
 
-	bool name_is_unique();
-	bool was_successful();
+	bool nameIsUnique();
+	bool wasSuccessful();
 };
