@@ -37,6 +37,11 @@ Loader::Loader()
     }
 }
 
+std::vector<SaveEntry&> Loader::get_entries() 
+{
+    return this->load_entries;
+}
+
 SaveEntry::SaveEntry(std::filesystem::path full_path) : full_path(full_path), name(full_path.filename()), current_state(full_path)
 { }
 
