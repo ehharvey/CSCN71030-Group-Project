@@ -37,24 +37,10 @@ Loader::Loader()
     }
 }
 
-SaveEntry::SaveEntry(std::filesystem::path full_path) 
-{
-    json j = json::parse(full_path);
-    json character = j["Character"];
-    int current_area = j["Current Area"];
-    
-    this->current_state = GameState(character, current_area);
-    this->full_path = full_path;
-    this->name = full_path.filename();
-}
+SaveEntry::SaveEntry(std::filesystem::path full_path) : full_path(full_path), name(full_path.filename()), current_state(full_path)
+{ }
 
-SaveEntry::SaveEntry(std::filesystem::path name, std::filesystem::path directory, GameState current_state) 
-{
-    this->full_path = directory / name;
-    this->name = name;
-    this->current_state = current_state;
-    
-    std::ofstream file;
-    file.open(this->full_path);
-    file << current_state.jsonify();
-}
+SaveEntry::SaveEntry(std::filesystem::path name, std::filesystem::path directory, GameState current_state) : full_path(full_path),
+                                                                                                             name(name),
+                                                                                                             current_state(current_state)
+{ }
