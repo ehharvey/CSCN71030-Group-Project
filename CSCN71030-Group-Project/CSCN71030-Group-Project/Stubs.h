@@ -8,14 +8,21 @@ typedef void* ITEM; // Placeholder
 
 
 // Character ------------------------------------------------------------------
+
 class Character {
 	std::string name;
 	
-	int health;
+	int current_health;
+
+	int max_health;
 	
 	int attack;
 
-	std::string character_class;		// might make into enum or another class....
+	int defense;
+
+	int speed;
+
+	enum character_class { spoon, fork, knife };
 
 	Character* Character_PTR;
 	
@@ -27,6 +34,7 @@ public:
 	Character(std::string restore); // Restore from saving
 
 	void setHealth(int health);
+
 	int getHealth();
 	
 	int getAttack();
