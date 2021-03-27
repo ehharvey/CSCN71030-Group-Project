@@ -57,3 +57,22 @@ void SaveEntry::saveToFile()
     file << this->current_state.jsonify();
     file.close();
 }
+
+json GameState::getCharacter() 
+{
+    return this->character_json;
+}
+
+int GameState::getCurrentArea() 
+{
+    return this->current_area;
+}
+
+json GameState::jsonify() 
+{
+    json result;
+    result["Character"] = this->getCharacter();
+    result["Current Area"] = this->current_area;
+    
+    return result;
+}
