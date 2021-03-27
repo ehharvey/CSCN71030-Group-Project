@@ -20,8 +20,8 @@ class GameState {
 public:
 	GameState(std::string character_as_str, int current_area);
 
-	json get_character();
-	int get_current_area();
+	json getCharacter();
+	int getCurrentArea();
 };
 
 
@@ -33,7 +33,7 @@ class SaveEntry {
 
 public:
 	SaveEntry(std::filesystem::path full_path);
-	~SaveEntry();
+	SaveEntry(std::filesystem::path name, std::filesystem::path directory, GameState current_state);
 
 	std::string getName();
 	GameState loadEntry();
