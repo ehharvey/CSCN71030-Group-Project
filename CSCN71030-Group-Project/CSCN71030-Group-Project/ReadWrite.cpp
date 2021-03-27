@@ -76,3 +76,10 @@ json GameState::jsonify()
     
     return result;
 }
+GameState::GameState(std::filesystem::path full_path) 
+{
+    json j = json::parse(full_path);
+
+    this->character_json = j["Character"];
+    this->current_area = j["Current Area"];
+}
