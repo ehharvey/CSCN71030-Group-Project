@@ -18,16 +18,17 @@ class GameState {
 	json character_json;
 	int current_area;
 public:
-	GameState(std::string character_as_str, int current_area);
+	GameState(json character_json, int current_area) : character_json(character_json), current_area(current_area) {};
 
 	json getCharacter();
 	int getCurrentArea();
+	json jsonify();
 };
 
 
 // Emil: Maybe a load entry should have the option to save e.g., it is a generic entry
 class SaveEntry {
-	std::string name;
+	std::filesystem::path name;
 	std::filesystem::path full_path;
 	GameState current_state;
 
