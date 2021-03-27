@@ -51,16 +51,3 @@ public:
 
 	std::vector<SaveEntry&> get_entries();
 };
-
-
-class Save {
-	std::string root;
-	std::string name;
-	bool _name_is_unique;
-	bool _was_successful;
-public:
-	Save(std::string root, std::string name);
-
-	bool nameIsUnique();
-	bool wasSuccessful();
-};
