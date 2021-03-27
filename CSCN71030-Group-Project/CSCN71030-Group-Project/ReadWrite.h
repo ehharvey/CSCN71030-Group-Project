@@ -39,6 +39,8 @@ public:
 
 	std::string getName();
 	GameState loadEntry();
+
+	void saveToFile();
 };
 
 

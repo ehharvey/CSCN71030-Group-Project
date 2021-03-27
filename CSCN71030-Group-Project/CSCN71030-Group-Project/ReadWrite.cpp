@@ -44,3 +44,11 @@ SaveEntry::SaveEntry(std::filesystem::path name, std::filesystem::path directory
                                                                                                              name(name),
                                                                                                              current_state(current_state)
 { }
+
+void SaveEntry::saveToFile() 
+{
+    std::ofstream file;
+    file.open(this->full_path, std::ios::out);
+    file << this->current_state.jsonify();
+    file.close();
+}
