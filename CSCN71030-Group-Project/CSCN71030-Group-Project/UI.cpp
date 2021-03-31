@@ -23,4 +23,22 @@ void UI::get_sprite(Character* character_ptr, Character* enemy_ptr)
 
 void UI::display_menu()
 {
+
+
+}
+
+void UI::initial_menu()
+{
+
+
+}
+
+void UI::user_options()
+{
+
+
+}
+
+void UI::game_opening()
+{
 }

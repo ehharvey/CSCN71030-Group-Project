@@ -54,7 +54,7 @@ int Character::getSpeed()
     return this->speed;
 }
 
-int Character::getSprite()
+std::string Character::getSprite()
 {
     return this->sprite;
 }
