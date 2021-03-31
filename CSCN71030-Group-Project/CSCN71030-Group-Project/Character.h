@@ -22,7 +22,7 @@ public:
 	//   Characters as a string (e.g., delimited string)
 	//	Character(std::string restore); // Restore from saving
 
-	virtual void setHealth(int health);
+	virtual void setHealth(int health_reduction);
 
 	virtual int getHealth();
 

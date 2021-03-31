@@ -20,8 +20,7 @@ Character::Character(std::string name)
 
     this->name = name;
     this->Character_PTR = this;
-
-
+ 
 }
 
 //Character::Character(std::string restore)
@@ -29,9 +28,9 @@ Character::Character(std::string name)
 //
 //}
 
-void Character::setHealth(int health)
+void Character::setHealth(int health_reduction)
 {
-    this->current_health = health;
+    this->current_health = this->current_health - health_reduction;
 }
 
 int Character::getHealth()
