@@ -54,6 +54,11 @@ int Character::getSpeed()
     return this->speed;
 }
 
+int Character::getSprite()
+{
+    return this->sprite;
+}
+
 std::string Character::getName()
 {
     return this->name;
@@ -68,11 +73,26 @@ spoon::spoon()
     this->Character_PTR = this;
     this->current_health = this->max_health;
     this->name = " ";
+
+    this->sprite = R"(
+                __
+              .'  '.
+              '°  °'
+              '.  .'
+                ||
+                ||
+                ||
+                ||
+                --
+)";
+
 }
 
 spoon::spoon(std::string name)
 {
     this->name = name;
+    this->Character_PTR = this;
+    this->current_health = this->max_health;
 }
 
 fork::fork()
@@ -80,11 +100,24 @@ fork::fork()
     this->Character_PTR = this;
     this->current_health = this->max_health;
     this->name = " ";
+    this->sprite = R"(
+                 ||||  
+                 ||||
+                 \°°/
+                  ||
+                  ||
+                  ||
+                  ||
+                  --
+)";
+
 }
 
 fork::fork(std::string name)
 {
     this->name = name;
+    this->Character_PTR = this;
+    this->current_health = this->max_health;
 }
 
 knife::knife()
@@ -92,9 +125,24 @@ knife::knife()
     this->Character_PTR = this;
     this->current_health = this->max_health;
     this->name = " ";
+    this->sprite = R"(
+                  .-'
+                 /  |
+                 |°°|
+                 |  |
+                 |  |
+                 '._|
+                   ||
+                   ||
+                   ||
+                   ||
+                   --
+)";
 }
 
 knife::knife(std::string name)
 {
     this->name = name;
+    this->Character_PTR = this;
+    this->current_health = this->max_health;
 }

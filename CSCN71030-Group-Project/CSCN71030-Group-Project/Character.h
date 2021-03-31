@@ -10,6 +10,7 @@ class Character {
 	int defence;
 	int speed;
 	Character* Character_PTR;
+	std::string sprite;
 
 public:
 
@@ -31,6 +32,8 @@ public:
 
 	virtual int getSpeed();
 
+	virtual std::string getSprite();
+
 	virtual std::string getName();
 
 	//	virtual explicit operator std::string(); // To typecast a character to a string
@@ -45,6 +48,7 @@ class spoon : public Character {
 	int attack = 5;
 	int defence = 10;
 	int speed = 4;
+	std::string sprite;
 
 	Character* Character_PTR;
 
@@ -64,6 +68,8 @@ class fork : public Character {
 	int attack = 7;
 	int defence = 5;
 	int speed = 10;
+	std::string sprite;
+
 	Character* Character_PTR;
 
 public:
@@ -82,6 +88,7 @@ class knife : public Character {
 	int attack = 10;
 	int defence = 2;
 	int speed = 8;
+	std::string sprite;
 
 	Character* Character_PTR;
 
