@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <optional>
 #include <filesystem>
 #include <nlohmann/json.hpp>
 
@@ -8,16 +9,16 @@ using json = nlohmann::json;
 
 #define DEFAULT_PATH "saves"
 
+enum SaveSlot { one = 0, two = 1, three = 2 };
 
 // NOTE: A filesystem module is available, but only for c++17
-
-typedef void* GAME_STATE; // Placeholder
 
 // Possible implementation of game state
 class GameState {
 	json character_json;
 	int current_area;
 public:
+	GameState();
 	GameState(std::filesystem::path full_path);
 	GameState(json character_json, int current_area) : character_json(character_json), current_area(current_area) {};
 
@@ -29,15 +30,12 @@ public:
 
 // Emil: Maybe a load entry should have the option to save e.g., it is a generic entry
 class SaveEntry {
-	std::filesystem::path name;
 	std::filesystem::path full_path;
-	GameState current_state;
+	std::optional<GameState> current_state;
 
 public:
-	SaveEntry(std::filesystem::path full_path);
-	SaveEntry(std::filesystem::path name, std::filesystem::path directory, GameState current_state);
+	SaveEntry(std::filesystem::path root, SaveSlot slot);
 
-	std::string getName();
 	GameState loadEntry();
 
 	void saveToFile();
@@ -46,11 +44,10 @@ public:
 
 class Loader {
 	std::filesystem::path root;
-	std::vector<SaveEntry&> load_entries;
+	SaveEntry saves[3];
 public:
 	Loader();
 	Loader(std::string root);
-	~Loader();
 
-	std::vector<SaveEntry&> get_entries();
+	SaveEntry* get_entries();
 };

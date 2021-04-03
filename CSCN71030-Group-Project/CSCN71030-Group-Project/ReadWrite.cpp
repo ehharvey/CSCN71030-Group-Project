@@ -6,6 +6,8 @@
 namespace fs = std::filesystem;
 using json = nlohmann::json;
 
+const std::string SAVENAMES[] = { "One.json", "Two.json", "Three.json" };
+
 Loader::Loader() 
 {
     fs::path current_path = fs::current_path();
@@ -17,45 +19,31 @@ Loader::Loader()
         fs::create_directory(this->root);
     }
 
-    // Iterate through each file in directory
-    for (auto const & entry : fs::recursive_directory_iterator(this->root))
+    // Find save slots 1 2 and 3
+    for (SaveSlot slot = SaveSlot::one; slot <= SaveSlot::three; slot = (SaveSlot)((int)slot + 1))
     {
-        // If entry is a file (and not a character file [linux] or directory [multiplat])
-        if (fs::is_regular_file(entry))
-        {
-            // Creating a file could fail, catch it!
-            try
-            {
-                load_entries.push_back(SaveEntry(entry));
-            }
-            catch(const std::exception& e)
-            {
-                std::cerr << e.what() << '\n';
-            }
-            
-        }
+        this->saves[slot] = SaveEntry(this->root, slot);
     }
 }
 
-std::vector<SaveEntry&> Loader::get_entries() 
+SaveEntry* Loader::get_entries() 
 {
-    return this->load_entries;
+    return this->saves;
 }
-
-SaveEntry::SaveEntry(std::filesystem::path full_path) : full_path(full_path), name(full_path.filename()), current_state(full_path)
-{ }
-
-SaveEntry::SaveEntry(std::filesystem::path name, std::filesystem::path directory, GameState current_state) : full_path(full_path),
-                                                                                                             name(name),
-                                                                                                             current_state(current_state)
-{ }
 
 void SaveEntry::saveToFile() 
 {
-    std::ofstream file;
-    file.open(this->full_path, std::ios::out);
-    file << this->current_state.jsonify();
-    file.close();
+    if (current_state.has_value())
+    {
+        std::ofstream file;
+        file.open(this->full_path, std::ios::out);
+        file << this->current_state->jsonify();
+        file.close();
+    }
+    else
+    {
+        // Handle Error
+    }
 }
 
 json GameState::getCharacter() 
@@ -76,6 +64,22 @@ json GameState::jsonify()
     
     return result;
 }
+
+SaveEntry::SaveEntry(std::filesystem::path root, SaveSlot slot)
+{
+    full_path = root / SAVENAMES[slot];
+
+    if (fs::is_regular_file(full_path))
+    {
+        this->current_state = GameState(this->full_path);
+    }
+    else
+    {
+        this->current_state = {};
+    }
+}
+
+
 GameState::GameState(std::filesystem::path full_path) 
 {
     json j = json::parse(full_path);
