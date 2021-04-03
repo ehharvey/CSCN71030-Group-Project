@@ -20,6 +20,12 @@ Character::Character(std::string name)
 
     this->name = name;
     this->Character_PTR = this;
+}
+
+void Character::setHealth(int health_reduction)
+{
+    this->current_health = this->current_health - health_reduction;
+
 
 
 }
@@ -72,6 +78,11 @@ int Character::getSpeed()
     return this->speed;
 }
 
+std::string Character::getSprite()
+{
+    return this->sprite;
+}
+
 std::string Character::getName()
 {
     return this->name;
@@ -87,6 +98,8 @@ spoon::spoon()
 spoon::spoon(std::string name)
 {
     this->name = name;
+    this->Character_PTR = this;
+    this->current_health = this->max_health;
 }
 
 json spoon::jsonify() 
@@ -100,11 +113,23 @@ fork::fork()
     this->Character_PTR = this;
     this->current_health = this->max_health;
     this->name = " ";
+    this->sprite = R"(
+                 ||||  
+                 ||||
+                 \��/
+                  ||
+                  ||
+                  ||
+                  ||
+                  --
+)";
 }
 
 fork::fork(std::string name)
 {
     this->name = name;
+    this->Character_PTR = this;
+    this->current_health = this->max_health;
 }
 
 json fork::jsonify() 
@@ -118,11 +143,26 @@ knife::knife()
     this->Character_PTR = this;
     this->current_health = this->max_health;
     this->name = " ";
+    this->sprite = R"(
+                  .-'
+                 /  |
+                 |��|
+                 |  |
+                 |  |
+                 '._|
+                   ||
+                   ||
+                   ||
+                   ||
+                   --
+)";
 }
 
 knife::knife(std::string name)
 {
     this->name = name;
+    this->Character_PTR = this;
+    this->current_health = this->max_health;
 }
 
 json knife::jsonify() 
