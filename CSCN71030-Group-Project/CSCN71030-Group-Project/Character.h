@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
+#include <nlohmann/json.hpp>
 
+using json = nlohmann::json;
 
 class Character {
 	std::string name;
@@ -17,9 +19,9 @@ public:
 
 	Character(std::string name);							// New character
 
-	// Cpp has a built-in regex library; can use to represent
-	//   Characters as a string (e.g., delimited string)
-	//	Character(std::string restore); // Restore from saving
+	Character(json j);
+
+	virtual json jsonify();
 
 	virtual void setHealth(int health);
 
@@ -32,8 +34,6 @@ public:
 	virtual int getSpeed();
 
 	virtual std::string getName();
-
-	//	virtual explicit operator std::string(); // To typecast a character to a string
 };
 
 
@@ -54,6 +54,8 @@ public:
 
 	spoon(std::string name);								// New spoon character
 
+	json jsonify();
+
 };
 
 class fork : public Character {
@@ -70,7 +72,7 @@ public:
 
 	fork();												// Default constructor
 	fork(std::string name);								// New fork character
-
+	json jsonify();
 };
 
 
@@ -89,4 +91,5 @@ public:
 
 	knife();												// Default constructor
 	knife(std::string name);								// New knife character
+	json jsonify();
 };

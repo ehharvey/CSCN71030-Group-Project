@@ -24,10 +24,28 @@ Character::Character(std::string name)
 
 }
 
-//Character::Character(std::string restore)
-//{
-//
-//}
+Character::Character(json j) 
+{
+    this->attack = j["attack"];
+    this->current_health = j["current health"];
+    this->defence = j["defence"];
+    this->max_health = j["max health"];
+    this->speed = j["speed"];
+    this->name = j["name"];
+}
+
+json Character::jsonify() 
+{
+    json result;
+    result["name"] = this->name;
+    result["current health"] = this->current_health;
+    result["max health"] = this->max_health;
+    result["attack"] = this->attack;
+    result["defence"] = this->defence;
+    result["speed"] = this->speed;
+
+    return result;
+}
 
 void Character::setHealth(int health)
 {
@@ -75,6 +93,12 @@ spoon::spoon(std::string name)
     this->name = name;
 }
 
+json spoon::jsonify() 
+{
+    json result = Character::jsonify();
+    result["type"] = "spoon";
+}
+
 fork::fork()
 {
     this->Character_PTR = this;
@@ -87,6 +111,12 @@ fork::fork(std::string name)
     this->name = name;
 }
 
+json fork::jsonify() 
+{
+    json result = Character::jsonify();
+    result["type"] = "fork";
+}
+
 knife::knife()
 {
     this->Character_PTR = this;
@@ -97,4 +127,10 @@ knife::knife()
 knife::knife(std::string name)
 {
     this->name = name;
+}
+
+json knife::jsonify() 
+{
+    json result = Character::jsonify();
+    result["type"] = "knife";
 }
