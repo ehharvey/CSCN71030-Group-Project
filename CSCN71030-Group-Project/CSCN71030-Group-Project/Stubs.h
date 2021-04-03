@@ -61,9 +61,22 @@ public:
 
 // ----------------------------------------------------------------------------
 
+// Level ----------------------------------------------------------------------
 
+class Level {
+	Character* playerCharacter;	//references to both player and enemy characters
+	Character* enemyCharacter;
+	Level* nextLevel;	//implemented in the form of a linked list
+	Level* previousLevel;
+	int difficulty;
+public:
+	Level();
+	~Level();
 
+	int enterCombat();
+};
 
+//-----------------------------------------------------------------------------
 
 
 // ReadWrite ------------------------------------------------------------------
