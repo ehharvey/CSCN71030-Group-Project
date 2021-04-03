@@ -34,6 +34,7 @@ class SaveEntry {
 	std::optional<GameState> current_state;
 
 public:
+	SaveEntry();
 	SaveEntry(std::filesystem::path root, SaveSlot slot);
 
 	GameState loadEntry();
