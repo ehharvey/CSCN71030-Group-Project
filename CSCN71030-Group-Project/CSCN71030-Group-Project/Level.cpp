@@ -1,6 +1,7 @@
 #include "Level.h"
 #include "Stubs.h"
 
+int userInput;
 Level::Level() {
 
 }
@@ -20,12 +21,12 @@ stageType Level::getStageType() {
 }
 
 int Level::enterCombat(Level* levelInfo) {
-	//combatOptions userInput;
+	int userInput;
 	int turn = 0;
 	while (!levelInfo->getPlayer()->getHealth() && !levelInfo->getEnemy()->getHealth()) {
 
 		
-		int userInput = someUIObject.get_input();
+		userInput = someUIObject.get_input();
 
 		switch (userInput)
 		{
@@ -44,6 +45,10 @@ int Level::enterCombat(Level* levelInfo) {
 					calculateDamage(levelInfo->getPlayer(), levelInfo->getEnemy());
 					calculateDamage(levelInfo->getEnemy(), levelInfo->getPlayer());
 				}
+			}
+			//else
+			{
+				//ui
 			}
 			break;
 		case Dodge:
