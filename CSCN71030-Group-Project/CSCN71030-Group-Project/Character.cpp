@@ -77,10 +77,6 @@ std::string Character::getName()
     return this->name;
 }
 
-//Character::operator std::string()
-//{
-//}
-
 spoon::spoon()
 {
     this->Character_PTR = this;
