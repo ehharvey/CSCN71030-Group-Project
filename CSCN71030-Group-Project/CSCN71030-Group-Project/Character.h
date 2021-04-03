@@ -11,6 +11,7 @@ class Character {
 	int speed;
 	Character* Character_PTR;
 	std::string sprite;
+	bool isPrepared;
 
 public:
 
@@ -51,6 +52,7 @@ class spoon : public Character {
 	std::string sprite;
 
 	Character* Character_PTR;
+	bool isPrepared;
 
 public:
 
@@ -71,6 +73,7 @@ class fork : public Character {
 	std::string sprite;
 
 	Character* Character_PTR;
+	bool isPrepared;
 
 public:
 
@@ -91,6 +94,7 @@ class knife : public Character {
 	std::string sprite;
 
 	Character* Character_PTR;
+	bool isPrepared;
 
 public:
 
