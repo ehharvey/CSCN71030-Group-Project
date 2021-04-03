@@ -11,7 +11,6 @@ class Level {
 	stageType type;
 	UI someUIObject;
 
-	int difficulty;
 public:
 	Level();
 	~Level();
@@ -21,6 +20,6 @@ public:
 	Character* getEnemy();
 	stageType getStageType();
 	combatOptions simEnemyCombat(int turn);
-
+	void calculateDamage(Character* attacker, Character* defender);
 	int enterCombat(Level* currentLevel);
 };

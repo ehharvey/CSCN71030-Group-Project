@@ -4,8 +4,10 @@
 Level::Level() {
 
 }
-Level::Level(Character* player, Character* enemy, enum stageType type ) {
-
+Level::Level(Character* player, Character* enemy, stageType type ) {
+	this->playerCharacter = player;
+	this->enemyCharacter = enemy;
+	this->type = type;
 }
 Character* Level::getPlayer() {
 	return this->playerCharacter;
@@ -31,13 +33,16 @@ int Level::enterCombat(Level* levelInfo) {
 			//if (levelInfo->getPlayer()->isPrepared())
 			{
 				if (simEnemyCombat(turn) == Prepare) {
-					//both players prep
+					//Player attacks while enemy preps
+					calculateDamage(levelInfo->getPlayer(), levelInfo->getEnemy());
 				}
 				else if (simEnemyCombat(turn) == Dodge) {
 					//enemy dodges player's attack
 				}
 				else if (simEnemyCombat(turn) == Attack) {
 					//both players attack
+					calculateDamage(levelInfo->getPlayer(), levelInfo->getEnemy());
+					calculateDamage(levelInfo->getEnemy(), levelInfo->getPlayer());
 				}
 			}
 			break;
@@ -63,6 +68,7 @@ int Level::enterCombat(Level* levelInfo) {
 			}
 			else if (simEnemyCombat(turn) == Attack) {
 				//player preps, enemy attacks
+				calculateDamage(levelInfo->getEnemy(), levelInfo->getPlayer());
 			}
 			break;
 		default:
@@ -88,6 +94,10 @@ combatOptions Level::simEnemyCombat(int turn) {
 	default:
 		break;
 	}
+}
+void calculateDamage(Character* attacker, Character* defender) {
+	defender->setHealth(defender->getHealth() - attacker->getAttack()); //subtracts attack from health
+	return;
 }
 Level::~Level() {
 
