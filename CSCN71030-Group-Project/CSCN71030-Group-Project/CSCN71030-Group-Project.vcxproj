@@ -145,11 +145,10 @@
   <ItemGroup>
     <ClCompile Include="Level.cpp" />
     <ClInclude Include="Character.h" />
-  </ItemGroup>
-  <ItemGroup>
+    <ClInclude Include="UI.h" />
     <ClCompile Include="Character.cpp" />
-  </ItemGroup>
-  <ItemGroup>
+    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="UI.cpp" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
