@@ -140,16 +140,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Level.h" />
+    <ClInclude Include="Stubs.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="ReadWrite.h" />
+    <ClInclude Include="RNG.h" />
+    <ClInclude Include="Stubs.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Level.cpp" />
+    <ClInclude Include="Character.h" />
     <ClCompile Include="ReadWrite.cpp" />
+    <ClCompile Include="Character.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <ClInclude Include="RNG.h" />
-    <ClInclude Include="Stubs.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
