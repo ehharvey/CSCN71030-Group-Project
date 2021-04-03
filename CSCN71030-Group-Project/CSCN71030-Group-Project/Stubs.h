@@ -61,6 +61,7 @@ public:
 
 // ----------------------------------------------------------------------------
 
+
 // Level ----------------------------------------------------------------------
 
 class Level {
@@ -95,7 +96,7 @@ public:
 
 class Loader {
 	std::string root;
-	std::vector<LoadEntry&> load_entries;
+	std::vector<LoadEntry&> saves;
 public:
 	Loader(std::string root);
 	~Loader();

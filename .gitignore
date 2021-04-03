@@ -360,3 +360,10 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# vscode
+.vscode/settings.json
+
+# misc VS
+CSCN71030-Group-Project/.vs/CSCN71030-Group-Project/v16/.suo
+CSCN71030-Group-Project/.vs/CSCN71030-Group-Project/v16/Browse.VC.db
