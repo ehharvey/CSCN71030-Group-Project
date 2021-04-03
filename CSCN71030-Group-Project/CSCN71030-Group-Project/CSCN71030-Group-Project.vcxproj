@@ -145,7 +145,6 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="ReadWrite.h" />
     <ClInclude Include="RNG.h" />
-    <ClInclude Include="Stubs.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="UI.h" />
   </ItemGroup>
