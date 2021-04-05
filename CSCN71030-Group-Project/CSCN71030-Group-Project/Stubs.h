@@ -54,7 +54,10 @@ public:
 	int get_input();
 	void get_sprite(Character* character_ptr);
 	void get_sprite(Character* character_ptr, Character* enemy_ptr);
-
+	void display_menu();		// requires context to be passed to it
+	void initial_menu();
+	void user_options();
+	void game_opening();
 };
 
 
