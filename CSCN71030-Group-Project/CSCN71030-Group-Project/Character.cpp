@@ -100,12 +100,13 @@ std::string Character::getName()
 
 bool Character::getPrepared()
 {
-    return false;
+    return this->isPrepared;
 }
 
-bool Character::setPrepared()
+bool Character::setPrepared(bool preperation)
 {
-    return false;
+    this->isPrepared = preperation;
+    return this->isPrepared;
 }
 
 spoon::spoon()
