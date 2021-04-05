@@ -98,6 +98,16 @@ std::string Character::getName()
     return this->name;
 }
 
+bool Character::getPrepared()
+{
+    return false;
+}
+
+bool Character::setPrepared()
+{
+    return false;
+}
+
 spoon::spoon()
 {
     this->Character_PTR = this;
@@ -431,10 +441,20 @@ SinkEnemy::SinkEnemy(int maxHealth, int Attack, int Defence, int Speed)
     this->speed = Speed;
 
     this->sprite = R"(
-
+          ____       ____  
+        .'    '-._.-'    '.
+      .' o      \ /      o '.
+      (   o     ° °    o    ) Oo
+      Oo.o    o  _  o    o .oO
+      OO'-.___.-' '-.___.-'OoO    
 )";
     this->dead_sprite = R"(
-
+          ____       ____  
+        .'    '-._.-'    '.
+      .' o      \ /      o '.
+      (   o     X X    o    ) Oo
+      Oo.o    o  _  o    o .oO
+      OO'-.___.-' '-.___.-'OoO      
 )";
 }
 
@@ -446,9 +466,23 @@ SinkBoss::SinkBoss(int maxHealth, int Attack, int Defence, int Speed)
     this->defence = Defence;
     this->speed = Speed;
 
-    this->sprite = R"()";
+    this->sprite = R"(
+                            /'"-,
+          ..-'"'"'"-._     /    -`
+        .' °          '-.-'  _,"'
+         \,    -. .-        "-.,   
+         /       "             -',     
+         '-.___.,,,,____.-'\   -.
+                            \,-'   
+)";
     this->dead_sprite = R"(
-
+                            /'"-,
+          ..-'"'"'"-._     /    -`
+        .' X          '-.-'  _,"'
+         \,    -. .-        "-.,   
+         /       "            -',     
+         '-.___.,,,,____.-'\   -.
+                            \,-'   
 )";
 }
 

@@ -45,6 +45,11 @@ public:
 	virtual std::string getDeadSprite();
 
 	virtual std::string getName();
+
+	virtual bool getPrepared();
+
+	virtual bool setPrepared(bool);
+
 };
 
 
@@ -268,3 +273,4 @@ class FinalBoss : public Character {
 
 public:
 	FinalBoss(int, int, int, int);												// Constructor
+};
