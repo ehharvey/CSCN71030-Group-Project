@@ -387,8 +387,38 @@ DrawerBoss::DrawerBoss(int maxHealth, int Attack, int Defence, int Speed)
     this->current_health = maxHealth;
     this->defence = Defence;
     this->speed = Speed;
+    this->name = "Chef's Knife";
 
-    this->sprite = R"()";
+    this->sprite = R"(
+                  _ .
+               .'   '
+              /\ / /
+             /° ° /
+            /    /
+           /    /
+           \_  /
+            / /
+           / /
+          / /
+         / /
+        ( /
+
+)";
+   this->dead_sprite = R"(
+                  _ .
+               .'   '
+              /\ / /
+             /* * /
+            /    /
+           /    /
+           \_  /
+            / /
+           / /
+          / /
+         / /
+        ( /
+
+)";
 
 }
 
@@ -400,8 +430,12 @@ SinkEnemy::SinkEnemy(int maxHealth, int Attack, int Defence, int Speed)
     this->defence = Defence;
     this->speed = Speed;
 
-    this->sprite = R"()";
+    this->sprite = R"(
 
+)";
+    this->dead_sprite = R"(
+
+)";
 }
 
 SinkBoss::SinkBoss(int maxHealth, int Attack, int Defence, int Speed)
@@ -413,7 +447,9 @@ SinkBoss::SinkBoss(int maxHealth, int Attack, int Defence, int Speed)
     this->speed = Speed;
 
     this->sprite = R"()";
+    this->dead_sprite = R"(
 
+)";
 }
 
 OvenEnemy::OvenEnemy(int maxHealth, int Attack, int Defence, int Speed)
@@ -423,9 +459,30 @@ OvenEnemy::OvenEnemy(int maxHealth, int Attack, int Defence, int Speed)
     this->current_health = maxHealth;
     this->defence = Defence;
     this->speed = Speed;
+    this->name = "Food Ghost";
 
-    this->sprite = R"()";
+    this->sprite = R"(
+      .-'""""`-.___                      
+   .-'             """""""`-.
+   '-.      O     O       .-` 
+     "'-.      O          `-.
+        '-...            ...-'              
+             '-.      ..-'                
+                "'-.  -`                  
+                    `,`   
+)";
+    this->dead_sprite = R"(
 
+      .-'""""`-.___                      
+   .-'             """""""`-.
+   '-.      X     X       .-` 
+     "'-.      ___        `-.
+        '-...    U       ...-'              
+             '-.      ..-'                
+                "'-.  -`                  
+                    `,` 
+
+)";
 }
 
 OvenBoss::OvenBoss(int maxHealth, int Attack, int Defence, int Speed)
@@ -435,9 +492,26 @@ OvenBoss::OvenBoss(int maxHealth, int Attack, int Defence, int Speed)
     this->current_health = maxHealth;
     this->defence = Defence;
     this->speed = Speed;
+    this->name = "Souffle";
 
-    this->sprite = R"()";
-
+    this->sprite = R"(                   
+         ,.-""""""""""""-.,                           
+        (('      °u°     `))        
+        |'-.____________.-'|
+        | | |  |  |  |  | ||                           
+        | | |  |  |  |  | ||            
+        '-'.'__'__'__'__'.''                         
+        '-.______________.-'
+)";
+    this->dead_sprite = R"(
+         ..____________..                           
+       (('.-------------`))                            
+       |'-._____x_x____.-'|
+       | | |  |  |  |  | ||                           
+       | | |  |  |  |  | ||            
+       '-'.'__'__'__'__'.''                         
+       '-.______________.-' 
+)";
 
 }
 
@@ -449,21 +523,95 @@ CounterEnemy::CounterEnemy(int maxHealth, int Attack, int Defence, int Speed)
     this->defence = Defence;
     this->speed = Speed;
 
-    this->sprite = R"()";
-
+    this->sprite = R"(
+       \\   |   //
+        \\  |  //
+         \\ | //      
+       .-'     '-.
+      .'---------'.
+      '           '
+      '.---\ /---.'
+      '   °   °   '
+      '-----------'
+       '- _____ -'
+       \ ------- /
+        \ ----- /
+         \ --- /
+          \ - /
+           \-/ 
+            V  
+)";
+    this->dead_sprite = R"(
+     
+       \\   |   //
+        \\  |  //
+         \\ | //      
+       .-'     '-.
+      .'---------'.
+      '           '
+      '.---\ /---.'
+      '   X   X   '
+      '-----------'
+       '- _____ -'
+       \ -----U- /
+        \ ----- /
+         \ --- /
+          \ - /
+           \-/ 
+            V  
+)";
 
 }
 
 CounterBoss::CounterBoss(int maxHealth, int Attack, int Defence, int Speed)
 {
+    this->name = "Rotten Egg";
     this->attack = Attack;
     this->max_health = maxHealth;
     this->current_health = maxHealth;
     this->defence = Defence;
     this->speed = Speed;
 
-    this->sprite = R"()";
+    this->sprite = R"(
+                  ...
+               .:"   ":.
+            .:'         ':.
+          .:'             ':.
+         .:'    \     /    ':.
+        .:'                 ':.
+        ::      °     °      ::
+        ::                   ::
+        ::                   ::
+        ::         _         ::
+        ::                   ::
+        ':.                 .:'
+         ':.               .:'
+          ':.             .:'
+            ':..       ..:'
+               ":.....:"
+                  '''
+)";
+    this->dead_sprite = R"(
+                  ...
+               .:"   ":.
+             \/\ /\ /\ /\/
 
+          .:'V V V V V V V':.
+         .:'    \     /    ':.
+        .:'                 ':.
+        ::      X     X      ::
+        ::                   ::
+        ::                   ::
+        ::        ___        ::
+        ::          U        ::
+        ::                   ::
+        ':.                 .:'
+         ':.               .:'
+          ':.             .:'
+            ':..       ..:'
+               ":.....:"
+                  '''
+)";
 }
 
 FinalBoss::FinalBoss(int maxHealth, int Attack, int Defence, int Speed)
@@ -475,4 +623,7 @@ FinalBoss::FinalBoss(int maxHealth, int Attack, int Defence, int Speed)
     this->speed = Speed;
 
     this->sprite = R"()";
+    this->dead_sprite = R"(
+
+)";
 }

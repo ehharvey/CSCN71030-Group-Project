@@ -121,6 +121,7 @@ class DrawerEnemy : public Character {
 	int defence;
 	int speed;
 	std::string sprite;
+	std::string dead_sprite;
 
 	Character* Enemy_PTR;
 	bool isPrepared;
@@ -138,6 +139,7 @@ class DrawerBoss : public Character {
 	int defence;
 	int speed;
 	std::string sprite;
+	std::string dead_sprite;
 
 	Character* Enemy_PTR;
 	bool isPrepared;
@@ -155,6 +157,7 @@ class SinkEnemy : public Character {
 	int defence;
 	int speed;
 	std::string sprite;
+	std::string dead_sprite;
 
 	Character* Enemy_PTR;
 	bool isPrepared;
@@ -171,6 +174,7 @@ class SinkBoss : public Character {
 	int defence;
 	int speed;
 	std::string sprite;
+	std::string dead_sprite;
 
 	Character* Enemy_PTR;
 	bool isPrepared;
@@ -188,6 +192,7 @@ class OvenEnemy : public Character {
 	int defence;
 	int speed;
 	std::string sprite;
+	std::string dead_sprite;
 
 	Character* Enemy_PTR;
 	bool isPrepared;
@@ -204,6 +209,7 @@ class OvenBoss : public Character {
 	int defence;
 	int speed;
 	std::string sprite;
+	std::string dead_sprite;
 
 	Character* Enemy_PTR;
 	bool isPrepared;
@@ -220,6 +226,7 @@ class CounterEnemy : public Character {
 	int defence;
 	int speed;
 	std::string sprite;
+	std::string dead_sprite;
 
 	Character* Enemy_PTR;
 	bool isPrepared;
@@ -236,6 +243,7 @@ class CounterBoss : public Character {
 	int defence;
 	int speed;
 	std::string sprite;
+	std::string dead_sprite;
 
 	Character* Enemy_PTR;
 	bool isPrepared;
@@ -253,6 +261,7 @@ class FinalBoss : public Character {
 	int defence;
 	int speed;
 	std::string sprite;
+	std::string dead_sprite;
 
 	Character* Enemy_PTR;
 	bool isPrepared;
