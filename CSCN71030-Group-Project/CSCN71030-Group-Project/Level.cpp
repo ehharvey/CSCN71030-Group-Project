@@ -1,7 +1,7 @@
 #include "Level.h"
-#include "Stubs.h"
+//#include "Stubs.h"
 
-int userInput;
+
 Level::Level() {
 
 }
@@ -84,7 +84,7 @@ int Level::enterCombat(Level* levelInfo) {
 	}
 }
 
-combatOptions Level::simEnemyCombat(int turn) {
+int Level::simEnemyCombat(int turn) {
 	switch (turn%3)	//linear combat pattern
 	{
 	case 0:
@@ -100,7 +100,7 @@ combatOptions Level::simEnemyCombat(int turn) {
 		break;
 	}
 }
-void calculateDamage(Character* attacker, Character* defender) {
+void Level::calculateDamage(Character* attacker, Character* defender) {
 	defender->setHealth(defender->getHealth() - attacker->getAttack()); //subtracts attack from health
 	return;
 }
