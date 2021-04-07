@@ -22,13 +22,6 @@ Character::Character(std::string name)
     this->Character_PTR = this;
 }
 
-void Character::setHealth(int health_reduction)
-{
-    this->current_health = this->current_health - health_reduction;
-
-
-
-}
 
 Character::Character(json j) 
 {
@@ -193,6 +186,7 @@ json spoon::jsonify()
 {
     json result = Character::jsonify();
     result["type"] = "spoon";
+    return result;
 }
 
 fork::fork()
@@ -274,6 +268,7 @@ json fork::jsonify()
 {
     json result = Character::jsonify();
     result["type"] = "fork";
+    return result;
 }
 
 knife::knife()
@@ -378,6 +373,7 @@ json knife::jsonify()
 {
     json result = Character::jsonify();
     result["type"] = "knife";
+    return result;
 }
 
 DrawerEnemy::DrawerEnemy(int maxHealth, int Attack, int Defence, int Speed)
