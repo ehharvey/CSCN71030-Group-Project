@@ -178,6 +178,12 @@ public:
 };
 
 class SinkBoss : public Character {
+
+public:
+	SinkEnemy(int, int, int, int);												// Constructor
+};
+
+class SinkBoss : public Character {
 	std::string name;
 	int current_health;
 	int max_health;
@@ -192,6 +198,41 @@ class SinkBoss : public Character {
 
 public:
 	SinkBoss(int, int, int, int);												// Constructor
+};
+
+class OvenEnemy : public Character {
+
+	std::string name;
+	int current_health;
+	int max_health;
+	int attack;
+	int defence;
+	int speed;
+	std::string sprite;
+	std::string dead_sprite;
+
+	Character* Enemy_PTR;
+	bool isPrepared;
+
+public:
+	OvenEnemy(int, int, int, int);												// Constructor
+};
+class OvenBoss : public Character {
+
+	std::string name;
+	int current_health;
+	int max_health;
+	int attack;
+	int defence;
+	int speed;
+	std::string sprite;
+	std::string dead_sprite;
+
+	Character* Enemy_PTR;
+	bool isPrepared;
+
+public:
+	OvenBoss(int, int, int, int);												// Constructor
 };
 
 class OvenEnemy : public Character {
@@ -306,17 +347,24 @@ public:
 
 // Level ----------------------------------------------------------------------
 
+enum stageType { Drawer, Sink, Oven, Counter };
+enum combatOptions { Attack, Dodge, Prepare };
 class Level {
 	Character* playerCharacter;	//references to both player and enemy characters
 	Character* enemyCharacter;
-	Level* nextLevel;	//implemented in the form of a linked list
-	Level* previousLevel;
-	int difficulty;
+	stageType type;
+
 public:
 	Level();
 	~Level();
+	Level(Character* player, Character* enemy, stageType type);
 
-	int enterCombat();
+	Character* getPlayer();
+	Character* getEnemy();
+	stageType getStageType();
+	int simEnemyCombat(int turn);
+	void calculateDamage(Character* attacker, Character* defender);
+	int enterCombat(Level* currentLevel);
 };
 
 //-----------------------------------------------------------------------------
