@@ -142,7 +142,6 @@
   <ItemGroup>
     <ClInclude Include="Level.h" />
     <ClInclude Include="Stubs.h" />
-    <ClInclude Include="Object.h" />
     <ClInclude Include="ReadWrite.h" />
     <ClInclude Include="RNG.h" />
     <ClInclude Include="Character.h" />
