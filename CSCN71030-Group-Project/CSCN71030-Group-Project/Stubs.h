@@ -178,6 +178,12 @@ public:
 };
 
 class SinkBoss : public Character {
+
+public:
+	SinkEnemy(int, int, int, int);												// Constructor
+};
+
+class SinkBoss : public Character {
 	std::string name;
 	int current_health;
 	int max_health;
@@ -192,6 +198,41 @@ class SinkBoss : public Character {
 
 public:
 	SinkBoss(int, int, int, int);												// Constructor
+};
+
+class OvenEnemy : public Character {
+
+	std::string name;
+	int current_health;
+	int max_health;
+	int attack;
+	int defence;
+	int speed;
+	std::string sprite;
+	std::string dead_sprite;
+
+	Character* Enemy_PTR;
+	bool isPrepared;
+
+public:
+	OvenEnemy(int, int, int, int);												// Constructor
+};
+class OvenBoss : public Character {
+
+	std::string name;
+	int current_health;
+	int max_health;
+	int attack;
+	int defence;
+	int speed;
+	std::string sprite;
+	std::string dead_sprite;
+
+	Character* Enemy_PTR;
+	bool isPrepared;
+
+public:
+	OvenBoss(int, int, int, int);												// Constructor
 };
 
 class OvenEnemy : public Character {
