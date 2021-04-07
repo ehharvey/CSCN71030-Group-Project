@@ -3,7 +3,9 @@
 
 
 Level::Level() {
-
+	this->playerCharacter = NULL;
+	this->enemyCharacter = NULL;
+	this->type = Drawer;
 }
 Level::Level(Character* player, Character* enemy, stageType type ) {
 	this->playerCharacter = player;
@@ -21,12 +23,12 @@ stageType Level::getStageType() {
 }
 
 int Level::enterCombat(Level* levelInfo) {
-	int userInput;
+	int userInput = 0;
 	int turn = 0;
 	while (!levelInfo->getPlayer()->getHealth() && !levelInfo->getEnemy()->getHealth()) {
 
 		
-		userInput = someUIObject.get_input();
+		
 
 		switch (userInput)
 		{
@@ -82,6 +84,7 @@ int Level::enterCombat(Level* levelInfo) {
 		turn++;
 
 	}
+	return 0;
 }
 
 int Level::simEnemyCombat(int turn) {
@@ -97,6 +100,7 @@ int Level::simEnemyCombat(int turn) {
 		return Attack;//turn 3 attack
 		break;
 	default:
+		return Dodge;
 		break;
 	}
 }
