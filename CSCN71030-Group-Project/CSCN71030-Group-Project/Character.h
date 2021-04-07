@@ -1,3 +1,6 @@
+#ifndef CHARACTER_H
+#define CHARACTER_H
+
 #pragma once
 #include <string>
 
@@ -274,3 +277,5 @@ class FinalBoss : public Character {
 public:
 	FinalBoss(int, int, int, int);												// Constructor
 };
+
+#endif  // !CHARACTER_H
