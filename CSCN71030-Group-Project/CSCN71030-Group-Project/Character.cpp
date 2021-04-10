@@ -22,13 +22,6 @@ Character::Character(std::string name)
     this->Character_PTR = this;
 }
 
-void Character::setHealth(int health_reduction)
-{
-    this->current_health = this->current_health - health_reduction;
-
-
-
-}
 
 Character::Character(json j) 
 {
@@ -83,9 +76,30 @@ std::string Character::getSprite()
     return this->sprite;
 }
 
+std::string Character::getFightSprite()
+{
+    return this->fight_sprite;
+}
+
+std::string Character::getDeadSprite()
+{
+    return this->dead_sprite;
+}
+
 std::string Character::getName()
 {
     return this->name;
+}
+
+bool Character::getPrepared()
+{
+    return this->isPrepared;
+}
+
+bool Character::setPrepared(bool preperation)
+{
+    this->isPrepared = preperation;
+    return this->isPrepared;
 }
 
 spoon::spoon()
@@ -93,6 +107,39 @@ spoon::spoon()
     this->Character_PTR = this;
     this->current_health = this->max_health;
     this->name = " ";
+    this->sprite = R"(
+                __
+              .'  '.
+              '°  °'
+              '.  .'
+                ||
+                ||
+                ||
+                ||
+                --
+)";
+    this->fight_sprite = R"(
+                     _
+                  .' V'.
+                 '  ° °'
+                 '. .-'
+                  //
+                 //
+                //
+               //
+              (/
+)";
+    this->dead_sprite = R"(
+                __
+              .'  '.
+              '*  *'
+              '.  .'
+                ||
+                ||
+                ||
+                ||
+                --
+)";
 }
 
 spoon::spoon(std::string name)
@@ -100,12 +147,46 @@ spoon::spoon(std::string name)
     this->name = name;
     this->Character_PTR = this;
     this->current_health = this->max_health;
+    this->sprite = R"(
+                __
+              .'  '.
+              '°  °'
+              '.  .'
+                ||
+                ||
+                ||
+                ||
+                --
+)";
+    this->fight_sprite = R"(
+                     _
+                  .' V'.
+                 '  ° °'
+                 '. .-'
+                  //
+                 //
+                //
+               //
+              (/
+)";
+    this->dead_sprite = R"(
+                __
+              .'  '.
+              '*  *'
+              '.  .'
+                ||
+                ||
+                ||
+                ||
+                --
+)";
 }
 
 json spoon::jsonify() 
 {
     json result = Character::jsonify();
     result["type"] = "spoon";
+    return result;
 }
 
 fork::fork()
@@ -116,7 +197,65 @@ fork::fork()
     this->sprite = R"(
                  ||||  
                  ||||
-                 \��/
+                 \°°/
+                  ||
+                  ||
+                  ||
+                  ||
+                  --
+)";
+    this->fight_sprite = R"(
+                   ////\ 
+                  /V//
+                 (°°/
+                  //
+                 //
+                //
+               //
+              (/
+)";
+    this->dead_sprite = R"(
+                 |||| 
+                 ||||
+                 \**/
+                  ||
+                  ||
+                  ||
+                  ||
+                  --
+)";
+
+}
+
+fork::fork(std::string name)
+{
+    this->name = name;
+    this->Character_PTR = this;
+    this->current_health = this->max_health;
+    this->sprite = R"(
+                 ||||  
+                 ||||
+                 \°°/
+                  ||
+                  ||
+                  ||
+                  ||
+                  --
+)";
+    this->fight_sprite = R"(
+                   ////\ 
+                  /V//
+                 (°°/
+                  //
+                 //
+                //
+               //
+              (/
+)";
+    this->dead_sprite = R"(
+                 |||| 
+                 ||||
+                 \**/
                   ||
                   ||
                   ||
@@ -125,17 +264,11 @@ fork::fork()
 )";
 }
 
-fork::fork(std::string name)
-{
-    this->name = name;
-    this->Character_PTR = this;
-    this->current_health = this->max_health;
-}
-
 json fork::jsonify() 
 {
     json result = Character::jsonify();
     result["type"] = "fork";
+    return result;
 }
 
 knife::knife()
@@ -146,7 +279,36 @@ knife::knife()
     this->sprite = R"(
                   .-'
                  /  |
-                 |��|
+                 |°°|
+                 |  |
+                 |  |
+                 '._|
+                   ||
+                   ||
+                   ||
+                   ||
+                   --
+)";
+    this->fight_sprite = R"(
+
+                .-'
+               /V /
+              /°°/
+             /  /
+            /  /
+           '. /
+            --
+           //
+          //
+         //
+        //
+       (/
+
+)";
+    this->dead_sprite = R"(
+                  .-'
+                 /  |
+                 |**|
                  |  |
                  |  |
                  '._|
@@ -163,10 +325,336 @@ knife::knife(std::string name)
     this->name = name;
     this->Character_PTR = this;
     this->current_health = this->max_health;
+    this->sprite = R"(
+                  .-'
+                 /  |
+                 |°°|
+                 |  |
+                 |  |
+                 '._|
+                   ||
+                   ||
+                   ||
+                   ||
+                   --
+)";
+    this->fight_sprite = R"(
+
+                .-'
+               /V /
+              /°°/
+             /  /
+            /  /
+           '. /
+            --
+           //
+          //
+         //
+        //
+       (/
+
+)";
+    this->dead_sprite = R"(
+                  .-'
+                 /  |
+                 |**|
+                 |  |
+                 |  |
+                 '._|
+                   ||
+                   ||
+                   ||
+                   ||
+                   --
+)";
 }
 
 json knife::jsonify() 
 {
     json result = Character::jsonify();
     result["type"] = "knife";
+    return result;
+}
+
+DrawerEnemy::DrawerEnemy(int maxHealth, int Attack, int Defence, int Speed)
+{
+    this->attack = Attack;
+    this->max_health = maxHealth;
+    this->current_health = maxHealth;
+    this->defence = Defence;
+    this->speed = Speed;
+
+    this->sprite = R"()";
+}
+
+DrawerBoss::DrawerBoss(int maxHealth, int Attack, int Defence, int Speed)
+{
+    this->attack = Attack;
+    this->max_health = maxHealth;
+    this->current_health = maxHealth;
+    this->defence = Defence;
+    this->speed = Speed;
+    this->name = "Chef's Knife";
+
+    this->sprite = R"(
+                  _ .
+               .'   '
+              /\ / /
+             /° ° /
+            /    /
+           /    /
+           \_  /
+            / /
+           / /
+          / /
+         / /
+        ( /
+
+)";
+   this->dead_sprite = R"(
+                  _ .
+               .'   '
+              /\ / /
+             /* * /
+            /    /
+           /    /
+           \_  /
+            / /
+           / /
+          / /
+         / /
+        ( /
+
+)";
+
+}
+
+SinkEnemy::SinkEnemy(int maxHealth, int Attack, int Defence, int Speed)
+{
+    this->attack = Attack;
+    this->max_health = maxHealth;
+    this->current_health = maxHealth;
+    this->defence = Defence;
+    this->speed = Speed;
+
+    this->sprite = R"(
+          ____       ____  
+        .'    '-._.-'    '.
+      .' o      \ /      o '.
+      (   o     ° °    o    ) Oo
+      Oo.o    o  _  o    o .oO
+      OO'-.___.-' '-.___.-'OoO    
+)";
+    this->dead_sprite = R"(
+          ____       ____  
+        .'    '-._.-'    '.
+      .' o      \ /      o '.
+      (   o     X X    o    ) Oo
+      Oo.o    o  _  o    o .oO
+      OO'-.___.-' '-.___.-'OoO      
+)";
+}
+
+SinkBoss::SinkBoss(int maxHealth, int Attack, int Defence, int Speed)
+{
+    this->attack = Attack;
+    this->max_health = maxHealth;
+    this->current_health = maxHealth;
+    this->defence = Defence;
+    this->speed = Speed;
+
+    this->sprite = R"(
+                            /'"-,
+          ..-'"'"'"-._     /    -`
+        .' °          '-.-'  _,"'
+         \,    -. .-        "-.,   
+         /       "             -',     
+         '-.___.,,,,____.-'\   -.
+                            \,-'   
+)";
+    this->dead_sprite = R"(
+                            /'"-,
+          ..-'"'"'"-._     /    -`
+        .' X          '-.-'  _,"'
+         \,    -. .-        "-.,   
+         /       "            -',     
+         '-.___.,,,,____.-'\   -.
+                            \,-'   
+)";
+}
+
+OvenEnemy::OvenEnemy(int maxHealth, int Attack, int Defence, int Speed)
+{
+    this->attack = Attack;
+    this->max_health = maxHealth;
+    this->current_health = maxHealth;
+    this->defence = Defence;
+    this->speed = Speed;
+    this->name = "Food Ghost";
+
+    this->sprite = R"(
+      .-'""""`-.___                      
+   .-'             """""""`-.
+   '-.      O     O       .-` 
+     "'-.      O          `-.
+        '-...            ...-'              
+             '-.      ..-'                
+                "'-.  -`                  
+                    `,`   
+)";
+    this->dead_sprite = R"(
+
+      .-'""""`-.___                      
+   .-'             """""""`-.
+   '-.      X     X       .-` 
+     "'-.      ___        `-.
+        '-...    U       ...-'              
+             '-.      ..-'                
+                "'-.  -`                  
+                    `,` 
+
+)";
+}
+
+OvenBoss::OvenBoss(int maxHealth, int Attack, int Defence, int Speed)
+{
+    this->attack = Attack;
+    this->max_health = maxHealth;
+    this->current_health = maxHealth;
+    this->defence = Defence;
+    this->speed = Speed;
+    this->name = "Souffle";
+
+    this->sprite = R"(                   
+         ,.-""""""""""""-.,                           
+        (('      °u°     `))        
+        |'-.____________.-'|
+        | | |  |  |  |  | ||                           
+        | | |  |  |  |  | ||            
+        '-'.'__'__'__'__'.''                         
+        '-.______________.-'
+)";
+    this->dead_sprite = R"(
+         ..____________..                           
+       (('.-------------`))                            
+       |'-._____x_x____.-'|
+       | | |  |  |  |  | ||                           
+       | | |  |  |  |  | ||            
+       '-'.'__'__'__'__'.''                         
+       '-.______________.-' 
+)";
+
+}
+
+CounterEnemy::CounterEnemy(int maxHealth, int Attack, int Defence, int Speed)
+{
+    this->attack = Attack;
+    this->max_health = maxHealth;
+    this->current_health = maxHealth;
+    this->defence = Defence;
+    this->speed = Speed;
+
+    this->sprite = R"(
+       \\   |   //
+        \\  |  //
+         \\ | //      
+       .-'     '-.
+      .'---------'.
+      '           '
+      '.---\ /---.'
+      '   °   °   '
+      '-----------'
+       '- _____ -'
+       \ ------- /
+        \ ----- /
+         \ --- /
+          \ - /
+           \-/ 
+            V  
+)";
+    this->dead_sprite = R"(
+     
+       \\   |   //
+        \\  |  //
+         \\ | //      
+       .-'     '-.
+      .'---------'.
+      '           '
+      '.---\ /---.'
+      '   X   X   '
+      '-----------'
+       '- _____ -'
+       \ -----U- /
+        \ ----- /
+         \ --- /
+          \ - /
+           \-/ 
+            V  
+)";
+
+}
+
+CounterBoss::CounterBoss(int maxHealth, int Attack, int Defence, int Speed)
+{
+    this->name = "Rotten Egg";
+    this->attack = Attack;
+    this->max_health = maxHealth;
+    this->current_health = maxHealth;
+    this->defence = Defence;
+    this->speed = Speed;
+
+    this->sprite = R"(
+                  ...
+               .:"   ":.
+            .:'         ':.
+          .:'             ':.
+         .:'    \     /    ':.
+        .:'                 ':.
+        ::      °     °      ::
+        ::                   ::
+        ::                   ::
+        ::         _         ::
+        ::                   ::
+        ':.                 .:'
+         ':.               .:'
+          ':.             .:'
+            ':..       ..:'
+               ":.....:"
+                  '''
+)";
+    this->dead_sprite = R"(
+                  ...
+               .:"   ":.
+             \/\ /\ /\ /\/
+
+          .:'V V V V V V V':.
+         .:'    \     /    ':.
+        .:'                 ':.
+        ::      X     X      ::
+        ::                   ::
+        ::                   ::
+        ::        ___        ::
+        ::          U        ::
+        ::                   ::
+        ':.                 .:'
+         ':.               .:'
+          ':.             .:'
+            ':..       ..:'
+               ":.....:"
+                  '''
+)";
+}
+
+FinalBoss::FinalBoss(int maxHealth, int Attack, int Defence, int Speed)
+{
+    this->attack = Attack;
+    this->max_health = maxHealth;
+    this->current_health = maxHealth;
+    this->defence = Defence;
+    this->speed = Speed;
+
+    this->sprite = R"()";
+    this->dead_sprite = R"(
+
+)";
 }

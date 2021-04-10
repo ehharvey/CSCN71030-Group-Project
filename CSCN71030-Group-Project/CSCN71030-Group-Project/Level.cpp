@@ -1,9 +1,11 @@
 #include "Level.h"
-#include "Stubs.h"
+//#include "Stubs.h"
 
-int userInput;
+
 Level::Level() {
-
+	this->playerCharacter = NULL;
+	this->enemyCharacter = NULL;
+	this->type = Drawer;
 }
 Level::Level(Character* player, Character* enemy, stageType type ) {
 	this->playerCharacter = player;
@@ -21,12 +23,12 @@ stageType Level::getStageType() {
 }
 
 int Level::enterCombat(Level* levelInfo) {
-	int userInput;
+	int userInput = 0;
 	int turn = 0;
 	while (!levelInfo->getPlayer()->getHealth() && !levelInfo->getEnemy()->getHealth()) {
 
 		
-		userInput = someUIObject.get_input();
+		
 
 		switch (userInput)
 		{
@@ -82,9 +84,10 @@ int Level::enterCombat(Level* levelInfo) {
 		turn++;
 
 	}
+	return 0;
 }
 
-combatOptions Level::simEnemyCombat(int turn) {
+int Level::simEnemyCombat(int turn) {
 	switch (turn%3)	//linear combat pattern
 	{
 	case 0:
@@ -97,10 +100,11 @@ combatOptions Level::simEnemyCombat(int turn) {
 		return Attack;//turn 3 attack
 		break;
 	default:
+		return Dodge;
 		break;
 	}
 }
-void calculateDamage(Character* attacker, Character* defender) {
+void Level::calculateDamage(Character* attacker, Character* defender) {
 	defender->setHealth(defender->getHealth() - attacker->getAttack()); //subtracts attack from health
 	return;
 }

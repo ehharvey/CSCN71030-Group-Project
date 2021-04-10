@@ -65,6 +65,10 @@ json GameState::jsonify()
     return result;
 }
 
+SaveEntry::SaveEntry()
+{
+}
+
 SaveEntry::SaveEntry(std::filesystem::path root, SaveSlot slot)
 {
     full_path = root / SAVENAMES[slot];
@@ -82,7 +86,9 @@ SaveEntry::SaveEntry(std::filesystem::path root, SaveSlot slot)
 
 GameState::GameState(std::filesystem::path full_path) 
 {
-    json j = json::parse(full_path);
+    std::ifstream i(full_path);
+    json j;
+    i >> j;
 
     this->character_json = j["Character"];
     this->current_area = j["Current Area"];
