@@ -1,17 +1,21 @@
 #include "Level.h"
 //#include "Stubs.h"
 
-
+//
 Level::Level() {
 	this->playerCharacter = NULL;
 	this->enemyCharacter = NULL;
 	this->type = Drawer;
 }
+
+//
 Level::Level(Character* player, Character* enemy, stageType type ) {
 	this->playerCharacter = player;
 	this->enemyCharacter = enemy;
 	this->type = type;
 }
+
+//
 Character* Level::getPlayer() {
 	return this->playerCharacter;
 }
@@ -22,6 +26,7 @@ stageType Level::getStageType() {
 	return this->type;
 }
 
+// Emil: Why does this receive a pointer to itself? The parameter is unneeded
 int Level::enterCombat(Level* levelInfo) {
 	int userInput = 0;
 	int turn = 0;

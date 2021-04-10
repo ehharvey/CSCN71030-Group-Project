@@ -12,7 +12,7 @@ class Character {
 	int attack;
 	int defence;
 	int speed;
-	Character* Character_PTR;
+	Character* Character_PTR; // Emil: Unecessary
 	std::string sprite;
 	std::string fight_sprite;
 	std::string dead_sprite;
@@ -20,6 +20,7 @@ class Character {
 
 public:
 
+	// Emil: We don't need a default constructor
 	Character();											// Default constructor
 
 	Character(std::string name);							// New character
@@ -28,26 +29,17 @@ public:
 
 	virtual json jsonify();
 
+	// Emil: These functions should not be virtual
 	virtual void setHealth(int health_reduction);
-
 	virtual int getHealth();
-
 	virtual int getAttack();
-
 	virtual int getDefence();
-
 	virtual int getSpeed();
-
 	virtual std::string getSprite();
-
 	virtual std::string getFightSprite();
-
 	virtual std::string getDeadSprite();
-
 	virtual std::string getName();
-
 	virtual bool getPrepared();
-
 	virtual bool setPrepared(bool);
 
 };
@@ -55,27 +47,32 @@ public:
 
 class spoon : public Character {
 
+	// Emil: No need to duplicate private members of the super class
+	//    Consider making the private members of the super class protected instead
 	std::string name;
 	int current_health;
+	std::string sprite;
+	std::string fight_sprite;
+	std::string dead_sprite;
+	Character* Character_PTR;
+	bool isPrepared;
+
+	// Emil: Default values could be considered more behavioural; maybe put this
+	//    in the source?
 	int max_health = 10;
 	int attack = 5;
 	int defence = 10;
 	int speed = 4;
-	std::string sprite;
-	std::string fight_sprite;
-	std::string dead_sprite;
-
-	Character* Character_PTR;
-	bool isPrepared;
-
+	
 public:
+	// Emil: No default constructor is needed
 	spoon();												// Default constructor
 	spoon(std::string name);								// New spoon character
 	json jsonify();
 };
 
 class fork : public Character {
-
+	// Emil: See above
 	std::string name;
 	int current_health;
 	int max_health = 7;
@@ -132,6 +129,9 @@ class DrawerEnemy : public Character {
 	bool isPrepared;
 
 public:
+	// Emil: What do these ints refer to?
+	//    maybe we should have a structure representing the values needed
+	// e.g., struct enemy_stats
 	DrawerEnemy(int, int, int, int);												// Constructor
 };
 
