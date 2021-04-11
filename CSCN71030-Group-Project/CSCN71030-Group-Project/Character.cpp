@@ -104,9 +104,9 @@ bool Character::setPrepared(bool preperation)
 
 spoon::spoon()
 {
+    this->name = name;
     this->Character_PTR = this;
     this->current_health = this->max_health;
-    this->name = " ";
     this->sprite = R"(
                 __
               .'  '.
@@ -189,11 +189,66 @@ json spoon::jsonify()
     return result;
 }
 
-fork::fork()
+
+void spoon::setHealth(int health)
 {
+    this->current_health = health;
+}
+
+int spoon::getHealth()
+{
+    return this->current_health;
+}
+
+int spoon::getAttack()
+{
+    return this->attack;
+}
+
+int spoon::getDefence()
+{
+    return this->defence;
+}
+
+int spoon::getSpeed()
+{
+    return this->speed;
+}
+
+std::string spoon::getSprite()
+{
+    return this->sprite;
+}
+
+std::string spoon::getFightSprite()
+{
+    return this->fight_sprite;
+}
+
+std::string spoon::getDeadSprite()
+{
+    return this->dead_sprite;
+}
+
+std::string spoon::getName()
+{
+    return this->name;
+}
+
+bool spoon::getPrepared()
+{
+    return this->isPrepared;
+}
+
+bool spoon::setPrepared(bool preperation)
+{
+    this->isPrepared = preperation;
+    return this->isPrepared;
+}
+fork::fork() {
+    this->name = name;
     this->Character_PTR = this;
     this->current_health = this->max_health;
-    this->name = " ";
     this->sprite = R"(
                  ||||  
                  ||||
@@ -224,8 +279,8 @@ fork::fork()
                   ||
                   --
 )";
-
 }
+
 
 fork::fork(std::string name)
 {
@@ -271,53 +326,60 @@ json fork::jsonify()
     return result;
 }
 
-knife::knife()
+void fork::setHealth(int health)
 {
-    this->Character_PTR = this;
-    this->current_health = this->max_health;
-    this->name = " ";
-    this->sprite = R"(
-                  .-'
-                 /  |
-                 |°°|
-                 |  |
-                 |  |
-                 '._|
-                   ||
-                   ||
-                   ||
-                   ||
-                   --
-)";
-    this->fight_sprite = R"(
+    this->current_health = health;
+}
 
-                .-'
-               /V /
-              /°°/
-             /  /
-            /  /
-           '. /
-            --
-           //
-          //
-         //
-        //
-       (/
+int fork::getHealth()
+{
+    return this->current_health;
+}
 
-)";
-    this->dead_sprite = R"(
-                  .-'
-                 /  |
-                 |**|
-                 |  |
-                 |  |
-                 '._|
-                   ||
-                   ||
-                   ||
-                   ||
-                   --
-)";
+int fork::getAttack()
+{
+    return this->attack;
+}
+
+int fork::getDefence()
+{
+    return this->defence;
+}
+
+int fork::getSpeed()
+{
+    return this->speed;
+}
+
+std::string fork::getSprite()
+{
+    return this->sprite;
+}
+
+std::string fork::getFightSprite()
+{
+    return this->fight_sprite;
+}
+
+std::string fork::getDeadSprite()
+{
+    return this->dead_sprite;
+}
+
+std::string fork::getName()
+{
+    return this->name;
+}
+
+bool fork::getPrepared()
+{
+    return this->isPrepared;
+}
+
+bool fork::setPrepared(bool preperation)
+{
+    this->isPrepared = preperation;
+    return this->isPrepared;
 }
 
 knife::knife(std::string name)
@@ -369,11 +431,117 @@ knife::knife(std::string name)
 )";
 }
 
+knife::knife()
+{
+    this->name = " ";
+    this->Character_PTR = this;
+    this->current_health = this->max_health;
+    this->sprite = R"(
+                  .-'
+                 /  |
+                 |°°|
+                 |  |
+                 |  |
+                 '._|
+                   ||
+                   ||
+                   ||
+                   ||
+                   --
+)";
+    this->fight_sprite = R"(
+
+                .-'
+               /V /
+              /°°/
+             /  /
+            /  /
+           '. /
+            --
+           //
+          //
+         //
+        //
+       (/
+
+)";
+    this->dead_sprite = R"(
+                  .-'
+                 /  |
+                 |**|
+                 |  |
+                 |  |
+                 '._|
+                   ||
+                   ||
+                   ||
+                   ||
+                   --
+)";
+}
+
+
 json knife::jsonify() 
 {
     json result = Character::jsonify();
     result["type"] = "knife";
     return result;
+}
+
+void knife::setHealth(int health)
+{
+    this->current_health = health;
+}
+
+int knife::getHealth()
+{
+    return this->current_health;
+}
+
+int knife::getAttack()
+{
+    return this->attack;
+}
+
+int knife::getDefence()
+{
+    return this->defence;
+}
+
+int knife::getSpeed()
+{
+    return this->speed;
+}
+
+std::string knife::getSprite()
+{
+    return this->sprite;
+}
+
+std::string knife::getFightSprite()
+{
+    return this->fight_sprite;
+}
+
+std::string knife::getDeadSprite()
+{
+    return this->dead_sprite;
+}
+
+std::string knife::getName()
+{
+    return this->name;
+}
+
+bool knife::getPrepared()
+{
+    return this->isPrepared;
+}
+
+bool knife::setPrepared(bool preperation)
+{
+    this->isPrepared = preperation;
+    return this->isPrepared;
 }
 
 DrawerEnemy::DrawerEnemy(int maxHealth, int Attack, int Defence, int Speed)
@@ -384,7 +552,29 @@ DrawerEnemy::DrawerEnemy(int maxHealth, int Attack, int Defence, int Speed)
     this->defence = Defence;
     this->speed = Speed;
 
-    this->sprite = R"()";
+    this->sprite = R"(
+                     _
+                  ./ /V'/.
+                 (/ ° °/)
+                 './ /.-'
+                  //
+                 //
+                //
+               //
+              (/
+)";
+
+    this->dead_sprite = R"(
+                __
+              .'||'.
+             ( *||* )
+              '.||.'
+                ||
+                ||
+                ||
+                ||
+                --
+)";
 }
 
 DrawerBoss::DrawerBoss(int maxHealth, int Attack, int Defence, int Speed)

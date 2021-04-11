@@ -72,9 +72,22 @@ class spoon : public Character {
 	bool isPrepared;
 
 public:
-	spoon();												// Default constructor
+	spoon();
 	spoon(std::string name);								// New spoon character
 	json jsonify();
+
+	virtual void setHealth(int health_reduction) override;
+	virtual int getHealth() override;
+	virtual int getAttack() override;
+	virtual int getDefence() override;
+	virtual int getSpeed() override;
+	virtual std::string getSprite() override;
+	virtual std::string getFightSprite() override;
+	virtual std::string getDeadSprite() override;
+	virtual std::string getName() override;
+	virtual bool getPrepared() override;
+	virtual bool setPrepared(bool) override;
+
 };
 
 class fork : public Character {
@@ -93,9 +106,20 @@ class fork : public Character {
 	bool isPrepared;
 
 public:
-	fork();												// Default constructor
+	fork();
 	fork(std::string name);								// New fork character
 	json jsonify();
+	virtual void setHealth(int health_reduction) override;
+	virtual int getHealth() override;
+	virtual int getAttack() override;
+	virtual int getDefence() override;
+	virtual int getSpeed() override;
+	virtual std::string getSprite() override;
+	virtual std::string getFightSprite() override;
+	virtual std::string getDeadSprite() override;
+	virtual std::string getName() override;
+	virtual bool getPrepared() override;
+	virtual bool setPrepared(bool) override;
 };
 
 
@@ -115,9 +139,20 @@ class knife : public Character {
 	bool isPrepared;
 
 public:
-	knife();												// Default constructor
+	knife();
 	knife(std::string name);								// New knife character
 	json jsonify();
+	virtual void setHealth(int health_reduction) override;
+	virtual int getHealth() override;
+	virtual int getAttack() override;
+	virtual int getDefence() override;
+	virtual int getSpeed() override;
+	virtual std::string getSprite() override;
+	virtual std::string getFightSprite() override;
+	virtual std::string getDeadSprite() override;
+	virtual std::string getName() override;
+	virtual bool getPrepared() override;
+	virtual bool setPrepared(bool) override;
 };
 
 class DrawerEnemy : public Character {
