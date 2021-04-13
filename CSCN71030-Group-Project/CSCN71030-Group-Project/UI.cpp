@@ -59,6 +59,8 @@ void UI::game_opening()
 }
 
 
+
+
 // Emil:
 void UI::displayBattleIntro(Character* main_character, Character* enemy)
 {
@@ -80,6 +82,27 @@ void UI::displayNotPrepared()
 void UI::displayWelcome() {
 	std::cout << "Welcome to our game!" << std::endl;
 }
+
+void UI::displayPickClass() 
+{
+	std::cout << "What kind of character do you want to be?" 	<< std::endl
+	<< input_choice::new_spoon 		<< ") Spoon" 	<< std::endl
+	<< input_choice::new_fork		<< ") Fork" 	<< std::endl
+	<< input_choice::new_knife		<< ") Knife"	<< std::endl;
+}
+
+void UI::displayNamePrompt() 
+{
+	std::cout << "Enter a name for your character: ";
+}
+
+std::string UI::getCharacterName() 
+{
+	std::string name;
+	std::cin >> name;
+	return name;
+}
+
 
 void UI::displayMenu() 
 {
@@ -105,6 +128,18 @@ void UI::displaySavePrompt()
 	std::cout << "Do you want to save?" 			<< std::endl
 	<< input_choice::save		<< ") Save" 		<< std::endl
 	<< input_choice::no_save	<< ") Don't Save" 	<< std::endl;
+}
+
+int UI::getSaveInput() 
+{
+	int choice;
+	std::cin >> choice;
+	return choice;
+}
+
+void UI::displaySaveEntry(std::string character_name, int num) 
+{
+	std::cout << "Save entry " << num << ": " << character_name << std::endl;
 }
 
 void UI::displayCarryOn() 

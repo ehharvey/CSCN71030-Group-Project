@@ -14,11 +14,7 @@ Level::Level(Character* player, Character* enemy, stageType type ) {
 	this->enemyCharacter = enemy;
 	this->type = type;
 }
-Level::Level(Character* player, stageType type)
-{
-	this->playerCharacter = playerCharacter;
-	this->type = type;
-}
+
 Character* Level::getPlayer() {
 	return this->playerCharacter;
 }
@@ -92,6 +88,80 @@ int Level::enterCombat(Level* levelInfo) {
 
 }
 
+input_choice Level::getEnemyChoice(int turn) {
+	switch (turn%3)	//linear combat pattern
+	{
+	case 0:
+		return prepare;//turn 1 prep
+		break;
+	case 1:
+		return dodge;//turn 2 defend
+		break;
+	case 2:
+		return attack;//turn 3 attack
+		break;
+	default:
+		exit(EXIT_FAILURE); // Placeholder
+		break;
+	}
+}
+
+int Level::simEnemyCombat(int turn) {
+	switch (turn%3)	//linear combat pattern
+	{
+	case 0:
+		return Prepare;//turn 1 prep
+		break;
+	case 1:
+		return Dodge;//turn 2 defend
+		break;
+	case 2:
+		return Attack;//turn 3 attack
+		break;
+	default:
+		return Dodge;
+		break;
+	}
+}
+void Level::calculateDamage(Character* attacker, Character* defender) {
+	defender->setHealth(defender->getHealth() - attacker->getAttack()); //subtracts attack from health
+	return;
+}
+Level::~Level() {
+	delete enemyCharacter;
+}
+
+
+
+
+
+
+
+// Emil:
+
+Level::Level(Character* player, stageType type)
+{
+	this->playerCharacter = playerCharacter;
+	this->type = type;
+
+	switch (type)
+	{
+		case stageType::Drawer:
+		this->enemyCharacter = new DrawerEnemy(10, 10, 10, 10);
+		break;
+
+		case stageType::Sink:
+		this->enemyCharacter = new SinkEnemy(10, 10, 10, 10);
+		break;
+
+		case stageType::Oven:
+		this->enemyCharacter = new OvenEnemy(10, 10, 10, 10);
+		break;
+
+		case stageType::Counter:
+		this->enemyCharacter = new CounterEnemy(10, 10, 10, 10);
+	}
+}
 
 combatStatus Level::combatShouldContinue() {
 	if (this->getPlayer()->getHealth() == 0)
@@ -218,49 +288,12 @@ combatStatus Level::enterCombat() {
 
 	delete ui;
 	
+	// Temporary
+	if (combat_status == Win) {
+		ui->displayEnemyDeath(getEnemy());
+	}
+
 	// Return based on combat results
 	return combat_status;
 }
 
-input_choice Level::getEnemyChoice(int turn) {
-	switch (turn%3)	//linear combat pattern
-	{
-	case 0:
-		return prepare;//turn 1 prep
-		break;
-	case 1:
-		return dodge;//turn 2 defend
-		break;
-	case 2:
-		return attack;//turn 3 attack
-		break;
-	default:
-		exit(EXIT_FAILURE); // Placeholder
-		break;
-	}
-}
-
-int Level::simEnemyCombat(int turn) {
-	switch (turn%3)	//linear combat pattern
-	{
-	case 0:
-		return Prepare;//turn 1 prep
-		break;
-	case 1:
-		return Dodge;//turn 2 defend
-		break;
-	case 2:
-		return Attack;//turn 3 attack
-		break;
-	default:
-		return Dodge;
-		break;
-	}
-}
-void Level::calculateDamage(Character* attacker, Character* defender) {
-	defender->setHealth(defender->getHealth() - attacker->getAttack()); //subtracts attack from health
-	return;
-}
-Level::~Level() {
-
-}

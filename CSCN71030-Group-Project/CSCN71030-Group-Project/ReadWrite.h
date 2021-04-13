@@ -42,7 +42,8 @@ public:
 	SaveEntry();
 	SaveEntry(std::filesystem::path root, SaveSlot slot);
 
-	GameState loadEntry();
+	std::optional<GameState> loadEntry();
+	void setState(GameState game_state);
 
 	void saveToFile();
 };

@@ -67,34 +67,49 @@ int main() {
     Character* UserChar = NULL;
     std::string char_name;
 
+    Loader loader = Loader();
+
     std::optional<GameState> game_state;
 
     // New game or load?
     bool user_picked_valid_start;
     do {
+        ui->displayMenu();
+        user_new_or_load = ui->get_input();
+
         switch (user_new_or_load) {
         case new_character:
 
             bool valid_type_choice;
             do {
                 // Tell user to pick a class
-
+                ui->displayPickClass();
+                
                 // get class selection from user
                 input_choice user_character_type = ui->get_input();
 
                 switch (user_character_type) {
                 case input_choice::new_spoon:
+                    ui->displayNamePrompt();
+                    char_name = ui->getCharacterName();
                     UserChar = new spoon(char_name);
                     valid_type_choice = true;
                     break;
+
                 case input_choice::new_fork:
+                    ui->displayNamePrompt();
+                    char_name = ui->getCharacterName();
                     UserChar = new fork(char_name);
                     valid_type_choice = true;
                     break;
+
                 case input_choice::new_knife:
+                    ui->displayNamePrompt();
+                    char_name = ui->getCharacterName();
                     UserChar = new knife(char_name);
                     valid_type_choice = true;
                     break;
+
                 default:
                     valid_type_choice = false;
                 }
@@ -109,15 +124,34 @@ int main() {
             break;
         case load_game:
             // Display slots
+            {
+                 SaveEntry* entries = loader.get_entries();
 
-            // Retrieve a slot
+                 for (int i = 0; i < SaveSlot::three; i++)
+                 {
+                     std::optional<GameState> entry = entries[i].loadEntry();
+                     if (entry.has_value())
+                     {
+                         ui->displaySaveEntry((entry->getCharacter())["name"], i);
+                     }
+                     else
+                     {
+                         ui->displaySaveEntry("EMPTY", i);
+                     }
+                 }
+                               
+            
+                // Retrieve a slot
+                int user_choice = ui->getSaveInput();
+                
 
-            // Load character from slot
+                // Load character from slot
+                game_state = entries[user_choice].loadEntry();
+                UserChar = new Character((json) game_state->getCharacter());
 
-            // Also ensure game state is properly started here
-
-            user_picked_valid_start = true;
-            break;
+                user_picked_valid_start = true;
+                break;
+            }
         default:
             user_picked_valid_start = false;
         }
@@ -131,6 +165,60 @@ int main() {
         current_area <= (int)stageType::Counter;
         current_area++)
     {
+        Level level(UserChar, (stageType) current_area);
+
+        combatStatus result = level.enterCombat();
+
+        switch (result) {
+            case Win:
+            ui->displaySavePrompt();
+
+            input_choice to_save = ui->get_input();
+
+            switch (to_save) {
+                case save:
+                {
+                    Loader loader = Loader(); // Redundant
+                    // Display slots
+                    SaveEntry* entries = loader.get_entries();
+
+                    for (int i = 0; i < SaveSlot::three; i++)
+                    {
+                        std::optional<GameState> entry = entries[i].loadEntry();
+                        if (entry.has_value())
+                        {
+                            ui->displaySaveEntry((entry->getCharacter())["name"], i);
+                        }
+                        else
+                        {
+                            ui->displaySaveEntry("EMPTY", i);
+                        }
+                    }
+                    json char_json = UserChar->jsonify();
+                    GameState current_state = GameState(char_json, (stageType)(current_area + 1));
+                    int save_slot = ui->getSaveInput();
+                    entries[save_slot].setState(current_state);
+                    entries[save_slot].saveToFile();
+                    break;
+                }
+                
+                case no_save:
+                // do nothing
+                break;
+
+                default:
+                // todo
+            }
+
+            // Handle if they want to continue
+            break;
+
+
+            case Die:
+            ui->displayGameOver(UserChar);
+            exit(EXIT_SUCCESS);
+        }
+
         // Create level
         //      Level level(UserChar);
         // Execute level

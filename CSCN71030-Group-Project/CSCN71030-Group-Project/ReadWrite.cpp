@@ -83,6 +83,17 @@ SaveEntry::SaveEntry(std::filesystem::path root, SaveSlot slot)
     }
 }
 
+std::optional<GameState> SaveEntry::loadEntry() 
+{
+    return this->current_state;
+}
+
+void SaveEntry::setState(GameState game_state) 
+{
+    this->current_state = game_state;
+}
+
+
 
 GameState::GameState(json character_json)
 {

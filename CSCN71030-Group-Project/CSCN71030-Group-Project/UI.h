@@ -27,15 +27,24 @@ public:
 	void user_options();
 	void game_opening();
 
+	int getSaveInput();
+	void displaySaveEntry(std::string character_name, int num);
+	void displayCarryOn();
+	
 	void displayBattleIntro(Character* main_character, Character* enemy);
 	void displayBattleTurn(Character* main_character, Character* enemy);
 	void displayNotPrepared();
+
 	void displayWelcome();
 	void displayMenu();
-	void displayGameOver(Character* main_character);
+	void displayPickClass();
+	void displayNamePrompt();
+	std::string getCharacterName();
+	
 	void displayEnemyDeath(Character* enemy);
+	void displayGameOver(Character* main_character);
+	
 	void displaySavePrompt();
-	void displayCarryOn();
 };
 
 #endif // !UI_H
