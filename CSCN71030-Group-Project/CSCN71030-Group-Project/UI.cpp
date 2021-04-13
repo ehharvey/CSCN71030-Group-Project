@@ -1,6 +1,7 @@
 #include "UI.h"
 #include <iostream>
 #include <string>
+#include <windows.h>
 
 void UI::new_turn()
 {
@@ -56,6 +57,12 @@ void UI::user_options()
 }
 
 void UI::game_opening() {
+
+	HWND console = GetConsoleWindow();
+	RECT r;
+	GetWindowRect(console, &r); //store current dimensions
+	MoveWindow(console, 0, 0, 1600, 1000, TRUE); // 1600 width, 1000 height
+
 	std::string GameOpening = R"(
           _____                    _____                _____                    _____                _____                    _____            _____                    _____          
          /\    \                  /\    \              /\    \                  /\    \              /\    \                  /\    \          /\    \                  /\    \         
@@ -104,7 +111,10 @@ void UI::game_opening() {
                                                                                                     
                                                                                                                                                                                                                                                                                       
 )";
-	std::cout << "Welcome to\n" << GameOpening << std::endl;
+	std::cout << "Welcome to...\n";
+	std::cout << "\x1b[" << CYAN_FG << "m";
+	std::cout << GameOpening << std::endl;
+	std::cout << "\x1b[" << DEFAULT_FG << "m";
 
 }
 
