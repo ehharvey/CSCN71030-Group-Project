@@ -1,6 +1,3 @@
-#ifndef CHARACTER_H
-#define CHARACTER_H
-
 #pragma once
 #include <string>
 
@@ -58,36 +55,12 @@ class spoon : public Character {
 public:
 	spoon(std::string name); // New spoon character
 	json jsonify();
-
-	virtual void setHealth(int health_reduction) override;
-	virtual int getHealth() override;
-	virtual int getAttack() override;
-	virtual int getDefence() override;
-	virtual int getSpeed() override;
-	virtual std::string getSprite() override;
-	virtual std::string getFightSprite() override;
-	virtual std::string getDeadSprite() override;
-	virtual std::string getName() override;
-	virtual bool getPrepared() override;
-	virtual bool setPrepared(bool) override;
-
 };
 
 class fork : public Character {
 public:
 	fork(std::string name); // New fork character
 	json jsonify();
-	virtual void setHealth(int health_reduction) override;
-	virtual int getHealth() override;
-	virtual int getAttack() override;
-	virtual int getDefence() override;
-	virtual int getSpeed() override;
-	virtual std::string getSprite() override;
-	virtual std::string getFightSprite() override;
-	virtual std::string getDeadSprite() override;
-	virtual std::string getName() override;
-	virtual bool getPrepared() override;
-	virtual bool setPrepared(bool) override;
 };
 
 
@@ -95,17 +68,6 @@ class knife : public Character {
 public: 
 	knife(std::string name); // New knife character
 	json jsonify();
-	virtual void setHealth(int health_reduction) override;
-	virtual int getHealth() override;
-	virtual int getAttack() override;
-	virtual int getDefence() override;
-	virtual int getSpeed() override;
-	virtual std::string getSprite() override;
-	virtual std::string getFightSprite() override;
-	virtual std::string getDeadSprite() override;
-	virtual std::string getName() override;
-	virtual bool getPrepared() override;
-	virtual bool setPrepared(bool) override;
 };
 
 class DrawerEnemy : public Character {
@@ -152,5 +114,3 @@ class FinalBoss : public Character {
 public:
 	FinalBoss(int max_health, int attack, int defence, int speed); // Constructor
 };
-
-#endif  // !CHARACTER_H

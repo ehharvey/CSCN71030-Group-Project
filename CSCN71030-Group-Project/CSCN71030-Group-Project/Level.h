@@ -1,6 +1,3 @@
-#ifndef LEVEL_H
-#define LEVEL_H
-
 #pragma once
 #include "Character.h"
 #include "UI.h"
