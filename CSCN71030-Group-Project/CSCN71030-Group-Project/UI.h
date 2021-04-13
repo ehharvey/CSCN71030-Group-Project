@@ -47,6 +47,7 @@ public:
 	
 	void displayBattleIntro(Character* main_character, Character* enemy);
 	void displayBattleTurn(Character* main_character, Character* enemy);
+	void displayBattleChoices();
 	void displayNotPrepared();
 
 	void displayWelcome();
@@ -56,6 +57,7 @@ public:
 	std::string getCharacterName();
 	
 	void displayEnemyDeath(Character* enemy);
+	void displayGameOver(Character* main_character);
 	
 	void displaySavePrompt();
 };

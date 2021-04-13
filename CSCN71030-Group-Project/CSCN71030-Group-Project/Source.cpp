@@ -62,7 +62,7 @@ int main() {
 	UI* ui = new UI();
 	ui->game_opening();
 	ui->initial_menu();
-    input_choice user_new_or_load = ui->get_input();
+    input_choice user_new_or_load;
 
     Character* UserChar = NULL;
     std::string char_name;
@@ -155,7 +155,7 @@ int main() {
         default:
             user_picked_valid_start = false;
         }
-    } while (user_picked_valid_start);
+    } while (!user_picked_valid_start);
     
 
     // Ensure that we have a game state
@@ -171,11 +171,11 @@ int main() {
 
         switch (result) {
             case Win:
-            ui->displaySavePrompt();
+            {
+                ui->displaySavePrompt();
+                input_choice to_save = ui->get_input();
 
-            input_choice to_save = ui->get_input();
-
-            switch (to_save) {
+                switch (to_save) {
                 case save:
                 {
                     Loader loader = Loader(); // Redundant
@@ -201,21 +201,25 @@ int main() {
                     entries[save_slot].saveToFile();
                     break;
                 }
-                
+
                 case no_save:
-                // do nothing
-                break;
+                {
+                    // do nothing
+                    break;
+                }
 
                 default:
-                // todo
+                {
+                    // todo
+                }
+                }
             }
-
             // Handle if they want to continue
             break;
 
 
             case Die:
-            ui->display_Game_Over(UserChar);
+            ui->displayGameOver(UserChar);
             exit(EXIT_SUCCESS);
         }
 
