@@ -344,7 +344,34 @@ void UI::displaySaveEntry(std::string character_name, int num)
 
 void UI::displayCarryOn() 
 {
-	std::cout << "Do you want to continue playing?" << std::endl
-	<< input_choice::carry_on 	<< ") Continue" 	<< std::endl 
-	<< input_choice::quit 		<< ") Quit"			<< std::endl;
+	std::string ContinuePrompt = R"(
+   ____            _   _                 ___  
+  / ___|___  _ __ | |_(_)_ __  _   _  __|__ \ 
+ | |   / _ \| '_ \| __| | '_ \| | | |/ _ \/ / 
+ | |__| (_) | | | | |_| | | | | |_| |  __/_|  
+  \____\___/|_| |_|\__|_|_| |_|\__,_|\___(_)  
+                                                                                                                                                                                                                                                                                               
+)";
+
+	std::string Exit = R"(
+  ___     _ _   
+ | __|_ _(_) |_ 
+ | _|\ \ / |  _|
+ |___/_\_\_|\__|
+                                      
+)";
+
+	std::string Continue = R"(
+   ___         _   _              
+  / __|___ _ _| |_(_)_ _ _  _ ___ 
+ | (__/ _ \ ' \  _| | ' \ || / -_)
+  \___\___/_||_\__|_|_||_\_,_\___|
+                                         
+)";
+	std::cout << ContinuePrompt << std::endl;
+	std::cout << "Do you want to continue playing?" << std::endl;
+	std::cout << input_choice::carry_on << ")" <<  Continue << std::endl;
+	std::cout << "\x1b[" << GREY_FG << "m";
+	std::cout << input_choice::quit << ")" << Exit<< std::endl;
+	std::cout << "\x1b[" << DEFAULT_FG << "m";
 }
