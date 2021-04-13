@@ -9,7 +9,7 @@ input_choice UI::get_input()
 {
 	unsigned char user_input;
 	std::cin >> user_input;
-	return (input_choice)user_input; // Seems brittle
+	return (input_choice)(user_input - 48); // Seems brittle
 }
 
 void UI::display_Game_Over(Character* character_ptr)
@@ -72,6 +72,14 @@ void UI::displayBattleTurn(Character* main_character, Character* enemy)
 {
 	std::cout << " You have: " << main_character->getHealth() << "/" << main_character->getMaxHealth() << " HP" << std::endl;
 	std::cout << "Enemy has: " << enemy->getHealth() << "/" << enemy->getMaxHealth() << " HP" << std::endl;
+}
+
+void UI::displayBattleChoices()
+{
+	std::cout << "What do you want to do?" << std::endl
+		<< input_choice::attack		<< ") Attack" << std::endl
+		<< input_choice::prepare	<< ") Prepare" << std::endl
+		<< input_choice::dodge		<< ") Dodge" << std::endl;
 }
 
 void UI::displayNotPrepared() 
