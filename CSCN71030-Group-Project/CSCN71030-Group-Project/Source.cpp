@@ -60,6 +60,8 @@ int main(void)
 int main() {
     
 	UI* ui = new UI();
+	ui->game_opening();
+	ui->initial_menu();
     input_choice user_new_or_load;
 
     Character* UserChar = NULL;
