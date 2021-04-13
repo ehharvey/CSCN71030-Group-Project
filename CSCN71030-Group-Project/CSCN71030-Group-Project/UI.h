@@ -5,6 +5,7 @@
 #define BLUE_FG 34
 #define CYAN_FG 36
 #define GREEN_FG 32
+#define YELLOW_FG 33
 #define BRIGHT_RED_FG 31
 #define GREY_FG 90
 #define LIGHT_RED_FG 91
@@ -56,8 +57,6 @@ public:
 	void displayNamePrompt();
 	std::string getCharacterName();
 	
-	void displayEnemyDeath(Character* enemy);
-	void displayGameOver(Character* main_character);
 	
 	void displaySavePrompt();
 };

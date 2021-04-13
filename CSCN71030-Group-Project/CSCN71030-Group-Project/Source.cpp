@@ -221,7 +221,7 @@ int main() {
 
 
             case Die:
-            ui->displayGameOver(UserChar);
+            ui->display_Game_Over(UserChar);
             exit(EXIT_SUCCESS);
         }
 

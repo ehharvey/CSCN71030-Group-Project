@@ -66,6 +66,14 @@ void UI::get_sprite(Character* character_ptr)
 
 void UI::get_sprite(Character* character_ptr, Character* enemy_ptr)
 {
+	std::cout << "\x1b[" << YELLOW_FG << "m";
+	std::string Fight = R"(
+   _______________ ________
+  / __/  _/ ___/ // /_  __/
+ / _/_/ // (_ / _  / / /   
+/_/ /___/\___/_//_/ /_/                                                                                                                                                                                                                                                                             
+)";
+	std::cout << Fight << std::endl;
 	std::cout << enemy_ptr->getSprite() << std::endl;
 	std::cout << character_ptr->getFightSprite() << std::endl;
 }
@@ -215,6 +223,15 @@ void UI::displayPickClass() {
 // Emil:
 void UI::displayBattleIntro(Character* main_character, Character* enemy)
 {
+	std::cout << "\x1b[" << YELLOW_FG << "m";
+	std::string Fight = R"(
+   _______________ ________
+  / __/  _/ ___/ // /_  __/
+ / _/_/ // (_ / _  / / /   
+/_/ /___/\___/_//_/ /_/                                                                                                                                                                                                                                                                             
+)";
+	std::cout << Fight << std::endl;
+	std::cout << "\x1b[" << DEFAULT_FG << "m";
 	std::cout << main_character->getFightSprite() << std::endl;
 
 	std::cout << "\x1b[" << BRIGHT_RED_FG << "m";
@@ -224,9 +241,17 @@ void UI::displayBattleIntro(Character* main_character, Character* enemy)
 
 void UI::displayBattleTurn(Character* main_character, Character* enemy) 
 {
-	std::cout << " You have: " << main_character->getHealth() << "/" << main_character->getMaxHealth() << " HP" << std::endl;
+	
+	std::cout << "You have: ";
+	std::cout << "\x1b[" << BRIGHT_BLUE_FG << "m";
+	std::cout << main_character->getHealth() << "/" << main_character->getMaxHealth();
+	std::cout << "\x1b[" << DEFAULT_FG << "m";
+	std::cout <<  " HP" << std::endl;
 	std::cout << "\x1b[" << BRIGHT_RED_FG << "m";
-	std::cout << "Enemy has: " << enemy->getHealth() << "/" << enemy->getMaxHealth() << " HP" << std::endl;
+	std::cout << "Enemy has: ";
+	std::cout << enemy->getHealth();
+	//std::cout << "\x1b[" << DEFAULT_FG << "m";
+	std::cout << "/" << enemy->getMaxHealth() << " HP" << std::endl;
 	std::cout << "\x1b[" << DEFAULT_FG << "m";
 }
 
@@ -371,7 +396,17 @@ void UI::displayCarryOn()
 	std::cout << "\x1b[" << DEFAULT_FG << "m";
 }
 
+void UI::displayBattleChoices()
+{
+	//std::cout << "\x1b[" << BLUE_FG << "m";
+	std::cout << "What do you want to do?" << std::endl;
 
+		std::cout << "\x1b[" << GREY_FG << "m";
+		std::cout << input_choice::attack << ") Attack" << std::endl;
+		std::cout << input_choice::prepare << ") Prepare" << std::endl;
+		std::cout << input_choice::dodge << ") Dodge" << std::endl;
+		std::cout << "\x1b[" << DEFAULT_FG << "m";
+}
 
 
 // Emil:
@@ -391,13 +426,7 @@ void UI::displayBattleTurn(Character* main_character, Character* enemy)
 }
 */
 
-void UI::displayBattleChoices()
-{
-	std::cout << "What do you want to do?" << std::endl
-		<< input_choice::attack		<< ") Attack" << std::endl
-		<< input_choice::prepare	<< ") Prepare" << std::endl
-		<< input_choice::dodge		<< ") Dodge" << std::endl;
-}
+
 
 /* old
 void UI::displayNotPrepared() 
@@ -447,11 +476,11 @@ void UI::displayMenu()
 }
 */
 
-void UI::displayGameOver(Character* main_character) 
-{
-	std::cout << main_character->getDeadSprite() << std::endl
-	<< "You have died" << std::endl;
-}
+//void UI::displayGameOver(Character* main_character) 
+//{
+//	std::cout << main_character->getDeadSprite() << std::endl
+//	<< "You have died" << std::endl;
+//}
 
 /*
 void UI::displaySavePrompt() 

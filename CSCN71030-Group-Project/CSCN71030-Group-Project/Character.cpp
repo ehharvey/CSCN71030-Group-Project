@@ -107,7 +107,7 @@ spoon::spoon(std::string name) : Character(name)
     this->sprite = R"(
                 __
               .'  '.
-              '°  °'
+              'o  o'
               '.  .'
                 ||
                 ||
@@ -118,7 +118,7 @@ spoon::spoon(std::string name) : Character(name)
     this->fight_sprite = R"(
                      _
                   .' V'.
-                 '  ° °'
+                 '  o o'
                  '. .-'
                   //
                  //
@@ -158,7 +158,7 @@ fork::fork(std::string name) : Character(name)
     this->sprite = R"(
                  ||||  
                  ||||
-                 \°°/
+                 \oo/
                   ||
                   ||
                   ||
@@ -168,7 +168,7 @@ fork::fork(std::string name) : Character(name)
     this->fight_sprite = R"(
                    ////\ 
                   /V//
-                 (°°/
+                 (oo/
                   //
                  //
                 //
@@ -205,7 +205,7 @@ knife::knife(std::string name) : Character(name)
     this->sprite = R"(
                   .-'
                  /  |
-                 |°°|
+                 |oo|
                  |  |
                  |  |
                  '._|
@@ -219,7 +219,7 @@ knife::knife(std::string name) : Character(name)
 
                 .-'
                /V /
-              /°°/
+              /oo/
              /  /
             /  /
            '. /
@@ -265,7 +265,7 @@ DrawerEnemy::DrawerEnemy(int max_health, int attack, int defence, int speed)
     this->sprite = R"(
                      _
                   ./ /V'/.
-                 (/ ° °/)
+                 (/o  o/)
                  './ /.-'
                   //
                  //
@@ -300,7 +300,7 @@ DrawerBoss::DrawerBoss(int max_health, int attack, int defence, int speed)
                   _ .
                .'   '
               /\ / /
-             /° ° /
+             /o o /
             /    /
            /    /
            \_  /
@@ -341,7 +341,7 @@ SinkEnemy::SinkEnemy(int max_health, int attack, int defence, int speed)
           ____       ____  
         .'    '-._.-'    '.
       .' o      \ /      o '.
-      (   o     ° °    o    ) Oo
+      (   o     O O    o    ) Oo
       Oo.o    o  _  o    o .oO
       OO'-.___.-' '-.___.-'OoO    
 )";
@@ -367,7 +367,7 @@ SinkBoss::SinkBoss(int max_health, int attack, int defence, int speed)
     this->sprite = R"(
                             /'"-,
           ..-'"'"'"-._     /    -`
-        .' °          '-.-'  _,"'
+        .' o          '-.-'  _,"'
          \,    -. .-        "-.,   
          /       "             -',     
          '-.___.,,,,____.-'\   -.
@@ -428,7 +428,7 @@ OvenBoss::OvenBoss(int max_health, int attack, int defence, int speed)
 
     this->sprite = R"(                   
          ,.-""""""""""""-.,                           
-        (('      °u°     `))        
+        (('      ouo     `))        
         |'-.____________.-'|
         | | |  |  |  |  | ||                           
         | | |  |  |  |  | ||            
@@ -464,7 +464,7 @@ CounterEnemy::CounterEnemy(int max_health, int attack, int defence, int speed)
       .'---------'.
       '           '
       '.---\ /---.'
-      '   °   °   '
+      '   o   o   '
       '-----------'
        '- _____ -'
        \ ------- /
@@ -512,7 +512,7 @@ CounterBoss::CounterBoss(int max_health, int attack, int defence, int speed)
           .:'             ':.
          .:'    \     /    ':.
         .:'                 ':.
-        ::      °     °      ::
+        ::      O     O      ::
         ::                   ::
         ::                   ::
         ::         _         ::
