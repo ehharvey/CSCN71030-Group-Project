@@ -5,9 +5,11 @@ void UI::new_turn()
 {
 }
 
-int UI::get_input()
+input_choice UI::get_input()
 {
-	return 0;
+	unsigned char user_input;
+	std::cin >> user_input;
+	return (input_choice)user_input; // Seems brittle
 }
 
 void UI::display_Game_Over(Character* character_ptr)
@@ -54,4 +56,55 @@ void UI::user_options()
 
 void UI::game_opening()
 {
+}
+
+
+// Emil:
+void UI::displayBattleIntro(Character* main_character, Character* enemy)
+{
+	std::cout << main_character->getFightSprite() << std::endl;
+	std::cout << enemy->getFightSprite() << std::endl;
+}
+
+void UI::displayBattleTurn(Character* main_character, Character* enemy) 
+{
+	std::cout << " You have: " << main_character->getHealth() << "/" << main_character->getMaxHealth() << " HP" << std::endl;
+	std::cout << "Enemy has: " << enemy->getHealth() << "/" << enemy->getMaxHealth() << " HP" << std::endl;
+}
+
+void UI::displayWelcome() {
+	std::cout << "Welcome to our game!" << std::endl;
+}
+
+void UI::displayMenu() 
+{
+	std::cout << "Please choose from the following options:" 	<< std::endl
+	<<	input_choice::new_character 	<< ") New Character" 	<< std::endl
+	<<  input_choice::load_game			<< ") Load Game" 		<< std::endl;
+}
+
+void UI::displayGameOver(Character* main_character) 
+{
+	std::cout << main_character->getDeadSprite() << std::endl
+	<< "You have died" << std::endl;
+}
+
+void UI::displayEnemyDeath(Character* enemy) 
+{
+	std::cout << enemy->getDeadSprite() << std::endl
+	<< "You defeated!" << std::endl;
+}
+
+void UI::displaySavePrompt() 
+{
+	std::cout << "Do you want to save?" 			<< std::endl
+	<< input_choice::save		<< ") Save" 		<< std::endl
+	<< input_choice::no_save	<< ") Don't Save" 	<< std::endl;
+}
+
+void UI::displayCarryOn() 
+{
+	std::cout << "Do you want to continue playing?" << std::endl
+	<< input_choice::carry_on 	<< ") Continue" 	<< std::endl 
+	<< input_choice::quit 		<< ") Quit"			<< std::endl;
 }

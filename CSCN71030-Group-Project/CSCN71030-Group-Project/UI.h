@@ -3,8 +3,9 @@
 
 enum input_choice { new_character, load_game,			// New game, load game
 					new_spoon, new_fork, new_knife,		// Type of character
-					attack, prepare, dodge };			// Combat options
-
+					attack, prepare, dodge,				// Combat options
+					save, no_save, 						// Saving options
+					carry_on, quit };					// To quit or not
 
 #pragma once
 #include "Character.h"
@@ -25,6 +26,15 @@ public:
 	void initial_menu();
 	void user_options();
 	void game_opening();
+
+	void displayBattleIntro(Character* main_character, Character* enemy);
+	void displayBattleTurn(Character* main_character, Character* enemy);
+	void displayWelcome();
+	void displayMenu();
+	void displayGameOver(Character* main_character);
+	void displayEnemyDeath(Character* enemy);
+	void displaySavePrompt();
+	void displayCarryOn();
 };
 
 #endif // !UI_H

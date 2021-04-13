@@ -35,6 +35,8 @@ public:
 
 	virtual int getHealth();
 
+	int getMaxHealth();
+
 	virtual int getAttack();
 
 	virtual int getDefence();

@@ -56,6 +56,11 @@ int Character::getHealth()
     return this->current_health;
 }
 
+int Character::getMaxHealth() 
+{
+    return this->max_health;
+}
+
 int Character::getAttack()
 {
     return this->attack;
