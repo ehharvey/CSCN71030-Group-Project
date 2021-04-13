@@ -328,37 +328,6 @@ DrawerBoss::DrawerBoss(int max_health, int attack, int defence, int speed)
 
 )";
 }
-void DrawerBoss::setHealth(int health) {
-    this->current_health = health;
-}
-int DrawerBoss::getHealth() {
-    return this->current_health;
-}
-int DrawerBoss::getAttack() {
-    return this->attack;
-}
-int DrawerBoss::getDefence() {
-    return this->defence;
-}
-int DrawerBoss::getSpeed() {
-    return this->speed;
-}
-std::string DrawerBoss::getSprite() {
-    return this->sprite;
-}
-std::string DrawerBoss::getDeadSprite() {
-    return this->dead_sprite;
-}
-std::string DrawerBoss::getName() {
-    return this->name;
-}
-bool DrawerBoss::getPrepared() {
-    return this->isPrepared;
-}
-bool DrawerBoss::setPrepared(bool preperation) {
-    this->isPrepared = preperation;
-    return this->isPrepared;
-}
 
 SinkEnemy::SinkEnemy(int max_health, int attack, int defence, int speed)
 : Character((std::string) "SinkEnemy")
@@ -385,37 +354,6 @@ SinkEnemy::SinkEnemy(int max_health, int attack, int defence, int speed)
       Oo.o    o  _  o    o .oO
       OO'-.___.-' '-.___.-'OoO      
 )";
-}
-void SinkEnemy::setHealth(int health) {
-    this->current_health = health;
-}
-int SinkEnemy::getHealth() {
-    return this->current_health;
-}
-int SinkEnemy::getAttack() {
-    return this->attack;
-}
-int SinkEnemy::getDefence() {
-    return this->defence;
-}
-int SinkEnemy::getSpeed() {
-    return this->speed;
-}
-std::string SinkEnemy::getSprite() {
-    return this->sprite;
-}
-std::string SinkEnemy::getDeadSprite() {
-    return this->dead_sprite;
-}
-std::string SinkEnemy::getName() {
-    return this->name;
-}
-bool SinkEnemy::getPrepared() {
-    return this->isPrepared;
-}
-bool SinkEnemy::setPrepared(bool preperation) {
-    this->isPrepared = preperation;
-    return this->isPrepared;
 }
 
 SinkBoss::SinkBoss(int max_health, int attack, int defence, int speed)
@@ -445,37 +383,6 @@ SinkBoss::SinkBoss(int max_health, int attack, int defence, int speed)
          '-.___.,,,,____.-'\   -.
                             \,-'   
 )";
-}
-void SinkBoss::setHealth(int health) {
-    this->current_health = health;
-}
-int SinkBoss::getHealth() {
-    return this->current_health;
-}
-int SinkBoss::getAttack() {
-    return this->attack;
-}
-int SinkBoss::getDefence() {
-    return this->defence;
-}
-int SinkBoss::getSpeed() {
-    return this->speed;
-}
-std::string SinkBoss::getSprite() {
-    return this->sprite;
-}
-std::string SinkBoss::getDeadSprite() {
-    return this->dead_sprite;
-}
-std::string SinkBoss::getName() {
-    return this->name;
-}
-bool SinkBoss::getPrepared() {
-    return this->isPrepared;
-}
-bool SinkBoss::setPrepared(bool preperation) {
-    this->isPrepared = preperation;
-    return this->isPrepared;
 }
 
 OvenEnemy::OvenEnemy(int max_health, int attack, int defence, int speed)
@@ -510,37 +417,6 @@ OvenEnemy::OvenEnemy(int max_health, int attack, int defence, int speed)
 
 )";
 }
-void OvenEnemy::setHealth(int health) {
-    this->current_health = health;
-}
-int OvenEnemy::getHealth() {
-    return this->current_health;
-}
-int OvenEnemy::getAttack() {
-    return this->attack;
-}
-int OvenEnemy::getDefence() {
-    return this->defence;
-}
-int OvenEnemy::getSpeed() {
-    return this->speed;
-}
-std::string OvenEnemy::getSprite() {
-    return this->sprite;
-}
-std::string OvenEnemy::getDeadSprite() {
-    return this->dead_sprite;
-}
-std::string OvenEnemy::getName() {
-    return this->name;
-}
-bool OvenEnemy::getPrepared() {
-    return this->isPrepared;
-}
-bool OvenEnemy::setPrepared(bool preperation) {
-    this->isPrepared = preperation;
-    return this->isPrepared;
-}
 
 OvenBoss::OvenBoss(int max_health, int attack, int defence, int speed)
 : Character((std::string) "Souffle")
@@ -570,37 +446,6 @@ OvenBoss::OvenBoss(int max_health, int attack, int defence, int speed)
        '-.______________.-' 
 )";
 
-}
-void OvenBoss::setHealth(int health) {
-    this->current_health = health;
-}
-int OvenBoss::getHealth() {
-    return this->current_health;
-}
-int OvenBoss::getAttack() {
-    return this->attack;
-}
-int OvenBoss::getDefence() {
-    return this->defence;
-}
-int OvenBoss::getSpeed() {
-    return this->speed;
-}
-std::string OvenBoss::getSprite() {
-    return this->sprite;
-}
-std::string OvenBoss::getDeadSprite() {
-    return this->dead_sprite;
-}
-std::string OvenBoss::getName() {
-    return this->name;
-}
-bool OvenBoss::getPrepared() {
-    return this->isPrepared;
-}
-bool OvenBoss::setPrepared(bool preperation) {
-    this->isPrepared = preperation;
-    return this->isPrepared;
 }
 
 CounterEnemy::CounterEnemy(int max_health, int attack, int defence, int speed)
@@ -650,37 +495,6 @@ CounterEnemy::CounterEnemy(int max_health, int attack, int defence, int speed)
             V  
 )";
 
-}
-void CounterEnemy::setHealth(int health) {
-    this->current_health = health;
-}
-int CounterEnemy::getHealth() {
-    return this->current_health;
-}
-int CounterEnemy::getAttack() {
-    return this->attack;
-}
-int CounterEnemy::getDefence() {
-    return this->defence;
-}
-int CounterEnemy::getSpeed() {
-    return this->speed;
-}
-std::string CounterEnemy::getSprite() {
-    return this->sprite;
-}
-std::string CounterEnemy::getDeadSprite() {
-    return this->dead_sprite;
-}
-std::string CounterEnemy::getName() {
-    return this->name;
-}
-bool CounterEnemy::getPrepared() {
-    return this->isPrepared;
-}
-bool CounterEnemy::setPrepared(bool preperation) {
-    this->isPrepared = preperation;
-    return this->isPrepared;
 }
 
 CounterBoss::CounterBoss(int max_health, int attack, int defence, int speed)
@@ -732,37 +546,6 @@ CounterBoss::CounterBoss(int max_health, int attack, int defence, int speed)
                ":.....:"
                   '''
 )";
-}
-void CounterBoss::setHealth(int health) {
-    this->current_health = health;
-}
-int CounterBoss::getHealth() {
-    return this->current_health;
-}
-int CounterBoss::getAttack() {
-    return this->attack;
-}
-int CounterBoss::getDefence() {
-    return this->defence;
-}
-int CounterBoss::getSpeed() {
-    return this->speed;
-}
-std::string CounterBoss::getSprite() {
-    return this->sprite;
-}
-std::string CounterBoss::getDeadSprite() {
-    return this->dead_sprite;
-}
-std::string CounterBoss::getName() {
-    return this->name;
-}
-bool CounterBoss::getPrepared() {
-    return this->isPrepared;
-}
-bool CounterBoss::setPrepared(bool preperation) {
-    this->isPrepared = preperation;
-    return this->isPrepared;
 }
 
 FinalBoss::FinalBoss(int max_health, int attack, int defence, int speed)

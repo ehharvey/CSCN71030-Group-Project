@@ -381,17 +381,21 @@ void UI::displayCarryOn()
 
 
 // Emil:
+/*
 void UI::displayBattleIntro(Character* main_character, Character* enemy)
 {
 	std::cout << main_character->getFightSprite() << std::endl;
 	std::cout << enemy->getFightSprite() << std::endl;
 }
+*/
 
+/*
 void UI::displayBattleTurn(Character* main_character, Character* enemy) 
 {
 	std::cout << " You have: " << main_character->getHealth() << "/" << main_character->getMaxHealth() << " HP" << std::endl;
 	std::cout << "Enemy has: " << enemy->getHealth() << "/" << enemy->getMaxHealth() << " HP" << std::endl;
 }
+*/
 
 void UI::displayBattleChoices()
 {
@@ -401,15 +405,20 @@ void UI::displayBattleChoices()
 		<< input_choice::dodge		<< ") Dodge" << std::endl;
 }
 
+/* old
 void UI::displayNotPrepared() 
 {
 	std::cout << "You were not prepared :(" << std::endl;
 }
+*/
 
+/* old
 void UI::displayWelcome() {
 	std::cout << "Welcome to our game!" << std::endl;
 }
+*/
 
+/*
 void UI::displayPickClass() 
 {
 	std::cout << "What kind of character do you want to be?" 	<< std::endl
@@ -417,26 +426,32 @@ void UI::displayPickClass()
 	<< input_choice::new_fork		<< ") Fork" 	<< std::endl
 	<< input_choice::new_knife		<< ") Knife"	<< std::endl;
 }
+*/
 
+/* old
 void UI::displayNamePrompt() 
 {
 	std::cout << "Enter a name for your character: ";
 }
+*/
 
+/*
 std::string UI::getCharacterName() 
 {
 	std::string name;
 	std::cin >> name;
 	return name;
 }
+*/
 
-
+/*
 void UI::displayMenu() 
 {
 	std::cout << "Please choose from the following options:" 	<< std::endl
 	<<	input_choice::new_character 	<< ") New Character" 	<< std::endl
 	<<  input_choice::load_game			<< ") Load Game" 		<< std::endl;
 }
+*/
 
 void UI::displayGameOver(Character* main_character) 
 {
@@ -444,34 +459,44 @@ void UI::displayGameOver(Character* main_character)
 	<< "You have died" << std::endl;
 }
 
+/*
 void UI::displayEnemyDeath(Character* enemy) 
 {
 	std::cout << enemy->getDeadSprite() << std::endl
 	<< "You defeated!" << std::endl;
 }
+*/
 
+/*
 void UI::displaySavePrompt() 
 {
 	std::cout << "Do you want to save?" 			<< std::endl
 	<< input_choice::save		<< ") Save" 		<< std::endl
 	<< input_choice::no_save	<< ") Don't Save" 	<< std::endl;
 }
+*/
 
+/*
 int UI::getSaveInput() 
 {
 	int choice;
 	std::cin >> choice;
 	return choice;
 }
+*/
 
+/*
 void UI::displaySaveEntry(std::string character_name, int num) 
 {
 	std::cout << "Save entry " << num << ": " << character_name << std::endl;
 }
+*/
 
+/*
 void UI::displayCarryOn() 
 {
 	std::cout << "Do you want to continue playing?" << std::endl
 	<< input_choice::carry_on 	<< ") Continue" 	<< std::endl 
 	<< input_choice::quit 		<< ") Quit"			<< std::endl;
 }
+*/
