@@ -123,7 +123,7 @@ int Level::simEnemyCombat(int turn) {
 		break;
 	}
 }
-void Level::calculateDamage(Character* attacker, Character* defender) {
+void Level::calculateDamage(Character* attacker, Character* defender) {			// Make this return an int with the value, so UI can output it 
 	defender->setHealth(defender->getHealth() - attacker->getAttack()); //subtracts attack from health
 	return;
 }
@@ -212,6 +212,7 @@ combatStatus Level::enterCombat() {
 				}
 				else {
 					calculateDamage(this->getPlayer(), this->getEnemy());
+					ui->attackHit();
 				}
 			} else {
 				ui->notPrepared();			// Notify user that they were not prepared :( )
@@ -257,6 +258,7 @@ combatStatus Level::enterCombat() {
 				}
 				else {
 					calculateDamage(this->getEnemy(), this->getPlayer());
+					ui->enemyAttackHit();
 				}
 			} else {
 				ui->enemyNotPrepared();

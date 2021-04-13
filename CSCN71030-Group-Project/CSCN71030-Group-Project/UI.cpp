@@ -257,6 +257,9 @@ void UI::dodgeFail() {		// User didn't dodge
 
 void UI::attackHit()
 {
+	std::cout << "\x1b[" << BRIGHT_BLUE_FG << "m";
+	std::cout << "\nYou hit them! That's gotta hurt..." << std::endl;
+	std::cout << "\x1b[" << DEFAULT_FG << "m";
 }
 
 
