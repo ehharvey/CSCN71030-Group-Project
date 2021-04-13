@@ -141,7 +141,7 @@ Level::~Level() {
 
 Level::Level(Character* player, stageType type)
 {
-	this->playerCharacter = playerCharacter;
+	this->playerCharacter = player;
 	this->type = type;
 
 	switch (type)
@@ -200,6 +200,7 @@ combatStatus Level::enterCombat() {
 		input_choice user_turn_choice;
 		bool valid_user_turn;
 		do {
+			ui->displayBattleChoices();
 			user_turn_choice = ui->get_input();
 
 			switch (user_turn_choice) {

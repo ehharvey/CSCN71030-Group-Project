@@ -33,6 +33,7 @@ public:
 	
 	void displayBattleIntro(Character* main_character, Character* enemy);
 	void displayBattleTurn(Character* main_character, Character* enemy);
+	void displayBattleChoices();
 	void displayNotPrepared();
 
 	void displayWelcome();
