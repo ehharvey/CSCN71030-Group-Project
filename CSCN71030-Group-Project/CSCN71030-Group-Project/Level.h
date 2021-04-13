@@ -4,7 +4,7 @@
 #pragma once
 #include "Character.h"
 
-enum stageType { Drawer, Sink, Oven, Counter };
+enum stageType { Drawer = 0, Sink = 1, Oven = 2, Counter = 3 };
 enum combatOptions {Attack, Dodge, Prepare};
 class Level {
 	Character* playerCharacter;	//references to both player and enemy characters

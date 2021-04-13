@@ -51,7 +51,7 @@ json GameState::getCharacter()
     return this->character_json;
 }
 
-int GameState::getCurrentArea() 
+stageType GameState::getCurrentArea() 
 {
     return this->current_area;
 }
@@ -84,7 +84,13 @@ SaveEntry::SaveEntry(std::filesystem::path root, SaveSlot slot)
 }
 
 
-GameState::GameState(std::filesystem::path full_path) 
+GameState::GameState(json character_json)
+{
+    this->character_json = character_json;
+    this->current_area = Drawer;
+}
+
+GameState::GameState(std::filesystem::path full_path)
 {
     std::ifstream i(full_path);
     json j;

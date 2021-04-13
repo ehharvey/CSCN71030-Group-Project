@@ -1,9 +1,11 @@
 
+#include "ReadWrite.h"
 #include "Character.h"
 #include "UI.h"
 #include <iostream>
+#include <optional>
+#include <cassert>
 
-enum Area { drawer, sink, counter, oven };
 /*
 int main(void)
 {
@@ -56,42 +58,91 @@ int main(void)
 */
 
 int main() {
-	int userinput = 0;
+    
 	UI* ui = new UI();
 	ui->game_opening();
 	ui->initial_menu();
-	userinput = ui->get_input();
+    input_choice user_new_or_load = ui->get_input();
 
-	if (userinput == 1) {		// New game
+    Character* UserChar = NULL;
+    std::string char_name;
 
-		//get name from user
-		std::string char_name = "Name";
+    std::optional<GameState> game_state;
 
-		// get class selection from user
-		userinput = ui->get_input();
-		// if statements for class
-		if (userinput == 1) {
-			Character* UserChar = new spoon(char_name);
-		}
-		else if (userinput == 2) {
-			Character* UserChar = new fork(char_name);
-		}
-		else {
-			Character* UserChar = new knife(char_name);
-		}
+    // New game or load?
+    bool user_picked_valid_start;
+    do {
+        switch (user_new_or_load) {
+        case new_character:
 
-	}
-	else if (userinput == 2) {	// Load game
+            bool valid_type_choice;
+            do {
+                // Tell user to pick a class
 
-		//load game
+                // get class selection from user
+                input_choice user_character_type = ui->get_input();
 
-	}
-	else {						// Exit
+                switch (user_character_type) {
+                case input_choice::new_spoon:
+                    UserChar = new spoon(char_name);
+                    valid_type_choice = true;
+                    break;
+                case input_choice::new_fork:
+                    UserChar = new fork(char_name);
+                    valid_type_choice = true;
+                    break;
+                case input_choice::new_knife:
+                    UserChar = new knife(char_name);
+                    valid_type_choice = true;
+                    break;
+                default:
+                    valid_type_choice = false;
+                }
 
-		return 0;
-	}
-	// switch case and while loop for game
+            } while (!valid_type_choice);
 
+            user_picked_valid_start = true;
 
+            // Define Empty game state
+            game_state = GameState(UserChar->jsonify());
 
+            break;
+        case load_game:
+            // Display slots
+
+            // Retrieve a slot
+
+            // Load character from slot
+
+            // Also ensure game state is properly started here
+
+            user_picked_valid_start = true;
+            break;
+        default:
+            user_picked_valid_start = false;
+        }
+    } while (user_picked_valid_start);
+    
+
+    // Ensure that we have a game state
+    assert(game_state.has_value());
+
+    for (int current_area = (int)game_state->getCurrentArea();
+        current_area <= (int)stageType::Counter;
+        current_area++)
+    {
+        // Create level
+        //      Level level(UserChar);
+        // Execute level
+        //      level.initiate()
+        // If user died
+        //      exit game
+        // If user did not die
+        //      ask if save
+        //          if yes: save
+        //      continue onwards :) (maybe ask if they want to continue)
+    }
+
+	
+    return EXIT_SUCCESS;
 }
