@@ -1,8 +1,9 @@
 #ifndef UI_H
 #define UI_H
 
-enum input_choice { new_character, load_game,
-					new_spoon, new_fork, new_knife };
+enum input_choice { new_character, load_game,			// New game, load game
+					new_spoon, new_fork, new_knife,		// Type of character
+					attack, prepare, dodge };			// Combat options
 
 
 #pragma once
