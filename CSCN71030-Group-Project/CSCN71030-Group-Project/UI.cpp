@@ -72,6 +72,11 @@ void UI::displayBattleTurn(Character* main_character, Character* enemy)
 	std::cout << "Enemy has: " << enemy->getHealth() << "/" << enemy->getMaxHealth() << " HP" << std::endl;
 }
 
+void UI::displayNotPrepared() 
+{
+	std::cout << "You were not prepared :(" << std::endl;
+}
+
 void UI::displayWelcome() {
 	std::cout << "Welcome to our game!" << std::endl;
 }

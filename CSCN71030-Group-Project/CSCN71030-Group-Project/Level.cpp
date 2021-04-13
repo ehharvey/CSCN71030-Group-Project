@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Level.h"
 
 //#include "Stubs.h"
@@ -114,10 +115,12 @@ combatStatus Level::enterCombat() {
 
 	UI* ui = new UI();
 
+	ui->displayBattleIntro(getPlayer(), getEnemy());
+
 	combatStatus combat_status;
 	do {
 		// Display turn information
-
+		ui->displayBattleTurn(getPlayer(), getEnemy());
 
 		// Decide enemy's turn
 		input_choice enemy_choice = getEnemyChoice(turn);
@@ -134,7 +137,7 @@ combatStatus Level::enterCombat() {
 			case input_choice::attack:
 			if (this->getPlayer()->getPrepared()) {
 				if (enemy_choice == dodge) {
-				// No damage
+					std::cout << "Enemy dodged" << std::endl; // TODO
 				}
 				else {
 					calculateDamage(this->getPlayer(), this->getEnemy());
@@ -179,13 +182,13 @@ combatStatus Level::enterCombat() {
 			case input_choice::attack:
 			if (this->getEnemy()->getPrepared()) {
 				if (user_turn_choice == dodge) {
-				// No damage
+					std::cout << "You dodged an attack" << std::endl; // TODO
 				}
 				else {
 					calculateDamage(this->getEnemy(), this->getPlayer());
 				}
 			} else {
-				// Notify user that they were not prepared :( )
+				std::cout << "Enemy wasn't prepared" << std::endl; // TODO
 			}
 			this->getEnemy()->setPrepared(false);
 			valid_user_turn = true;
@@ -213,6 +216,7 @@ combatStatus Level::enterCombat() {
 		turn++;
 	} while(combat_status == InProgress);
 
+	delete ui;
 	
 	// Return based on combat results
 	return combat_status;
