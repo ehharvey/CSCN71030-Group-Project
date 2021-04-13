@@ -5,6 +5,7 @@
 #include <iostream>
 #include <optional>
 #include <cassert>
+#include <windows.h>
 
 /*
 int main(void)
@@ -61,6 +62,7 @@ int main() {
     
 	UI* ui = new UI();
 	ui->game_opening();
+    Sleep(500);
 	ui->initial_menu();
     input_choice user_new_or_load;
 

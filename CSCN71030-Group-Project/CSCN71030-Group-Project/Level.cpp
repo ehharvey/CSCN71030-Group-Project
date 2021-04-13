@@ -291,7 +291,7 @@ combatStatus Level::enterCombat() {
 	
 	// Temporary
 	if (combat_status == Win) {
-		ui->displayEnemyDeath(getEnemy());
+		ui->display_enemy_defeated(getEnemy());
 	}
 
 	// Return based on combat results
