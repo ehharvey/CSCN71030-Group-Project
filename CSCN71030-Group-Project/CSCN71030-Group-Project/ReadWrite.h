@@ -8,6 +8,7 @@
 #include <optional>
 #include <filesystem>
 #include <nlohmann/json.hpp>
+#include "Level.h"
 
 using json = nlohmann::json;
 
@@ -20,14 +21,14 @@ enum SaveSlot { one = 0, two = 1, three = 2 };
 // Possible implementation of game state
 class GameState {
 	json character_json;
-	int current_area;
+	stageType current_area;
 public:
-	GameState();
+	GameState(json character_json);
 	GameState(std::filesystem::path full_path);
-	GameState(json character_json, int current_area) : character_json(character_json), current_area(current_area) {};
+	GameState(json character_json, stageType current_area) : character_json(character_json), current_area(current_area) {};
 
 	json getCharacter();
-	int getCurrentArea();
+	stageType getCurrentArea();
 	json jsonify();
 };
 
@@ -41,7 +42,8 @@ public:
 	SaveEntry();
 	SaveEntry(std::filesystem::path root, SaveSlot slot);
 
-	GameState loadEntry();
+	std::optional<GameState> loadEntry();
+	void setState(GameState game_state);
 
 	void saveToFile();
 };
