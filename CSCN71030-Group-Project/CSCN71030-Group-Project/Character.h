@@ -72,9 +72,22 @@ class spoon : public Character {
 	bool isPrepared;
 
 public:
-	spoon();												// Default constructor
+	spoon();
 	spoon(std::string name);								// New spoon character
 	json jsonify();
+
+	virtual void setHealth(int health_reduction) override;
+	virtual int getHealth() override;
+	virtual int getAttack() override;
+	virtual int getDefence() override;
+	virtual int getSpeed() override;
+	virtual std::string getSprite() override;
+	virtual std::string getFightSprite() override;
+	virtual std::string getDeadSprite() override;
+	virtual std::string getName() override;
+	virtual bool getPrepared() override;
+	virtual bool setPrepared(bool) override;
+
 };
 
 class fork : public Character {
@@ -93,9 +106,20 @@ class fork : public Character {
 	bool isPrepared;
 
 public:
-	fork();												// Default constructor
+	fork();
 	fork(std::string name);								// New fork character
 	json jsonify();
+	virtual void setHealth(int health_reduction) override;
+	virtual int getHealth() override;
+	virtual int getAttack() override;
+	virtual int getDefence() override;
+	virtual int getSpeed() override;
+	virtual std::string getSprite() override;
+	virtual std::string getFightSprite() override;
+	virtual std::string getDeadSprite() override;
+	virtual std::string getName() override;
+	virtual bool getPrepared() override;
+	virtual bool setPrepared(bool) override;
 };
 
 
@@ -115,9 +139,20 @@ class knife : public Character {
 	bool isPrepared;
 
 public:
-	knife();												// Default constructor
+	knife();
 	knife(std::string name);								// New knife character
 	json jsonify();
+	virtual void setHealth(int health_reduction) override;
+	virtual int getHealth() override;
+	virtual int getAttack() override;
+	virtual int getDefence() override;
+	virtual int getSpeed() override;
+	virtual std::string getSprite() override;
+	virtual std::string getFightSprite() override;
+	virtual std::string getDeadSprite() override;
+	virtual std::string getName() override;
+	virtual bool getPrepared() override;
+	virtual bool setPrepared(bool) override;
 };
 
 class DrawerEnemy : public Character {
@@ -136,6 +171,17 @@ class DrawerEnemy : public Character {
 
 public:
 	DrawerEnemy(int, int, int, int);												// Constructor
+
+	virtual void setHealth(int health_reduction) override;
+	virtual int getHealth() override;
+	virtual int getAttack() override;
+	virtual int getDefence() override;
+	virtual int getSpeed() override;
+	virtual std::string getSprite() override;
+	virtual std::string getDeadSprite() override;
+	virtual std::string getName() override;
+	virtual bool getPrepared() override;
+	virtual bool setPrepared(bool) override;
 };
 
 class DrawerBoss : public Character {
@@ -154,6 +200,17 @@ class DrawerBoss : public Character {
 
 public:
 	DrawerBoss(int, int, int, int);												// Constructor
+
+	virtual void setHealth(int health_reduction) override;
+	virtual int getHealth() override;
+	virtual int getAttack() override;
+	virtual int getDefence() override;
+	virtual int getSpeed() override;
+	virtual std::string getSprite() override;
+	virtual std::string getDeadSprite() override;
+	virtual std::string getName() override;
+	virtual bool getPrepared() override;
+	virtual bool setPrepared(bool) override;
 };
 
 class SinkEnemy : public Character {
@@ -172,6 +229,17 @@ class SinkEnemy : public Character {
 
 public:
 	SinkEnemy(int, int, int, int);												// Constructor
+
+	virtual void setHealth(int health_reduction) override;
+	virtual int getHealth() override;
+	virtual int getAttack() override;
+	virtual int getDefence() override;
+	virtual int getSpeed() override;
+	virtual std::string getSprite() override;
+	virtual std::string getDeadSprite() override;
+	virtual std::string getName() override;
+	virtual bool getPrepared() override;
+	virtual bool setPrepared(bool) override;
 };
 
 class SinkBoss : public Character {
@@ -189,6 +257,17 @@ class SinkBoss : public Character {
 
 public:
 	SinkBoss(int, int, int, int);												// Constructor
+
+	virtual void setHealth(int health_reduction) override;
+	virtual int getHealth() override;
+	virtual int getAttack() override;
+	virtual int getDefence() override;
+	virtual int getSpeed() override;
+	virtual std::string getSprite() override;
+	virtual std::string getDeadSprite() override;
+	virtual std::string getName() override;
+	virtual bool getPrepared() override;
+	virtual bool setPrepared(bool) override;
 };
 
 class OvenEnemy : public Character {
@@ -207,7 +286,19 @@ class OvenEnemy : public Character {
 
 public:
 	OvenEnemy(int, int, int, int);												// Constructor
+
+	virtual void setHealth(int health_reduction) override;
+	virtual int getHealth() override;
+	virtual int getAttack() override;
+	virtual int getDefence() override;
+	virtual int getSpeed() override;
+	virtual std::string getSprite() override;
+	virtual std::string getDeadSprite() override;
+	virtual std::string getName() override;
+	virtual bool getPrepared() override;
+	virtual bool setPrepared(bool) override;
 };
+
 class OvenBoss : public Character {
 
 	std::string name;
@@ -224,7 +315,19 @@ class OvenBoss : public Character {
 
 public:
 	OvenBoss(int, int, int, int);												// Constructor
+
+	virtual void setHealth(int health_reduction) override;
+	virtual int getHealth() override;
+	virtual int getAttack() override;
+	virtual int getDefence() override;
+	virtual int getSpeed() override;
+	virtual std::string getSprite() override;
+	virtual std::string getDeadSprite() override;
+	virtual std::string getName() override;
+	virtual bool getPrepared() override;
+	virtual bool setPrepared(bool) override;
 };
+
 class CounterEnemy : public Character {
 
 	std::string name;
@@ -241,7 +344,19 @@ class CounterEnemy : public Character {
 
 public:
 	CounterEnemy(int, int, int, int);												// Constructor
+
+	virtual void setHealth(int health_reduction) override;
+	virtual int getHealth() override;
+	virtual int getAttack() override;
+	virtual int getDefence() override;
+	virtual int getSpeed() override;
+	virtual std::string getSprite() override;
+	virtual std::string getDeadSprite() override;
+	virtual std::string getName() override;
+	virtual bool getPrepared() override;
+	virtual bool setPrepared(bool) override;
 };
+
 class CounterBoss : public Character {
 
 	std::string name;
@@ -258,6 +373,17 @@ class CounterBoss : public Character {
 
 public:
 	CounterBoss(int, int, int, int);												// Constructor
+
+	virtual void setHealth(int health_reduction) override;
+	virtual int getHealth() override;
+	virtual int getAttack() override;
+	virtual int getDefence() override;
+	virtual int getSpeed() override;
+	virtual std::string getSprite() override;
+	virtual std::string getDeadSprite() override;
+	virtual std::string getName() override;
+	virtual bool getPrepared() override;
+	virtual bool setPrepared(bool) override;
 };
 
 class FinalBoss : public Character {
@@ -276,6 +402,17 @@ class FinalBoss : public Character {
 
 public:
 	FinalBoss(int, int, int, int);												// Constructor
+
+	virtual void setHealth(int health_reduction) override;
+	virtual int getHealth() override;
+	virtual int getAttack() override;
+	virtual int getDefence() override;
+	virtual int getSpeed() override;
+	virtual std::string getSprite() override;
+	virtual std::string getDeadSprite() override;
+	virtual std::string getName() override;
+	virtual bool getPrepared() override;
+	virtual bool setPrepared(bool) override;
 };
 
 #endif  // !CHARACTER_H

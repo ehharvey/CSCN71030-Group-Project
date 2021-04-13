@@ -104,9 +104,9 @@ bool Character::setPrepared(bool preperation)
 
 spoon::spoon()
 {
+    this->name = name;
     this->Character_PTR = this;
     this->current_health = this->max_health;
-    this->name = " ";
     this->sprite = R"(
                 __
               .'  '.
@@ -189,11 +189,66 @@ json spoon::jsonify()
     return result;
 }
 
-fork::fork()
+
+void spoon::setHealth(int health)
 {
+    this->current_health = health;
+}
+
+int spoon::getHealth()
+{
+    return this->current_health;
+}
+
+int spoon::getAttack()
+{
+    return this->attack;
+}
+
+int spoon::getDefence()
+{
+    return this->defence;
+}
+
+int spoon::getSpeed()
+{
+    return this->speed;
+}
+
+std::string spoon::getSprite()
+{
+    return this->sprite;
+}
+
+std::string spoon::getFightSprite()
+{
+    return this->fight_sprite;
+}
+
+std::string spoon::getDeadSprite()
+{
+    return this->dead_sprite;
+}
+
+std::string spoon::getName()
+{
+    return this->name;
+}
+
+bool spoon::getPrepared()
+{
+    return this->isPrepared;
+}
+
+bool spoon::setPrepared(bool preperation)
+{
+    this->isPrepared = preperation;
+    return this->isPrepared;
+}
+fork::fork() {
+    this->name = name;
     this->Character_PTR = this;
     this->current_health = this->max_health;
-    this->name = " ";
     this->sprite = R"(
                  ||||  
                  ||||
@@ -224,8 +279,8 @@ fork::fork()
                   ||
                   --
 )";
-
 }
+
 
 fork::fork(std::string name)
 {
@@ -271,53 +326,60 @@ json fork::jsonify()
     return result;
 }
 
-knife::knife()
+void fork::setHealth(int health)
 {
-    this->Character_PTR = this;
-    this->current_health = this->max_health;
-    this->name = " ";
-    this->sprite = R"(
-                  .-'
-                 /  |
-                 |°°|
-                 |  |
-                 |  |
-                 '._|
-                   ||
-                   ||
-                   ||
-                   ||
-                   --
-)";
-    this->fight_sprite = R"(
+    this->current_health = health;
+}
 
-                .-'
-               /V /
-              /°°/
-             /  /
-            /  /
-           '. /
-            --
-           //
-          //
-         //
-        //
-       (/
+int fork::getHealth()
+{
+    return this->current_health;
+}
 
-)";
-    this->dead_sprite = R"(
-                  .-'
-                 /  |
-                 |**|
-                 |  |
-                 |  |
-                 '._|
-                   ||
-                   ||
-                   ||
-                   ||
-                   --
-)";
+int fork::getAttack()
+{
+    return this->attack;
+}
+
+int fork::getDefence()
+{
+    return this->defence;
+}
+
+int fork::getSpeed()
+{
+    return this->speed;
+}
+
+std::string fork::getSprite()
+{
+    return this->sprite;
+}
+
+std::string fork::getFightSprite()
+{
+    return this->fight_sprite;
+}
+
+std::string fork::getDeadSprite()
+{
+    return this->dead_sprite;
+}
+
+std::string fork::getName()
+{
+    return this->name;
+}
+
+bool fork::getPrepared()
+{
+    return this->isPrepared;
+}
+
+bool fork::setPrepared(bool preperation)
+{
+    this->isPrepared = preperation;
+    return this->isPrepared;
 }
 
 knife::knife(std::string name)
@@ -369,11 +431,96 @@ knife::knife(std::string name)
 )";
 }
 
+knife::knife()
+{
+    this->name = " ";
+    this->Character_PTR = this;
+    this->current_health = this->max_health;
+    this->sprite = R"(
+                  .-'
+                 /  |
+                 |°°|
+                 |  |
+                 |  |
+                 '._|
+                   ||
+                   ||
+                   ||
+                   ||
+                   --
+)";
+    this->fight_sprite = R"(
+
+                .-'
+               /V /
+              /°°/
+             /  /
+            /  /
+           '. /
+            --
+           //
+          //
+         //
+        //
+       (/
+
+)";
+    this->dead_sprite = R"(
+                  .-'
+                 /  |
+                 |**|
+                 |  |
+                 |  |
+                 '._|
+                   ||
+                   ||
+                   ||
+                   ||
+                   --
+)";
+}
+
+
 json knife::jsonify() 
 {
     json result = Character::jsonify();
     result["type"] = "knife";
     return result;
+}
+
+void knife::setHealth(int health) {
+    this->current_health = health;
+}
+int knife::getHealth() {
+    return this->current_health;
+}
+int knife::getAttack() {
+    return this->attack;
+}
+int knife::getDefence() {
+    return this->defence;
+}
+int knife::getSpeed() {
+    return this->speed;
+}
+std::string knife::getSprite() {
+    return this->sprite;
+}
+std::string knife::getFightSprite() {
+    return this->fight_sprite;
+}
+std::string knife::getDeadSprite() {
+    return this->dead_sprite;
+}
+std::string knife::getName() {
+    return this->name;
+}
+bool knife::getPrepared() {
+    return this->isPrepared;
+}
+bool knife::setPrepared(bool preperation) {
+    this->isPrepared = preperation;
+    return this->isPrepared;
 }
 
 DrawerEnemy::DrawerEnemy(int maxHealth, int Attack, int Defence, int Speed)
@@ -384,7 +531,60 @@ DrawerEnemy::DrawerEnemy(int maxHealth, int Attack, int Defence, int Speed)
     this->defence = Defence;
     this->speed = Speed;
 
-    this->sprite = R"()";
+    this->sprite = R"(
+                     _
+                  ./ /V'/.
+                 (/ ° °/)
+                 './ /.-'
+                  //
+                 //
+                //
+               //
+              (/
+)";
+
+    this->dead_sprite = R"(
+                __
+              .'||'.
+             ( *||* )
+              '.||.'
+                ||
+                ||
+                ||
+                ||
+                --
+)";
+}
+void DrawerEnemy::setHealth(int health) {
+    this->current_health = health;
+}
+int DrawerEnemy::getHealth() {
+    return this->current_health;
+}
+int DrawerEnemy::getAttack() {
+    return this->attack;
+}
+int DrawerEnemy::getDefence() {
+    return this->defence;
+}
+int DrawerEnemy::getSpeed() {
+    return this->speed;
+}
+std::string DrawerEnemy::getSprite() {
+    return this->sprite;
+}
+std::string DrawerEnemy::getDeadSprite() {
+    return this->dead_sprite;
+}
+std::string DrawerEnemy::getName() {
+    return this->name;
+}
+bool DrawerEnemy::getPrepared() {
+    return this->isPrepared;
+}
+bool DrawerEnemy::setPrepared(bool preperation) {
+    this->isPrepared = preperation;
+    return this->isPrepared;
 }
 
 DrawerBoss::DrawerBoss(int maxHealth, int Attack, int Defence, int Speed)
@@ -428,6 +628,37 @@ DrawerBoss::DrawerBoss(int maxHealth, int Attack, int Defence, int Speed)
 )";
 
 }
+void DrawerBoss::setHealth(int health) {
+    this->current_health = health;
+}
+int DrawerBoss::getHealth() {
+    return this->current_health;
+}
+int DrawerBoss::getAttack() {
+    return this->attack;
+}
+int DrawerBoss::getDefence() {
+    return this->defence;
+}
+int DrawerBoss::getSpeed() {
+    return this->speed;
+}
+std::string DrawerBoss::getSprite() {
+    return this->sprite;
+}
+std::string DrawerBoss::getDeadSprite() {
+    return this->dead_sprite;
+}
+std::string DrawerBoss::getName() {
+    return this->name;
+}
+bool DrawerBoss::getPrepared() {
+    return this->isPrepared;
+}
+bool DrawerBoss::setPrepared(bool preperation) {
+    this->isPrepared = preperation;
+    return this->isPrepared;
+}
 
 SinkEnemy::SinkEnemy(int maxHealth, int Attack, int Defence, int Speed)
 {
@@ -453,6 +684,37 @@ SinkEnemy::SinkEnemy(int maxHealth, int Attack, int Defence, int Speed)
       Oo.o    o  _  o    o .oO
       OO'-.___.-' '-.___.-'OoO      
 )";
+}
+void SinkEnemy::setHealth(int health) {
+    this->current_health = health;
+}
+int SinkEnemy::getHealth() {
+    return this->current_health;
+}
+int SinkEnemy::getAttack() {
+    return this->attack;
+}
+int SinkEnemy::getDefence() {
+    return this->defence;
+}
+int SinkEnemy::getSpeed() {
+    return this->speed;
+}
+std::string SinkEnemy::getSprite() {
+    return this->sprite;
+}
+std::string SinkEnemy::getDeadSprite() {
+    return this->dead_sprite;
+}
+std::string SinkEnemy::getName() {
+    return this->name;
+}
+bool SinkEnemy::getPrepared() {
+    return this->isPrepared;
+}
+bool SinkEnemy::setPrepared(bool preperation) {
+    this->isPrepared = preperation;
+    return this->isPrepared;
 }
 
 SinkBoss::SinkBoss(int maxHealth, int Attack, int Defence, int Speed)
@@ -481,6 +743,37 @@ SinkBoss::SinkBoss(int maxHealth, int Attack, int Defence, int Speed)
          '-.___.,,,,____.-'\   -.
                             \,-'   
 )";
+}
+void SinkBoss::setHealth(int health) {
+    this->current_health = health;
+}
+int SinkBoss::getHealth() {
+    return this->current_health;
+}
+int SinkBoss::getAttack() {
+    return this->attack;
+}
+int SinkBoss::getDefence() {
+    return this->defence;
+}
+int SinkBoss::getSpeed() {
+    return this->speed;
+}
+std::string SinkBoss::getSprite() {
+    return this->sprite;
+}
+std::string SinkBoss::getDeadSprite() {
+    return this->dead_sprite;
+}
+std::string SinkBoss::getName() {
+    return this->name;
+}
+bool SinkBoss::getPrepared() {
+    return this->isPrepared;
+}
+bool SinkBoss::setPrepared(bool preperation) {
+    this->isPrepared = preperation;
+    return this->isPrepared;
 }
 
 OvenEnemy::OvenEnemy(int maxHealth, int Attack, int Defence, int Speed)
@@ -515,6 +808,37 @@ OvenEnemy::OvenEnemy(int maxHealth, int Attack, int Defence, int Speed)
 
 )";
 }
+void OvenEnemy::setHealth(int health) {
+    this->current_health = health;
+}
+int OvenEnemy::getHealth() {
+    return this->current_health;
+}
+int OvenEnemy::getAttack() {
+    return this->attack;
+}
+int OvenEnemy::getDefence() {
+    return this->defence;
+}
+int OvenEnemy::getSpeed() {
+    return this->speed;
+}
+std::string OvenEnemy::getSprite() {
+    return this->sprite;
+}
+std::string OvenEnemy::getDeadSprite() {
+    return this->dead_sprite;
+}
+std::string OvenEnemy::getName() {
+    return this->name;
+}
+bool OvenEnemy::getPrepared() {
+    return this->isPrepared;
+}
+bool OvenEnemy::setPrepared(bool preperation) {
+    this->isPrepared = preperation;
+    return this->isPrepared;
+}
 
 OvenBoss::OvenBoss(int maxHealth, int Attack, int Defence, int Speed)
 {
@@ -544,6 +868,37 @@ OvenBoss::OvenBoss(int maxHealth, int Attack, int Defence, int Speed)
        '-.______________.-' 
 )";
 
+}
+void OvenBoss::setHealth(int health) {
+    this->current_health = health;
+}
+int OvenBoss::getHealth() {
+    return this->current_health;
+}
+int OvenBoss::getAttack() {
+    return this->attack;
+}
+int OvenBoss::getDefence() {
+    return this->defence;
+}
+int OvenBoss::getSpeed() {
+    return this->speed;
+}
+std::string OvenBoss::getSprite() {
+    return this->sprite;
+}
+std::string OvenBoss::getDeadSprite() {
+    return this->dead_sprite;
+}
+std::string OvenBoss::getName() {
+    return this->name;
+}
+bool OvenBoss::getPrepared() {
+    return this->isPrepared;
+}
+bool OvenBoss::setPrepared(bool preperation) {
+    this->isPrepared = preperation;
+    return this->isPrepared;
 }
 
 CounterEnemy::CounterEnemy(int maxHealth, int Attack, int Defence, int Speed)
@@ -592,6 +947,37 @@ CounterEnemy::CounterEnemy(int maxHealth, int Attack, int Defence, int Speed)
             V  
 )";
 
+}
+void CounterEnemy::setHealth(int health) {
+    this->current_health = health;
+}
+int CounterEnemy::getHealth() {
+    return this->current_health;
+}
+int CounterEnemy::getAttack() {
+    return this->attack;
+}
+int CounterEnemy::getDefence() {
+    return this->defence;
+}
+int CounterEnemy::getSpeed() {
+    return this->speed;
+}
+std::string CounterEnemy::getSprite() {
+    return this->sprite;
+}
+std::string CounterEnemy::getDeadSprite() {
+    return this->dead_sprite;
+}
+std::string CounterEnemy::getName() {
+    return this->name;
+}
+bool CounterEnemy::getPrepared() {
+    return this->isPrepared;
+}
+bool CounterEnemy::setPrepared(bool preperation) {
+    this->isPrepared = preperation;
+    return this->isPrepared;
 }
 
 CounterBoss::CounterBoss(int maxHealth, int Attack, int Defence, int Speed)
@@ -644,6 +1030,37 @@ CounterBoss::CounterBoss(int maxHealth, int Attack, int Defence, int Speed)
                   '''
 )";
 }
+void CounterBoss::setHealth(int health) {
+    this->current_health = health;
+}
+int CounterBoss::getHealth() {
+    return this->current_health;
+}
+int CounterBoss::getAttack() {
+    return this->attack;
+}
+int CounterBoss::getDefence() {
+    return this->defence;
+}
+int CounterBoss::getSpeed() {
+    return this->speed;
+}
+std::string CounterBoss::getSprite() {
+    return this->sprite;
+}
+std::string CounterBoss::getDeadSprite() {
+    return this->dead_sprite;
+}
+std::string CounterBoss::getName() {
+    return this->name;
+}
+bool CounterBoss::getPrepared() {
+    return this->isPrepared;
+}
+bool CounterBoss::setPrepared(bool preperation) {
+    this->isPrepared = preperation;
+    return this->isPrepared;
+}
 
 FinalBoss::FinalBoss(int maxHealth, int Attack, int Defence, int Speed)
 {
@@ -657,4 +1074,35 @@ FinalBoss::FinalBoss(int maxHealth, int Attack, int Defence, int Speed)
     this->dead_sprite = R"(
 
 )";
+}
+void FinalBoss::setHealth(int health) {
+    this->current_health = health;
+}
+int FinalBoss::getHealth() {
+    return this->current_health;
+}
+int FinalBoss::getAttack() {
+    return this->attack;
+}
+int FinalBoss::getDefence() {
+    return this->defence;
+}
+int FinalBoss::getSpeed() {
+    return this->speed;
+}
+std::string FinalBoss::getSprite() {
+    return this->sprite;
+}
+std::string FinalBoss::getDeadSprite() {
+    return this->dead_sprite;
+}
+std::string FinalBoss::getName() {
+    return this->name;
+}
+bool FinalBoss::getPrepared() {
+    return this->isPrepared;
+}
+bool FinalBoss::setPrepared(bool preperation) {
+    this->isPrepared = preperation;
+    return this->isPrepared;
 }
