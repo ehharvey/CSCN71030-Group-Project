@@ -72,7 +72,7 @@ namespace CharacterTests
 		{
 			// Arrange
 			int ExpectedHealth = 2;
-			Character* UserChar = new spoon();
+			Character* UserChar = new spoon("name");
 			// Act
 			UserChar->setHealth(ExpectedHealth);
 			// Assert
@@ -82,7 +82,7 @@ namespace CharacterTests
 		{
 			// Arrange
 			int ExpectedHealth = 4;
-			Character* UserChar = new fork();
+			Character* UserChar = new fork("name");
 			// Act
 			UserChar->setHealth(ExpectedHealth);
 			// Assert
@@ -92,7 +92,7 @@ namespace CharacterTests
 		{
 			// Arrange
 			int ExpectedHealth = 5;
-			Character* UserChar = new knife();
+			Character* UserChar = new knife("name");
 			// Act
 			UserChar->setHealth(ExpectedHealth);
 			// Assert
@@ -101,7 +101,7 @@ namespace CharacterTests
 		TEST_METHOD(CharacterTests007SetSpoonPrepared_True_True)
 		{
 			// Arrange
-			Character* UserChar = new spoon();
+			Character* UserChar = new spoon("name");
 			// Act
 			UserChar->setPrepared(true);	// Set as true
 			// Assert
@@ -111,7 +111,7 @@ namespace CharacterTests
 		TEST_METHOD(CharacterTests008SetForkPrepared_True_True)
 		{
 			// Arrange
-			Character* UserChar = new fork();
+			Character* UserChar = new fork("name");
 			// Act
 			UserChar->setPrepared(true);	// Set as true
 			// Assert
@@ -120,7 +120,7 @@ namespace CharacterTests
 		TEST_METHOD(CharacterTests009SetKnifePrepared_True_True)
 		{
 			// Arrange
-			Character* UserChar = new knife();
+			Character* UserChar = new knife("name");
 			// Act
 			UserChar->setPrepared(true);	// Set as true
 			// Assert
@@ -129,7 +129,7 @@ namespace CharacterTests
 		TEST_METHOD(CharacterTests010GetSpoonAttack_Spoon_5)
 		{
 			// Arrange
-			Character* UserChar = new spoon();
+			Character* UserChar = new spoon("name");
 			int Expected;
 			// Act
 			Expected = UserChar->getAttack();
@@ -140,7 +140,7 @@ namespace CharacterTests
 		TEST_METHOD(CharacterTests011GetForkAttack_Fork_7)
 		{
 			// Arrange
-			Character* UserChar = new fork();
+			Character* UserChar = new fork("name");
 			int Expected;
 			// Act
 			Expected = UserChar->getAttack();
@@ -150,7 +150,7 @@ namespace CharacterTests
 		TEST_METHOD(CharacterTests012GetKnifeAttack_Knife_10)
 		{
 			// Arrange
-			Character* UserChar = new knife();
+			Character* UserChar = new knife("name");
 			int Expected;
 			// Act
 			Expected = UserChar->getAttack();
@@ -161,7 +161,7 @@ namespace CharacterTests
 		TEST_METHOD(CharacterTests013GetSpoonDefence_Spoon_10)
 		{
 			// Arrange
-			Character* UserChar = new spoon();
+			Character* UserChar = new spoon("name");
 			int Expected;
 			// Act
 			Expected = UserChar->getDefence();
@@ -172,7 +172,7 @@ namespace CharacterTests
 		TEST_METHOD(CharacterTests014GetForkDefence_Fork_5)
 		{
 			// Arrange
-			Character* UserChar = new fork();
+			Character* UserChar = new fork("name");
 			int Expected;
 			// Act
 			Expected = UserChar->getDefence();
@@ -183,7 +183,7 @@ namespace CharacterTests
 		TEST_METHOD(CharacterTests015GetKnifeDefence_Knife_2)
 		{
 			// Arrange
-			Character* UserChar = new knife();
+			Character* UserChar = new knife("name");
 			int Expected;
 			// Act
 			Expected = UserChar->getDefence();
@@ -193,7 +193,7 @@ namespace CharacterTests
 		TEST_METHOD(CharacterTests016GetSpoonSpeed_Spoon_4)
 		{
 			// Arrange
-			Character* UserChar = new spoon();
+			Character* UserChar = new spoon("name");
 			int Expected;
 			// Act
 			Expected = UserChar->getSpeed();
@@ -203,7 +203,7 @@ namespace CharacterTests
 		TEST_METHOD(CharacterTests017GetForkSpeed_Fork_10)
 		{
 			// Arrange
-			Character* UserChar = new fork();
+			Character* UserChar = new fork("name");
 			int Expected;
 			// Act
 			Expected = UserChar->getSpeed();
@@ -214,7 +214,7 @@ namespace CharacterTests
 		TEST_METHOD(CharacterTests018GetKnifeSpeed_Knife_8)
 		{
 			// Arrange
-			Character* UserChar = new knife();
+			Character* UserChar = new knife("name");
 			int Expected;
 			// Act
 			Expected = UserChar->getSpeed();

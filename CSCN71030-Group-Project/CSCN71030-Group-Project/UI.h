@@ -26,6 +26,8 @@ public:
 	void initial_menu();
 	void user_options();
 	void game_opening();
+	void gameOver();
+	void gameWin();
 
 	int getSaveInput();
 	void displaySaveEntry(std::string character_name, int num);
