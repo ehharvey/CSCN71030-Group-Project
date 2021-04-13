@@ -16,8 +16,27 @@ input_choice UI::get_input()
 
 void UI::display_Game_Over(Character* character_ptr)
 {
+	std::string GameOver = R"(
+._____  .______  ._____.___ ._______     ._______  .___     ._______.______  
+:_ ___\ :      \ :         |: .____/     : .___  \ |   |___ : .____/: __   \ 
+|   |___|   .   ||   \  /  || : _/\      | :   |  ||   |   || : _/\ |  \____|
+|   /  ||   :   ||   |\/   ||   /  \     |     :  ||   :   ||   /  \|   :  \ 
+|. __  ||___|   ||___| |   ||_.: __/      \_. ___/  \      ||_.: __/|   |___\
+ :/ |. |    |___|      |___|   :/           :/       \____/    :/   |___|    
+ :   :/                                     :                                
+     :                                                                       
+                                                   
+__  __           _               ______            __            __
+\ \/ /___  __  _( )________     / ____/___  ____  / /_____  ____/ /
+ \  / __ \/ / / /// ___/ _ \   / /   / __ \/ __ \/ //_/ _ \/ __  / 
+ / / /_/ / /_/ / / /  /  __/  / /___/ /_/ / /_/ / ,< /  __/ /_/ /  
+/_/\____/\__,_/ /_/   \___/   \____/\____/\____/_/|_|\___/\__,_/   
+                                                                                                                                                                                                                                                                                
+)";
+	std::cout << "\x1b[" << BRIGHT_RED_FG << "m";
+	std::cout << GameOver << std::endl;
+	std::cout << "\x1b[" << DEFAULT_FG << "m";
 	std::cout << character_ptr->getDeadSprite() << std::endl;
-
 }
 
 void UI::display_enemy_defeated(Character* enemy_ptr)
@@ -113,13 +132,10 @@ void UI::game_opening() {
 )";
 	std::cout << "Welcome to...\n";
 	std::cout << "\x1b[" << CYAN_FG << "m";
+	Sleep(500);
 	std::cout << GameOpening << std::endl;
 	std::cout << "\x1b[" << DEFAULT_FG << "m";
 
-}
-
-void UI::gameOver()
-{
 }
 
 void UI::gameWin()
@@ -127,13 +143,26 @@ void UI::gameWin()
 }
 
 
+void UI::displayPickClass()
+{
+	std::cout << "Pick a character:" << std::endl
+		<< input_choice::new_spoon << ") Spoon" << std::endl
+		<< input_choice::new_fork << ") Fork" << std::endl
+		<< input_choice::new_knife << ") Knife" << std::endl;
+
+
+
+}
 
 
 // Emil:
 void UI::displayBattleIntro(Character* main_character, Character* enemy)
 {
 	std::cout << main_character->getFightSprite() << std::endl;
-	std::cout << enemy->getFightSprite() << std::endl;
+
+	std::cout << "\x1b[" << BRIGHT_RED_FG << "m";
+	std::cout << enemy->getSprite() << std::endl;
+	std::cout << "\x1b[" << DEFAULT_FG << "m";
 }
 
 void UI::displayBattleTurn(Character* main_character, Character* enemy) 
@@ -151,13 +180,6 @@ void UI::displayWelcome() {
 	std::cout << "Welcome to our game!" << std::endl;
 }
 
-void UI::displayPickClass() 
-{
-	std::cout << "What kind of character do you want to be?" 	<< std::endl
-	<< input_choice::new_spoon 		<< ") Spoon" 	<< std::endl
-	<< input_choice::new_fork		<< ") Fork" 	<< std::endl
-	<< input_choice::new_knife		<< ") Knife"	<< std::endl;
-}
 
 void UI::displayNamePrompt() 
 {
