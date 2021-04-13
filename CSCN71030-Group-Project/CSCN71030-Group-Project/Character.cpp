@@ -246,6 +246,7 @@ knife::knife(std::string name) : Character(name)
 )";
 }
 
+
 json knife::jsonify() 
 {
     json result = Character::jsonify();
