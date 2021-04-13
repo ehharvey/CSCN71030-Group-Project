@@ -37,6 +37,7 @@ __  __           _               ______            __            __
 	std::cout << GameOver << std::endl;
 	std::cout << "\x1b[" << DEFAULT_FG << "m";
 	std::cout << character_ptr->getDeadSprite() << std::endl;
+	std::cout << "                 rip" << std::endl;
 }
 
 void UI::display_enemy_defeated(Character* enemy_ptr) {
@@ -178,6 +179,34 @@ ____    ____  ______    __    __     ____    __    ____  ______   .__   __.     
 	std::cout << "\x1b[" << DEFAULT_FG << "m";
 }
 
+void UI::enemyDodge() {
+	std::cout << "\x1b[" << BRIGHT_RED_FG << "m";
+	std::cout << "Enemy dodged" << std::endl;
+	std::cout << "\x1b[" << DEFAULT_FG << "m";
+}
+
+void UI::enemyNotPrepared()
+{
+	std::cout << "\x1b[" << BRIGHT_RED_FG << "m";
+	std::cout << "Enemy wasn't prepared" << std::endl; // TODO
+	std::cout << "\x1b[" << DEFAULT_FG << "m";
+}
+
+void UI::notPrepared()							// Notify user that they were not prepared :( )
+{
+	std::cout << "\x1b[" << BRIGHT_BLUE_FG << "m";
+	std::cout << "Nooo, you weren't ready" << std::endl; 
+	std::cout << "\x1b[" << DEFAULT_FG << "m";
+	
+}
+
+void UI::userDodged()
+{
+	std::cout << "\x1b[" << BRIGHT_BLUE_FG << "m";
+	std::cout << "You dodged an attack! Nice one." << std::endl;
+	std::cout << "\x1b[" << DEFAULT_FG << "m";
+}
+
 
 void UI::displayPickClass() {
 	std::string spoon = R"(
@@ -223,6 +252,7 @@ void UI::displayPickClass() {
 // Emil:
 void UI::displayBattleIntro(Character* main_character, Character* enemy)
 {
+
 	std::cout << "\x1b[" << YELLOW_FG << "m";
 	std::string Fight = R"(
    _______________ ________
@@ -230,6 +260,7 @@ void UI::displayBattleIntro(Character* main_character, Character* enemy)
  / _/_/ // (_ / _  / / /   
 /_/ /___/\___/_//_/ /_/                                                                                                                                                                                                                                                                             
 )";
+	std::cout << std::endl << std::endl << std::endl << std::endl;
 	std::cout << Fight << std::endl;
 	std::cout << "\x1b[" << DEFAULT_FG << "m";
 	std::cout << main_character->getFightSprite() << std::endl;

@@ -42,6 +42,14 @@ public:
 	void game_opening();
 	void gameWin();
 
+	//Enemy output
+	void enemyDodge();
+	void enemyNotPrepared();
+
+	// User output
+	void notPrepared();
+	void userDodged();
+
 	int getSaveInput();
 	void displaySaveEntry(std::string character_name, int num);
 	void displayCarryOn();

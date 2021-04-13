@@ -208,13 +208,13 @@ combatStatus Level::enterCombat() {
 			case input_choice::attack:
 			if (this->getPlayer()->getPrepared()) {
 				if (enemy_choice == dodge) {
-					std::cout << "Enemy dodged" << std::endl; // TODO
+					ui->enemyDodge();
 				}
 				else {
 					calculateDamage(this->getPlayer(), this->getEnemy());
 				}
 			} else {
-				// Notify user that they were not prepared :( )
+				ui->notPrepared();			// Notify user that they were not prepared :( )
 			}
 			this->getPlayer()->setPrepared(false);
 			valid_user_turn = true;
@@ -253,13 +253,13 @@ combatStatus Level::enterCombat() {
 			case input_choice::attack:
 			if (this->getEnemy()->getPrepared()) {
 				if (user_turn_choice == dodge) {
-					std::cout << "You dodged an attack" << std::endl; // TODO
+					ui->userDodged();
 				}
 				else {
 					calculateDamage(this->getEnemy(), this->getPlayer());
 				}
 			} else {
-				std::cout << "Enemy wasn't prepared" << std::endl; // TODO
+				ui->enemyNotPrepared();
 			}
 			this->getEnemy()->setPrepared(false);
 			valid_user_turn = true;
