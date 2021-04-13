@@ -1,15 +1,5 @@
 #include "Character.h"
 
-Character::Character()
-{
-    this->attack = 0;
-    this->current_health = 0;
-    this->defence = 0;
-    this->max_health = 0;
-    this->speed = 0;
-    this->name = " ";
-}
-
 Character::Character(std::string name)
 {
     this->attack = 0;
@@ -19,9 +9,7 @@ Character::Character(std::string name)
     this->speed = 0;
 
     this->name = name;
-    this->Character_PTR = this;
 }
-
 
 Character::Character(json j) 
 {
@@ -54,6 +42,11 @@ void Character::setHealth(int health)
 int Character::getHealth()
 {
     return this->current_health;
+}
+
+int Character::getMaxHealth() 
+{
+    return this->max_health;
 }
 
 int Character::getAttack()
@@ -102,51 +95,15 @@ bool Character::setPrepared(bool preperation)
     return this->isPrepared;
 }
 
-spoon::spoon()
+spoon::spoon(std::string name) : Character(name)
 {
-    this->Character_PTR = this;
+    // Set stats
+    this->max_health = 10;
+	this->attack = 5;
+	this->defence = 10;
+	this->speed = 4;
     this->current_health = this->max_health;
-    this->name = " ";
-    this->sprite = R"(
-                __
-              .'  '.
-              '°  °'
-              '.  .'
-                ||
-                ||
-                ||
-                ||
-                --
-)";
-    this->fight_sprite = R"(
-                     _
-                  .' V'.
-                 '  ° °'
-                 '. .-'
-                  //
-                 //
-                //
-               //
-              (/
-)";
-    this->dead_sprite = R"(
-                __
-              .'  '.
-              '*  *'
-              '.  .'
-                ||
-                ||
-                ||
-                ||
-                --
-)";
-}
 
-spoon::spoon(std::string name)
-{
-    this->name = name;
-    this->Character_PTR = this;
-    this->current_health = this->max_health;
     this->sprite = R"(
                 __
               .'  '.
@@ -189,49 +146,15 @@ json spoon::jsonify()
     return result;
 }
 
-fork::fork()
-{
-    this->Character_PTR = this;
-    this->current_health = this->max_health;
-    this->name = " ";
-    this->sprite = R"(
-                 ||||  
-                 ||||
-                 \°°/
-                  ||
-                  ||
-                  ||
-                  ||
-                  --
-)";
-    this->fight_sprite = R"(
-                   ////\ 
-                  /V//
-                 (°°/
-                  //
-                 //
-                //
-               //
-              (/
-)";
-    this->dead_sprite = R"(
-                 |||| 
-                 ||||
-                 \**/
-                  ||
-                  ||
-                  ||
-                  ||
-                  --
-)";
 
-}
-
-fork::fork(std::string name)
+fork::fork(std::string name) : Character(name)
 {
-    this->name = name;
-    this->Character_PTR = this;
+    this->max_health = 7;
+	this->attack = 7;
+	this->defence = 5;
+	this->speed = 10;
     this->current_health = this->max_health;
+    
     this->sprite = R"(
                  ||||  
                  ||||
@@ -271,60 +194,14 @@ json fork::jsonify()
     return result;
 }
 
-knife::knife()
+knife::knife(std::string name) : Character(name)
 {
-    this->Character_PTR = this;
+    this->max_health = 5;
+	this->attack = 10;
+	this->defence = 2;
+	this->speed = 8;
     this->current_health = this->max_health;
-    this->name = " ";
-    this->sprite = R"(
-                  .-'
-                 /  |
-                 |°°|
-                 |  |
-                 |  |
-                 '._|
-                   ||
-                   ||
-                   ||
-                   ||
-                   --
-)";
-    this->fight_sprite = R"(
 
-                .-'
-               /V /
-              /°°/
-             /  /
-            /  /
-           '. /
-            --
-           //
-          //
-         //
-        //
-       (/
-
-)";
-    this->dead_sprite = R"(
-                  .-'
-                 /  |
-                 |**|
-                 |  |
-                 |  |
-                 '._|
-                   ||
-                   ||
-                   ||
-                   ||
-                   --
-)";
-}
-
-knife::knife(std::string name)
-{
-    this->name = name;
-    this->Character_PTR = this;
-    this->current_health = this->max_health;
     this->sprite = R"(
                   .-'
                  /  |
@@ -376,25 +253,48 @@ json knife::jsonify()
     return result;
 }
 
-DrawerEnemy::DrawerEnemy(int maxHealth, int Attack, int Defence, int Speed)
+DrawerEnemy::DrawerEnemy(int max_health, int attack, int defence, int speed) 
+: Character((std::string) "DrawerEnemy")
 {
-    this->attack = Attack;
-    this->max_health = maxHealth;
-    this->current_health = maxHealth;
-    this->defence = Defence;
-    this->speed = Speed;
+    this->attack = attack;
+    this->max_health = max_health;
+    this->current_health = max_health;
+    this->defence = defence;
+    this->speed = speed;
 
-    this->sprite = R"()";
+    this->sprite = R"(
+                     _
+                  ./ /V'/.
+                 (/ ° °/)
+                 './ /.-'
+                  //
+                 //
+                //
+               //
+              (/
+)";
+
+    this->dead_sprite = R"(
+                __
+              .'||'.
+             ( *||* )
+              '.||.'
+                ||
+                ||
+                ||
+                ||
+                --
+)";
 }
 
-DrawerBoss::DrawerBoss(int maxHealth, int Attack, int Defence, int Speed)
+DrawerBoss::DrawerBoss(int max_health, int attack, int defence, int speed)
+: Character((std::string) "Chef's Knife")
 {
-    this->attack = Attack;
-    this->max_health = maxHealth;
-    this->current_health = maxHealth;
-    this->defence = Defence;
-    this->speed = Speed;
-    this->name = "Chef's Knife";
+    this->attack = attack;
+    this->max_health = max_health;
+    this->current_health = max_health;
+    this->defence = defence;
+    this->speed = speed;
 
     this->sprite = R"(
                   _ .
@@ -426,16 +326,16 @@ DrawerBoss::DrawerBoss(int maxHealth, int Attack, int Defence, int Speed)
         ( /
 
 )";
-
 }
 
-SinkEnemy::SinkEnemy(int maxHealth, int Attack, int Defence, int Speed)
+SinkEnemy::SinkEnemy(int max_health, int attack, int defence, int speed)
+: Character((std::string) "SinkEnemy")
 {
-    this->attack = Attack;
-    this->max_health = maxHealth;
-    this->current_health = maxHealth;
-    this->defence = Defence;
-    this->speed = Speed;
+    this->attack = attack;
+    this->max_health = max_health;
+    this->current_health = max_health;
+    this->defence = defence;
+    this->speed = speed;
 
     this->sprite = R"(
           ____       ____  
@@ -455,13 +355,14 @@ SinkEnemy::SinkEnemy(int maxHealth, int Attack, int Defence, int Speed)
 )";
 }
 
-SinkBoss::SinkBoss(int maxHealth, int Attack, int Defence, int Speed)
+SinkBoss::SinkBoss(int max_health, int attack, int defence, int speed)
+: Character((std::string) "SinkBoss")
 {
-    this->attack = Attack;
-    this->max_health = maxHealth;
-    this->current_health = maxHealth;
-    this->defence = Defence;
-    this->speed = Speed;
+    this->attack = attack;
+    this->max_health = max_health;
+    this->current_health = max_health;
+    this->defence = defence;
+    this->speed = speed;
 
     this->sprite = R"(
                             /'"-,
@@ -483,14 +384,14 @@ SinkBoss::SinkBoss(int maxHealth, int Attack, int Defence, int Speed)
 )";
 }
 
-OvenEnemy::OvenEnemy(int maxHealth, int Attack, int Defence, int Speed)
+OvenEnemy::OvenEnemy(int max_health, int attack, int defence, int speed)
+: Character((std::string) "Food Ghost")
 {
-    this->attack = Attack;
-    this->max_health = maxHealth;
-    this->current_health = maxHealth;
-    this->defence = Defence;
-    this->speed = Speed;
-    this->name = "Food Ghost";
+    this->attack = attack;
+    this->max_health = max_health;
+    this->current_health = max_health;
+    this->defence = defence;
+    this->speed = speed;
 
     this->sprite = R"(
       .-'""""`-.___                      
@@ -516,14 +417,14 @@ OvenEnemy::OvenEnemy(int maxHealth, int Attack, int Defence, int Speed)
 )";
 }
 
-OvenBoss::OvenBoss(int maxHealth, int Attack, int Defence, int Speed)
+OvenBoss::OvenBoss(int max_health, int attack, int defence, int speed)
+: Character((std::string) "Souffle")
 {
-    this->attack = Attack;
-    this->max_health = maxHealth;
-    this->current_health = maxHealth;
-    this->defence = Defence;
-    this->speed = Speed;
-    this->name = "Souffle";
+    this->attack = attack;
+    this->max_health = max_health;
+    this->current_health = max_health;
+    this->defence = defence;
+    this->speed = speed;
 
     this->sprite = R"(                   
          ,.-""""""""""""-.,                           
@@ -546,13 +447,14 @@ OvenBoss::OvenBoss(int maxHealth, int Attack, int Defence, int Speed)
 
 }
 
-CounterEnemy::CounterEnemy(int maxHealth, int Attack, int Defence, int Speed)
+CounterEnemy::CounterEnemy(int max_health, int attack, int defence, int speed)
+: Character((std::string) "CounterEnemy")
 {
-    this->attack = Attack;
-    this->max_health = maxHealth;
-    this->current_health = maxHealth;
-    this->defence = Defence;
-    this->speed = Speed;
+    this->attack = attack;
+    this->max_health = max_health;
+    this->current_health = max_health;
+    this->defence = defence;
+    this->speed = speed;
 
     this->sprite = R"(
        \\   |   //
@@ -594,14 +496,14 @@ CounterEnemy::CounterEnemy(int maxHealth, int Attack, int Defence, int Speed)
 
 }
 
-CounterBoss::CounterBoss(int maxHealth, int Attack, int Defence, int Speed)
+CounterBoss::CounterBoss(int max_health, int attack, int defence, int speed)
+: Character((std::string) "Rotten Egg")
 {
-    this->name = "Rotten Egg";
-    this->attack = Attack;
-    this->max_health = maxHealth;
-    this->current_health = maxHealth;
-    this->defence = Defence;
-    this->speed = Speed;
+    this->attack = attack;
+    this->max_health = max_health;
+    this->current_health = max_health;
+    this->defence = defence;
+    this->speed = speed;
 
     this->sprite = R"(
                   ...
@@ -645,13 +547,14 @@ CounterBoss::CounterBoss(int maxHealth, int Attack, int Defence, int Speed)
 )";
 }
 
-FinalBoss::FinalBoss(int maxHealth, int Attack, int Defence, int Speed)
+FinalBoss::FinalBoss(int max_health, int attack, int defence, int speed)
+: Character((std::string) "FinalBoss")
 {
-    this->attack = Attack;
-    this->max_health = maxHealth;
-    this->current_health = maxHealth;
-    this->defence = Defence;
-    this->speed = Speed;
+    this->attack = attack;
+    this->max_health = max_health;
+    this->current_health = max_health;
+    this->defence = defence;
+    this->speed = speed;
 
     this->sprite = R"()";
     this->dead_sprite = R"(
