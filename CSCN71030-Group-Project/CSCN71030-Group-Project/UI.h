@@ -45,10 +45,13 @@ public:
 	//Enemy output
 	void enemyDodge();
 	void enemyNotPrepared();
+	void enemyAttackHit();		// maybe pass value of how many points removed from HP
 
 	// User output
 	void notPrepared();
 	void userDodged();
+	void dodgeFail();
+	void attackHit();
 
 	int getSaveInput();
 	void displaySaveEntry(std::string character_name, int num);

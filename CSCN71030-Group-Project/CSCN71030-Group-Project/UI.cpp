@@ -37,7 +37,7 @@ __  __           _               ______            __            __
 	std::cout << GameOver << std::endl;
 	std::cout << "\x1b[" << DEFAULT_FG << "m";
 	std::cout << character_ptr->getDeadSprite() << std::endl;
-	std::cout << "                 rip" << std::endl;
+	std::cout << "  rip" << std::endl;
 }
 
 void UI::display_enemy_defeated(Character* enemy_ptr) {
@@ -153,12 +153,48 @@ void UI::game_opening() {
                                                                                                     
                                                                                                                                                                                                                                                                                       
 )";
-	std::cout << "Welcome to...\n";
+	std::cout << "Welcome to...\n\n\n\n\n\n\n\n\n";
+	Sleep(1000);
+	std::cout << "...building up suspense...\n";
+	Sleep(1000);
 	std::cout << "\x1b[" << CYAN_FG << "m";
-	Sleep(500);
 	std::cout << GameOpening << std::endl;
 	std::cout << "\x1b[" << DEFAULT_FG << "m";
 
+}
+
+
+
+void UI::displayMenu()
+{
+	std::string GamePrompt = R"(
+  _   _       _   _ _   _          _    ____                      
+ | | | |_ __ | |_(_) |_| | ___  __| |  / ___| __ _ _ __ ___   ___ 
+ | | | | '_ \| __| | __| |/ _ \/ _` | | |  _ / _` | '_ ` _ \ / _ \
+ | |_| | | | | |_| | |_| |  __/ (_| | | |_| | (_| | | | | | |  __/
+  \___/|_| |_|\__|_|\__|_|\___|\__,_|  \____|\__,_|_| |_| |_|\___|                                                                                                                                                                                                                                                                                                                  
+)";
+
+	std::string NewGame = R"(
+  _  _               ___                
+ | \| |_____ __ __  / __|__ _ _ __  ___ 
+ | `/ / -_) V  V / | '_ / _` | '  \/ -_)
+ |_|\_\___|\_/\_/   \___\__,_|_|_|_\___|                                 
+)";
+
+	std::string LoadGame = R"(
+  _                 _    ___                
+ | |   ___  __ _ __| |  / __|__ _ _ __  ___ 
+ | |__/ _ \/ _` / _` | | `_ / _` | '  \/ -_)
+ |____\___/\__,_\__,_|  \___\__,_|_|_|_\___|                                                
+)";
+	std::cout << "\x1b[" << BRIGHT_BLUE_FG << "m";
+	std::cout << GamePrompt << std::endl;
+	std::cout << "\x1b[" << DEFAULT_FG << "m";
+	std::cout << "Select an option:" << std::endl;
+	std::cout << input_choice::new_character << ")" << NewGame << std::endl;
+	std::cout << input_choice::load_game << ")" << LoadGame << std::endl;
+	std::cout << "\x1b[" << DEFAULT_FG << "m";
 }
 
 void UI::gameWin() {
@@ -181,21 +217,27 @@ ____    ____  ______    __    __     ____    __    ____  ______   .__   __.     
 
 void UI::enemyDodge() {
 	std::cout << "\x1b[" << BRIGHT_RED_FG << "m";
-	std::cout << "Enemy dodged" << std::endl;
+	std::cout << "\nEnemy dodged" << std::endl;
 	std::cout << "\x1b[" << DEFAULT_FG << "m";
 }
 
 void UI::enemyNotPrepared()
 {
 	std::cout << "\x1b[" << BRIGHT_RED_FG << "m";
-	std::cout << "Enemy wasn't prepared" << std::endl; // TODO
+	std::cout << "\nEnemy wasn't prepared" << std::endl; // TODO
+	std::cout << "\x1b[" << DEFAULT_FG << "m";
+}
+
+void UI::enemyAttackHit() {
+	std::cout << "\x1b[" << BRIGHT_RED_FG << "m";
+	std::cout << "\nEnemy hit and dealt some damage" << std::endl;
 	std::cout << "\x1b[" << DEFAULT_FG << "m";
 }
 
 void UI::notPrepared()							// Notify user that they were not prepared :( )
 {
 	std::cout << "\x1b[" << BRIGHT_BLUE_FG << "m";
-	std::cout << "Nooo, you weren't ready" << std::endl; 
+	std::cout << "\nNooo, you weren't ready" << std::endl; 
 	std::cout << "\x1b[" << DEFAULT_FG << "m";
 	
 }
@@ -203,8 +245,18 @@ void UI::notPrepared()							// Notify user that they were not prepared :( )
 void UI::userDodged()
 {
 	std::cout << "\x1b[" << BRIGHT_BLUE_FG << "m";
-	std::cout << "You dodged an attack! Nice one." << std::endl;
+	std::cout << "\nYou dodged an attack! Nice one." << std::endl;
 	std::cout << "\x1b[" << DEFAULT_FG << "m";
+}
+
+void UI::dodgeFail() {		// User didn't dodge
+	std::cout << "\x1b[" << GREY_FG << "m";
+	std::cout << "\nYou couldn't dodge, try losing a couple prongs" << std::endl;
+	std::cout << "\x1b[" << DEFAULT_FG << "m";
+}
+
+void UI::attackHit()
+{
 }
 
 
@@ -312,37 +364,6 @@ std::string UI::getCharacterName()
 }
 
 
-void UI::displayMenu() 
-{
-	std::string GamePrompt = R"(
-  _   _       _   _ _   _          _    ____                      
- | | | |_ __ | |_(_) |_| | ___  __| |  / ___| __ _ _ __ ___   ___ 
- | | | | '_ \| __| | __| |/ _ \/ _` | | |  _ / _` | '_ ` _ \ / _ \
- | |_| | | | | |_| | |_| |  __/ (_| | | |_| | (_| | | | | | |  __/
-  \___/|_| |_|\__|_|\__|_|\___|\__,_|  \____|\__,_|_| |_| |_|\___|                                                                                                                                                                                                                                                                                                                  
-)";
-
-	std::string NewGame = R"(
-  _  _               ___                
- | \| |_____ __ __  / __|__ _ _ __  ___ 
- | `/ / -_) V  V / | '_ / _` | '  \/ -_)
- |_|\_\___|\_/\_/   \___\__,_|_|_|_\___|                                 
-)";
-
-	std::string LoadGame = R"(
-  _                 _    ___                
- | |   ___  __ _ __| |  / __|__ _ _ __  ___ 
- | |__/ _ \/ _` / _` | | `_ / _` | '  \/ -_)
- |____\___/\__,_\__,_|  \___\__,_|_|_|_\___|                                                
-)";
-	std::cout << "\x1b[" << CYAN_FG << "m";
-	std::cout << GamePrompt << std::endl;
-	std::cout << "\x1b[" << DEFAULT_FG << "m";
-	std::cout << "Select an option:" << std::endl;
-	std::cout << input_choice::new_character << ")" << NewGame << std::endl;
-	std::cout << input_choice::load_game << ")" << LoadGame << std::endl;
-	std::cout << "\x1b[" << DEFAULT_FG << "m";
-}
 
 void UI::displaySavePrompt() 
 {
