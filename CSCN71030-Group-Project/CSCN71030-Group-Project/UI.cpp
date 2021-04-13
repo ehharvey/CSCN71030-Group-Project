@@ -224,22 +224,27 @@ void UI::displayBattleIntro(Character* main_character, Character* enemy)
 void UI::displayBattleTurn(Character* main_character, Character* enemy) 
 {
 	std::cout << " You have: " << main_character->getHealth() << "/" << main_character->getMaxHealth() << " HP" << std::endl;
+	std::cout << "\x1b[" << BRIGHT_RED_FG << "m";
 	std::cout << "Enemy has: " << enemy->getHealth() << "/" << enemy->getMaxHealth() << " HP" << std::endl;
+	std::cout << "\x1b[" << DEFAULT_FG << "m";
 }
 
-void UI::displayNotPrepared() 
-{
+void UI::displayNotPrepared() {
+	std::cout << "\x1b[" << BRIGHT_RED_FG << "m";
 	std::cout << "You were not prepared :(" << std::endl;
+	std::cout << "\x1b[" << DEFAULT_FG << "m";
 }
 
-void UI::displayWelcome() {
+void UI::displayWelcome() {						// Not needed since opening handles this
 	std::cout << "Welcome to our game!" << std::endl;
 }
 
 
 void UI::displayNamePrompt() 
 {
-	std::cout << "Enter a name for your character: ";
+	std::cout << "\x1b[" << BRIGHT_CYAN_FG << "m";
+	std::cout << "What shall we call you, oh brave utensil: ";
+	std::cout << "\x1b[" << DEFAULT_FG << "m";
 }
 
 std::string UI::getCharacterName() 
@@ -257,13 +262,7 @@ void UI::displayMenu()
 	<<  input_choice::load_game			<< ") Load Game" 		<< std::endl;
 }
 
-void UI::displayGameOver(Character* main_character) 
-{
-	std::cout << main_character->getDeadSprite() << std::endl
-	<< "You have died" << std::endl;
-}
-
-void UI::displayEnemyDeath(Character* enemy) 
+void UI::displayEnemyDeath(Character* enemy) // already have the display_enemy_defeated() function above, not needed
 {
 	std::cout << enemy->getDeadSprite() << std::endl
 	<< "You defeated!" << std::endl;
@@ -271,9 +270,39 @@ void UI::displayEnemyDeath(Character* enemy)
 
 void UI::displaySavePrompt() 
 {
-	std::cout << "Do you want to save?" 			<< std::endl
-	<< input_choice::save		<< ") Save" 		<< std::endl
-	<< input_choice::no_save	<< ") Don't Save" 	<< std::endl;
+	std::string SavePrompt = R"(
+  ____                 ___ 
+ / ___|  __ ___   ____|__ \
+ \___ \ / _` \ \ / / _ \/ /
+  ___) | (_| |\ V /  __/_| 
+ |____/ \__,_| \_/ \___(_) 
+                                                                                                                                                                                                                                                     
+)";
+
+	std::string saveSelect = R"(
+  ___               
+ / __| __ ___ _____ 
+ \__ \/ _` \ V / -_)
+ |___/\__,_|\_/\___|
+                                      
+)";
+
+	std::string dontSaveSelect = R"(
+   ___         _   _                       _ _   _             _                  _           
+  / __|___ _ _| |_(_)_ _ _  _ ___  __ __ _(_) |_| |_  ___ _  _| |_   ___ __ ___ _(_)_ _  __ _ 
+ | (__/ _ \ ' \  _| | ' \ || / -_) \ V  V / |  _| ' \/ _ \ || |  _| (_-</ _` \ V / | ' \/ _` |
+  \___\___/_||_\__|_|_||_\_,_\___|  \_/\_/|_|\__|_||_\___/\_,_|\__| /__/\__,_|\_/|_|_||_\__, |
+                                                                                        |___/          
+)";
+	std::cout << "\x1b[" << CYAN_FG << "m";
+	std::cout << SavePrompt << std::endl;
+	std::cout << "\x1b[" << DEFAULT_FG << "m";
+	std::cout << "Would you like to save your game?" << std::endl;
+	std::cout << input_choice::save << ")" << saveSelect << std::endl;
+	std::cout << "\x1b[" << GREY_FG << "m";
+	std::cout << input_choice::no_save << ")" << dontSaveSelect << std::endl;
+	std::cout << "\x1b[" << DEFAULT_FG << "m";
+
 }
 
 int UI::getSaveInput() 
