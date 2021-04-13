@@ -1,3 +1,6 @@
+#ifndef STUBS_H
+#define STUBS_H
+
 #pragma once
 #include <string>
 #include <vector>
@@ -441,3 +444,6 @@ public:
 // ----------------------------------------------------------------------------
 
 // We are also thinking of dropping items
+
+
+#endif // !STUBS_H
