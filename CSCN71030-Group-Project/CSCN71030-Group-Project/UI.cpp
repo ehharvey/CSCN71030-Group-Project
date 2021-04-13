@@ -3,12 +3,11 @@
 #include <string>
 #include <windows.h>
 
-void UI::new_turn()
-{
+void UI::new_turn() {
+
 }
 
-input_choice UI::get_input()
-{
+input_choice UI::get_input() {
 	unsigned char user_input;
 	std::cin >> user_input;
 	return (input_choice)user_input; // Seems brittle
@@ -39,9 +38,23 @@ __  __           _               ______            __            __
 	std::cout << character_ptr->getDeadSprite() << std::endl;
 }
 
-void UI::display_enemy_defeated(Character* enemy_ptr)
-{
+void UI::display_enemy_defeated(Character* enemy_ptr) {
+	// Maybe call random and make if statements for different types of defeated messages like "Scrambled" or something
+	std::string Defeated = R"(
+  _____        __           _           _ 
+ |  __ \      / _|         | |         | |
+ | |  | | ___| |_ ___  __ _| |_ ___  __| |
+ | |  | |/ _ \  _/ _ \/ _` | __/ _ \/ _` |
+ | |__| |  __/ ||  __/ (_| | ||  __/ (_| |
+ |_____/ \___|_| \___|\__,_|\__\___|\__,_|
+                                          
+                                                                                                                                                                                                                                                       
+)";
+	std::cout << "\x1b[" << BRIGHT_RED_FG << "m";
+	std::cout << Defeated << std::endl;
+	std::cout << "\x1b[" << GREY_FG << "m";
 	std::cout << enemy_ptr->getDeadSprite() << std::endl;
+	std::cout << "\x1b[" << DEFAULT_FG << "m";
 	std::cout << "Congrats! You have defeated " << enemy_ptr->getName() << std::endl;
 }
 
@@ -138,20 +151,63 @@ void UI::game_opening() {
 
 }
 
-void UI::gameWin()
-{
+void UI::gameWin() {
+	std::string WIN = R"(
+____    ____  ______    __    __     ____    __    ____  ______   .__   __.     __  
+\   \  /   / /  __  \  |  |  |  |    \   \  /  \  /   / /  __  \  |  \ |  |    |  | 
+ \   \/   / |  |  |  | |  |  |  |     \   \/    \/   / |  |  |  | |   \|  |    |  | 
+  \_    _/  |  |  |  | |  |  |  |      \            /  |  |  |  | |  . `  |    |  | 
+    |  |    |  `--'  | |  `--'  |       \    /\    /   |  `--'  | |  |\   |    |__| 
+    |__|     \______/   \______/         \__/  \__/     \______/  |__| \__|    (__) 
+                                                                                    
+                                          
+                                                                                                                                                                                                                                                       
+)";
+
+	std::cout << "\x1b[" << BRIGHT_BLUE_FG << "m";
+	std::cout << WIN << std::endl;
+	std::cout << "\x1b[" << DEFAULT_FG << "m";
 }
 
 
-void UI::displayPickClass()
-{
-	std::cout << "Pick a character:" << std::endl
-		<< input_choice::new_spoon << ") Spoon" << std::endl
-		<< input_choice::new_fork << ") Fork" << std::endl
-		<< input_choice::new_knife << ") Knife" << std::endl;
+void UI::displayPickClass() {
+	std::string spoon = R"(
+  ___                     
+ / __|_ __  ___  ___ _ _  
+ \__ \ '_ \/ _ \/ _ \ ' \ 
+ |___/ .__/\___/\___/_||_|
+     |_|                  
+)";
 
+	std::string fork = R"(
+  ___        _   
+ | __|__ _ _| |__
+ | _/ _ \ '_| / /
+ |_|\___/_| |_\_\          
+)";
+	std::string knife = R"(
+  _  __     _  __     
+ | |/ /_ _ (_)/ _|___ 
+ | ' <| ' \| |  _/ -_)
+ |_|\_\_||_|_|_| \___|
+                                        
+)";
 
+	std::string CharacterSelection = R"(
+   ____ _                          _              ____       _           _   _             
+  / ___| |__   __ _ _ __ __ _  ___| |_ ___ _ __  / ___|  ___| | ___  ___| |_(_) ___  _ __  
+ | |   | '_ \ / _` | '__/ _` |/ __| __/ _ \ '__| \___ \ / _ \ |/ _ \/ __| __| |/ _ \| '_ \ 
+ | |___| | | | (_| | | | (_| | (__| ||  __/ |     ___) |  __/ |  __/ (__| |_| | (_) | | | |
+  \____|_| |_|\__,_|_|  \__,_|\___|\__\___|_|    |____/ \___|_|\___|\___|\__|_|\___/|_| |_|                                                                                        
+)";
+	std::cout << "\x1b[" << BRIGHT_BLUE_FG << "m";
+	std::cout << CharacterSelection << std::endl;
+	std::cout << "\x1b[" << DEFAULT_FG << "m";
+	std::cout << "Pick a character:" << std::endl;
 
+	std::cout << input_choice::new_spoon << ")" << spoon << std::endl << std::endl;
+	std::cout << input_choice::new_fork << ")" << fork << std::endl << std::endl;
+	std::cout << input_choice::new_knife << ")" << knife << std::endl << std::endl;
 }
 
 
