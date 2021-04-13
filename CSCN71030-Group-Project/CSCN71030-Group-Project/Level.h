@@ -21,7 +21,7 @@ public:
 	
 	Character* getPlayer();
 	Character* getEnemy();
-@ -23,6 +27,10 @@ public:
+
 	int simEnemyCombat(int turn);
 	void calculateDamage(Character* attacker, Character* defender);
 	int enterCombat(Level* currentLevel);
