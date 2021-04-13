@@ -24,9 +24,6 @@ Character* Level::getPlayer() {
 Character* Level::getEnemy() {
 	return this->enemyCharacter;
 }
-stageType Level::getStageType() {
-	return this->type;
-}
 
 int Level::enterCombat(Level* levelInfo) {
 	int userInput = 0;
