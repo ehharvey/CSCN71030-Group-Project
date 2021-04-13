@@ -1,3 +1,7 @@
+#ifndef READWRITE_H
+#define READWRITE_H
+
+
 #pragma once
 #include <string>
 #include <vector>
@@ -52,3 +56,5 @@ public:
 
 	SaveEntry* get_entries();
 };
+
+#endif // !READWRITE_H

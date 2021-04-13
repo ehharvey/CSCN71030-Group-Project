@@ -1,3 +1,6 @@
+#ifndef UI_H
+#define UI_H
+
 #pragma once
 #include "Character.h"
 
@@ -18,3 +21,5 @@ public:
 	void user_options();
 	void game_opening();
 };
+
+#endif // !UI_H

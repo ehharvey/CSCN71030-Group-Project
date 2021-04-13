@@ -1,3 +1,6 @@
+#ifndef LEVEL_H
+#define LEVEL_H
+
 #pragma once
 #include "Character.h"
 
@@ -21,3 +24,5 @@ public:
 	void calculateDamage(Character* attacker, Character* defender);
 	int enterCombat(Level* currentLevel);
 };
+
+#endif // !LEVEL_H
