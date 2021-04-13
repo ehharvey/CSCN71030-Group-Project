@@ -1,4 +1,3 @@
- 
 #pragma once
 #include "Character.h"
 #include "UI.h"
@@ -31,5 +30,3 @@ public:
 	combatStatus enterCombat(void);
 	combatStatus combatShouldContinue();
 };
-
-#endif // !LEVEL_H
