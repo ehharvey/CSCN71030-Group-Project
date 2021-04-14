@@ -7,35 +7,6 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace CharacterTests
 {
-	TEST_CLASS(CharacterIntegrationTests)
-	{
-	public:
-
-		TEST_METHOD(CharacterIntegrationTests001PassingValuesToEnemyCharacter_RNGValues_ValuesBetweenRange)
-		{
-			// Arrange
-
-			// Act
-
-			// Assert			
-		}
-		TEST_METHOD(CharacterIntegrationTests002ChangeCharacterHealthValue_8_8)
-		{
-			// Arrange
-
-			// Act
-
-			// Assert			
-		}
-		TEST_METHOD(CharacterIntegrationTests003InitializeCharacterWithInput_String_CharacterObjectNameString)
-		{
-			// Arrange
-
-			// Act
-
-			// Assert			
-		}
-	};
 
 	TEST_CLASS(CharacterTests)
 	{
