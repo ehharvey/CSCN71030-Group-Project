@@ -1,7 +1,9 @@
 #include "pch.h"
 #include "CppUnitTest.h"
+#include "../CSCN71030-Group-Project/RNG.h"
 #include "../CSCN71030-Group-Project/Character.h"
 #include"../CSCN71030-Group-Project/UI.h"
+#include "../CSCN71030-Group-Project/Level.h"
 
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
