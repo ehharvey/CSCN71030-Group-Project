@@ -221,6 +221,7 @@ combatStatus Level::enterCombat() {
 
 
 			default:
+			ui->displayInvalidInput();
 			valid_user_turn = false;
 			break;
 
