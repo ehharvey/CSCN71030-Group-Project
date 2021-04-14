@@ -405,6 +405,7 @@ void UI::displayGoodBye()
 )";
 	std::cout << "\x1b[" << BRIGHT_MAGENTA_FG << "m";
 	std::cout << Bye << std::endl;
+	std::cout << "\x1b[" << DEFAULT_FG << "m";
 	std::cout << "See you soon!" << std::endl;
 }
 
