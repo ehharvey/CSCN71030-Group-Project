@@ -374,9 +374,10 @@ void UI::displayNotPrepared() {
 	std::cout << "\x1b[" << DEFAULT_FG << "m";
 }
 
-
-void UI::displayWelcome() {						// Not needed since opening handles this
-	std::cout << "Welcome to our game!" << std::endl;
+void UI::displayInvalidInput() {
+	std::cout << "\x1b[" << GREY_FG << "m";
+	std::cout << "\nInvalid input" << std::endl;
+	std::cout << "\x1b[" << DEFAULT_FG << "m";
 }
 
 

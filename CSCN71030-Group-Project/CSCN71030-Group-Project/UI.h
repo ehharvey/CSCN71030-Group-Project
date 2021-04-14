@@ -65,7 +65,8 @@ public:
 	void displayBattleChoices();
 	void displayNotPrepared();
 
-	void displayWelcome();
+	void displayInvalidInput();
+
 	void displayMenu();
 	void displayPickClass();
 	void displayNamePrompt();
