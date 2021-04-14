@@ -394,9 +394,18 @@ void UI::displayNotPrepared() {
 
 void UI::displayGoodBye()
 {
-	std::cout << "\x1b[" << BRIGHT_CYAN_FG << "m";
-	std::cout << "Good bye!";
-	std::cout << "\x1b[" << DEFAULT_FG << "m";
+
+	std::string Bye = R"(
+  ___            ___          
+ | _ )_  _ ___  | _ )_  _ ___ 
+ | _ \ || / -_) | _ \ || / -_)
+ |___/\_, \___| |___/\_, \___|
+      |__/           |__/     
+                                                                                                                                                                                                                                                                           
+)";
+	std::cout << "\x1b[" << BRIGHT_MAGENTA_FG << "m";
+	std::cout << Bye << std::endl;
+	std::cout << "See you soon!" << std::endl;
 }
 
 
