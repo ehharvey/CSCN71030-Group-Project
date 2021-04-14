@@ -7,13 +7,9 @@ struct EnemyMobValues {
     int defence;
     int speed;
 
-    EnemyMobValues(int user_max_health, int user_attack, int user_defence, int user_speed);
+    EnemyMobValues();
 };
 
 struct BossValues : EnemyMobValues {
-    BossValues(int user_max_health, int user_attack, int user_defence, int user_speed);
+    BossValues();
 };
-
-int getEncounterIndex();
-
-int getEnemyIndex();

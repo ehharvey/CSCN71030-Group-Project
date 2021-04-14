@@ -126,27 +126,39 @@ int main() {
             // Display slots
             {
                  SaveEntry* entries = loader.get_entries();
-
-                 for (int i = 0; i <= SaveSlot::three; i++)
+                 int user_save_choice;
+                 bool valid_save_choice;
+                 do
                  {
-                     std::optional<GameState> entry = entries[i].loadEntry();
-                     if (entry.has_value())
+                     // Display saves
+                     for (int i = 0; i <= SaveSlot::three; i++)
                      {
-                         ui->displaySaveEntry((entry->getCharacter())["name"], i);
+                         std::optional<GameState> entry = entries[i].loadEntry();
+                         if (entry.has_value())
+                         {
+                             ui->displaySaveEntry((entry->getCharacter())["name"], i);
+                         }
+                         else
+                         {
+                             ui->displaySaveEntry("EMPTY", i);
+                         }
+                     }
+
+                     user_save_choice = ui->getSaveInput();
+
+                     if ((user_save_choice < 0 || user_save_choice > 2) ||
+                         (!entries[user_save_choice].loadEntry().has_value()))
+                     {
+                         valid_save_choice = false;
                      }
                      else
                      {
-                         ui->displaySaveEntry("EMPTY", i);
+                         valid_save_choice = true;
                      }
-                 }
-                               
-            
-                // Retrieve a slot
-                int user_choice = ui->getSaveInput();
-                
+                 } while (!valid_save_choice);
 
                 // Load character from slot
-                game_state = entries[user_choice].loadEntry();
+                game_state = entries[user_save_choice].loadEntry();
                 UserChar = new Character((json) game_state->getCharacter());
 
                 user_picked_valid_start = true;
