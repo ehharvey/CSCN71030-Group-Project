@@ -5,6 +5,7 @@
 #include <iostream>
 #include <optional>
 #include <cassert>
+#include <windows.h>
 
 /*
 int main(void)
@@ -12,7 +13,8 @@ int main(void)
     // Get user choice to:
     // 1. Create new game (incl create new character)
     // 2. Load Game
-    // 3. Exit
+    // 3. enter cheat codes
+    // 4. exit
 
     // If new game,
     //   get player to create new character
@@ -57,18 +59,18 @@ int main(void)
 }
 */
 
-int main() {
+int main(int argc, char* argv[]) {
     
 	UI* ui = new UI();
 	ui->game_opening();
-	ui->initial_menu();
+    Sleep(500);
     input_choice user_new_or_load;
 
     Character* UserChar = NULL;
     std::string char_name;
 
     Loader loader = Loader();
-
+    std::string cheatCode;
     std::optional<GameState> game_state;
 
     // New game or load?
@@ -164,6 +166,41 @@ int main() {
                 user_picked_valid_start = true;
                 break;
             }
+        case cheat_code:
+            //do something to accept console arguement
+            std::cout << argv[1] << std::endl;
+            cheatCode = argv[1];
+            if (std::string(CheatCode1) == cheatCode) {
+                ui->gameWin();
+                exit(EXIT_SUCCESS);
+            }
+            else if (std::string(CheatCode2) == cheatCode) {        // prints credits
+
+                std::string Credits[3][2] =
+                { {"Rukia","Al-Amiri"}, {"Emil","Harvey"}, {"Cole","Foster"} };
+
+                for (int i = 0; i < 3; i++) {
+                    for (int j = 0; j < 2; j++) {
+                        std::cout << Credits[i][j] << " ";
+                    }
+                    std::cout << " ";
+                }
+                std::cout << std::endl << std::endl << std::endl;
+                user_picked_valid_start = false;
+            }
+            else if (std::string(CheatCode3) == cheatCode) {
+                ui->display_Game_Over();
+                exit(EXIT_SUCCESS);
+            }
+            else {
+                ui->invalidCheatCode();                    // invalid cheat code
+                user_picked_valid_start = false;
+            }
+            break;
+
+        case exit_game:
+            exit(EXIT_SUCCESS);
+
         default:
             user_picked_valid_start = false;
         }
@@ -231,7 +268,7 @@ int main() {
 
 
             case Die:
-            ui->displayGameOver(UserChar);
+            ui->display_Game_Over(UserChar);
             exit(EXIT_SUCCESS);
         }
 
