@@ -232,7 +232,7 @@ int main(int argc, char* argv[]) {
                     // Display slots
                     SaveEntry* entries = loader.get_entries();
 
-                    for (int i = 0; i < SaveSlot::three; i++)
+                    for (int i = 0; i <= SaveSlot::three; i++)
                     {
                         std::optional<GameState> entry = entries[i].loadEntry();
                         if (entry.has_value())
