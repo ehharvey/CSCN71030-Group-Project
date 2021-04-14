@@ -1,29 +1,6 @@
 #include <iostream>
 #include "Level.h"
 
-Level::Level(Character* player, stageType type)
-{
-	this->playerCharacter = player;
-	this->type = type;
-
-	switch (type)
-	{
-		case stageType::Drawer:
-		this->enemyCharacter = new DrawerEnemy(10, 10, 10, 10);
-		break;
-
-		case stageType::Sink:
-		this->enemyCharacter = new SinkEnemy(10, 10, 10, 10);
-		break;
-
-		case stageType::Oven:
-		this->enemyCharacter = new OvenEnemy(10, 10, 10, 10);
-		break;
-
-		case stageType::Counter:
-		this->enemyCharacter = new CounterEnemy(10, 10, 10, 10);
-	}
-}
 
 Character* Level::getPlayer() {
 	return this->playerCharacter;
@@ -307,8 +284,3 @@ combatStatus Level::enterCombat() {
 	// Return based on combat results
 	return combat_status;
 }
-
-Level::~Level() {
-	delete enemyCharacter;
-}
-
