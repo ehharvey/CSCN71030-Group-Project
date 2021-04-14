@@ -50,7 +50,24 @@ input_choice Level::getEnemyChoice(int turn) {
 	}
 }
 
-void Level::calculateDamage(Character* attacker, Character* defender) {
+int Level::simEnemyCombat(int turn) {
+	switch (turn%3)	//linear combat pattern
+	{
+	case 0:
+		return Prepare;//turn 1 prep
+		break;
+	case 1:
+		return Dodge;//turn 2 defend
+		break;
+	case 2:
+		return Attack;//turn 3 attack
+		break;
+	default:
+		return Dodge;
+		break;
+	}
+}
+void Level::calculateDamage(Character* attacker, Character* defender) {			// Make this return an int with the value, so UI can output it 
 	defender->setHealth(defender->getHealth() - attacker->getAttack()); //subtracts attack from health
 	return;
 }
@@ -100,13 +117,14 @@ combatStatus Level::enterCombat() {
 			case input_choice::attack:
 			if (this->getPlayer()->getPrepared()) {
 				if (enemy_choice == dodge) {
-					std::cout << "Enemy dodged" << std::endl; // TODO
+					ui->enemyDodge();
 				}
 				else {
 					calculateDamage(this->getPlayer(), this->getEnemy());
+					ui->attackHit();
 				}
 			} else {
-				// Notify user that they were not prepared :( )
+				ui->notPrepared();			// Notify user that they were not prepared :( )
 			}
 			this->getPlayer()->setPrepared(false);
 			valid_user_turn = true;
@@ -145,13 +163,14 @@ combatStatus Level::enterCombat() {
 			case input_choice::attack:
 			if (this->getEnemy()->getPrepared()) {
 				if (user_turn_choice == dodge) {
-					std::cout << "You dodged an attack" << std::endl; // TODO
+					ui->userDodged();
 				}
 				else {
 					calculateDamage(this->getEnemy(), this->getPlayer());
+					ui->enemyAttackHit();
 				}
 			} else {
-				std::cout << "Enemy wasn't prepared" << std::endl; // TODO
+				ui->enemyNotPrepared();
 			}
 			this->getEnemy()->setPrepared(false);
 			valid_user_turn = true;
@@ -183,7 +202,7 @@ combatStatus Level::enterCombat() {
 	
 	// Temporary
 	if (combat_status == Win) {
-		ui->displayEnemyDeath(getEnemy());
+		ui->display_enemy_defeated(getEnemy());
 	}
 
 	// Return based on combat results
