@@ -20,7 +20,7 @@
 #define BRIGHT_CYAN_FG 96
 #define DEFAULT_FG 0
 
-enum input_choice { new_character, load_game, cheat_code, exit_game,// New game, load game
+enum input_choice { new_character = 1, load_game, cheat_code, exit_game,// New game, load game
 					new_spoon, new_fork, new_knife,		// Type of character
 					attack, prepare, dodge,				// Combat options
 					save, no_save, 						// Saving options
@@ -66,6 +66,7 @@ public:
 	void displayNotPrepared();
 
 	void displayWelcome();
+	void displayGoodBye();
 	void displayMenu();
 	void displayPickClass();
 	void displayNamePrompt();

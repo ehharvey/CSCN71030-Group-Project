@@ -10,9 +10,20 @@ void UI::new_turn() {
 
 input_choice UI::get_input()
 {
-	unsigned char user_input;
+	std::string user_input;
 	std::cin >> user_input;
-	return (input_choice)(user_input - 48); // Seems brittle
+
+	unsigned char choice;
+	try {
+		choice = (unsigned char)std::stoi(user_input);
+	}
+	catch (const std::invalid_argument)
+	{
+		choice = -1;
+	}
+	
+
+	return (input_choice)choice; // Seems brittle
 }
 
 void UI::display_Game_Over(Character* character_ptr)
@@ -222,6 +233,13 @@ void UI::displayMenu()
 
 void UI::gameWin() {
 	std::string WIN = R"(
+
+
+
+
+
+
+
 ____    ____  ______    __    __     ____    __    ____  ______   .__   __.     __  
 \   \  /   / /  __  \  |  |  |  |    \   \  /  \  /   / /  __  \  |  \ |  |    |  | 
  \   \/   / |  |  |  | |  |  |  |     \   \/    \/   / |  |  |  | |   \|  |    |  | 
@@ -232,9 +250,12 @@ ____    ____  ______    __    __     ____    __    ____  ______   .__   __.     
                                           
                                                                                                                                                                                                                                                        
 )";
+	std::string WIN_POST = "You've vanquished your foes, becoming the most power piece of cutlery around.";
 
 	std::cout << "\x1b[" << BRIGHT_BLUE_FG << "m";
 	std::cout << WIN << std::endl;
+	std::cout << "\x1b[" << BRIGHT_GREEN_FG << "m";
+	std::cout << WIN_POST << std::endl;
 	std::cout << "\x1b[" << DEFAULT_FG << "m";
 }
 
@@ -377,6 +398,13 @@ void UI::displayNotPrepared() {
 
 void UI::displayWelcome() {						// Not needed since opening handles this
 	std::cout << "Welcome to our game!" << std::endl;
+}
+
+void UI::displayGoodBye()
+{
+	std::cout << "\x1b[" << BRIGHT_CYAN_FG << "m";
+	std::cout << "Good bye!";
+	std::cout << "\x1b[" << DEFAULT_FG << "m";
 }
 
 
