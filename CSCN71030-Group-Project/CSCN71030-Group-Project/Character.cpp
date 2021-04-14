@@ -330,7 +330,7 @@ DrawerBoss::DrawerBoss(int max_health, int attack, int defence, int speed)
 }
 
 SinkEnemy::SinkEnemy(int max_health, int attack, int defence, int speed)
-: Character((std::string) "SinkEnemy")
+: Character((std::string) "Mr. Blob")
 {
     this->attack = attack;
     this->max_health = max_health;
@@ -357,7 +357,7 @@ SinkEnemy::SinkEnemy(int max_health, int attack, int defence, int speed)
 }
 
 SinkBoss::SinkBoss(int max_health, int attack, int defence, int speed)
-: Character((std::string) "SinkBoss")
+: Character((std::string) "Fishy Business")
 {
     this->attack = attack;
     this->max_health = max_health;
@@ -449,7 +449,7 @@ OvenBoss::OvenBoss(int max_health, int attack, int defence, int speed)
 }
 
 CounterEnemy::CounterEnemy(int max_health, int attack, int defence, int speed)
-: Character((std::string) "CounterEnemy")
+: Character((std::string) "Evil Carrot")
 {
     this->attack = attack;
     this->max_health = max_health;

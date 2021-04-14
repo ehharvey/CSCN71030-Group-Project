@@ -262,6 +262,35 @@ int main(int argc, char* argv[]) {
                     // todo
                 }
                 }
+
+
+
+                
+                input_choice to_continue;
+
+                bool user_picked_valid_carry_on;
+                do
+                {
+                    ui->displayCarryOn();
+                    to_continue = ui->get_input();
+
+                    switch (to_continue)
+                    {
+                    case carry_on:
+                        user_picked_valid_carry_on = true;
+                        break;
+
+                    case quit:
+                        user_picked_valid_carry_on = true;
+                        ui->displayGoodBye();
+                        delete UserChar;
+                        delete ui;
+                        exit(EXIT_SUCCESS);
+
+                    default:
+                        user_picked_valid_carry_on = false;
+                    }
+                } while (!user_picked_valid_carry_on);
             }
             // Handle if they want to continue
             break;
@@ -284,6 +313,10 @@ int main(int argc, char* argv[]) {
         //      continue onwards :) (maybe ask if they want to continue)
     }
 
-	
+
+
+    ui->gameWin();
+    delete UserChar;
+    delete ui;
     return EXIT_SUCCESS;
 }
