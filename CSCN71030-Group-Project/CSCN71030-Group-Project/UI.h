@@ -1,6 +1,10 @@
 #ifndef UI_H
 #define UI_H
 
+// Cheat Codes
+#define CheatCode1 "WIN"
+#define CheatCode3 "FAIL"
+
 // ANSI Colours
 #define BLUE_FG 34
 #define CYAN_FG 36
@@ -15,7 +19,7 @@
 #define BRIGHT_CYAN_FG 96
 #define DEFAULT_FG 0
 
-enum input_choice { new_character, load_game,			// New game, load game
+enum input_choice { new_character, load_game, cheat_code, exit_game,// New game, load game
 					new_spoon, new_fork, new_knife,		// Type of character
 					attack, prepare, dodge,				// Combat options
 					save, no_save, 						// Saving options
@@ -30,15 +34,12 @@ class UI {
 
 public:
 	
-	void new_turn();
-	input_choice get_input();
+
 	void display_Game_Over(Character* character_ptr);
+	void display_Game_Over();
 	void display_enemy_defeated(Character* enemy_ptr);
 	void get_sprite(Character* character_ptr);
 	void get_sprite(Character* character_ptr, Character* enemy_ptr);
-	void display_menu();		// requires context to be passed to it
-	void initial_menu();
-	void user_options();
 	void game_opening();
 	void gameWin();
 
@@ -53,7 +54,7 @@ public:
 	void dodgeFail();
 	void attackHit();
 
-	int getSaveInput();
+
 	void displaySaveEntry(std::string character_name, int num);
 	void displayCarryOn();
 	
@@ -66,10 +67,17 @@ public:
 	void displayMenu();
 	void displayPickClass();
 	void displayNamePrompt();
-	std::string getCharacterName();
-	
-	
 	void displaySavePrompt();
+
+	
+	// Input
+	input_choice get_input();
+	int getSaveInput();
+	std::string getCharacterName();
+	std::string getCheatCodes();
+
+	// Cheat Codes
+	void invalidCheatCode();
 };
 
 #endif // !UI_H

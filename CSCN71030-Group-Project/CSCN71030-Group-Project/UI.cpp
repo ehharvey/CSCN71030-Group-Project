@@ -3,9 +3,6 @@
 #include <string>
 #include <windows.h>
 
-void UI::new_turn() {
-
-}
 
 input_choice UI::get_input()
 {
@@ -38,6 +35,31 @@ __  __           _               ______            __            __
 	std::cout << "\x1b[" << DEFAULT_FG << "m";
 	std::cout << character_ptr->getDeadSprite() << std::endl;
 	std::cout << "  rip" << std::endl;
+}
+
+void UI::display_Game_Over() {
+	std::string GameOver = R"(
+._____  .______  ._____.___ ._______     ._______  .___     ._______.______  
+:_ ___\ :      \ :         |: .____/     : .___  \ |   |___ : .____/: __   \ 
+|   |___|   .   ||   \  /  || : _/\      | :   |  ||   |   || : _/\ |  \____|
+|   /  ||   :   ||   |\/   ||   /  \     |     :  ||   :   ||   /  \|   :  \ 
+|. __  ||___|   ||___| |   ||_.: __/      \_. ___/  \      ||_.: __/|   |___\
+ :/ |. |    |___|      |___|   :/           :/       \____/    :/   |___|    
+ :   :/                                     :                                
+     :                                                                       
+                                                   
+__  __           _               ______            __            __
+\ \/ /___  __  _( )________     / ____/___  ____  / /_____  ____/ /
+ \  / __ \/ / / /// ___/ _ \   / /   / __ \/ __ \/ //_/ _ \/ __  / 
+ / / /_/ / /_/ / / /  /  __/  / /___/ /_/ / /_/ / ,< /  __/ /_/ /  
+/_/\____/\__,_/ /_/   \___/   \____/\____/\____/_/|_|\___/\__,_/   
+                                                                                                                                                                                                                                                                                
+)";
+	std::cout << "\x1b[" << BRIGHT_RED_FG << "m";
+	std::cout << GameOver << std::endl;
+	std::cout << "\x1b[" << DEFAULT_FG << "m";
+	std::cout << "  rip, loser never even started the game" << std::endl;
+
 }
 
 void UI::display_enemy_defeated(Character* enemy_ptr) {
@@ -79,24 +101,6 @@ void UI::get_sprite(Character* character_ptr, Character* enemy_ptr)
 	std::cout << character_ptr->getFightSprite() << std::endl;
 }
 
-
-void UI::display_menu()
-{
-
-
-}
-
-void UI::initial_menu()
-{
-
-
-}
-
-void UI::user_options()
-{
-
-
-}
 
 void UI::game_opening() {
 
@@ -188,12 +192,28 @@ void UI::displayMenu()
  | |__/ _ \/ _` / _` | | `_ / _` | '  \/ -_)
  |____\___/\__,_\__,_|  \___\__,_|_|_|_\___|                                                
 )";
+
+	std::string CheatCode = R"(
+  ___     _              ___ _             _      ___         _     
+ | __|_ _| |_ ___ _ _   / __| |_  ___ __ _| |_   / __|___  __| |___ 
+ | _|| ' \  _/ -_) '_| | (__| ' \/ -_) _` |  _| | (__/ _ \/ _` / -_)
+ |___|_||_\__\___|_|    \___|_||_\___\__,_|\__|  \___\___/\__,_\___|                                                                                                
+)";
+	std::string ExitGame = R"(
+  ___     _ _   
+ | __|_ _(_) |_ 
+ | _|\ \ / |  _|
+ |___/_\_\_|\__|                                                                                      
+)";
+
 	std::cout << "\x1b[" << BRIGHT_BLUE_FG << "m";
 	std::cout << GamePrompt << std::endl;
 	std::cout << "\x1b[" << DEFAULT_FG << "m";
 	std::cout << "Select an option:" << std::endl;
 	std::cout << input_choice::new_character << ")" << NewGame << std::endl;
 	std::cout << input_choice::load_game << ")" << LoadGame << std::endl;
+	std::cout << input_choice::cheat_code << ")" << CheatCode << std::endl;
+	std::cout << input_choice::exit_game << ")" << ExitGame << std::endl;
 	std::cout << "\x1b[" << DEFAULT_FG << "m";
 }
 
@@ -366,6 +386,19 @@ std::string UI::getCharacterName()
 	return name;
 }
 
+std::string UI::getCheatCodes() {
+	std::cout << "Enter a cheat code, c'mon you cheater you know it's tempting..." << std::endl;
+	std::string cheatCode;
+	std::cin >> cheatCode;
+	return cheatCode;
+}
+
+void UI::invalidCheatCode()
+{
+	std::cout << "Error: Invalid cheat code" << std::endl;
+}
+
+
 
 
 void UI::displaySavePrompt() 
@@ -463,110 +496,3 @@ void UI::displayBattleChoices()
 		std::cout << "\x1b[" << DEFAULT_FG << "m";
 }
 
-
-// Emil:
-/*
-void UI::displayBattleIntro(Character* main_character, Character* enemy)
-{
-	std::cout << main_character->getFightSprite() << std::endl;
-	std::cout << enemy->getFightSprite() << std::endl;
-}
-*/
-
-/*
-void UI::displayBattleTurn(Character* main_character, Character* enemy) 
-{
-	std::cout << " You have: " << main_character->getHealth() << "/" << main_character->getMaxHealth() << " HP" << std::endl;
-	std::cout << "Enemy has: " << enemy->getHealth() << "/" << enemy->getMaxHealth() << " HP" << std::endl;
-}
-*/
-
-
-
-/* old
-void UI::displayNotPrepared() 
-{
-	std::cout << "You were not prepared :(" << std::endl;
-}
-*/
-
-/* old
-void UI::displayWelcome() {
-	std::cout << "Welcome to our game!" << std::endl;
-}
-*/
-
-/*
-void UI::displayPickClass() 
-{
-	std::cout << "What kind of character do you want to be?" 	<< std::endl
-	<< input_choice::new_spoon 		<< ") Spoon" 	<< std::endl
-	<< input_choice::new_fork		<< ") Fork" 	<< std::endl
-	<< input_choice::new_knife		<< ") Knife"	<< std::endl;
-}
-*/
-
-/* old
-void UI::displayNamePrompt() 
-{
-	std::cout << "Enter a name for your character: ";
-}
-*/
-
-/*
-std::string UI::getCharacterName() 
-{
-	std::string name;
-	std::cin >> name;
-	return name;
-}
-*/
-
-/*
-void UI::displayMenu() 
-{
-	std::cout << "Please choose from the following options:" 	<< std::endl
-	<<	input_choice::new_character 	<< ") New Character" 	<< std::endl
-	<<  input_choice::load_game			<< ") Load Game" 		<< std::endl;
-}
-*/
-
-//void UI::displayGameOver(Character* main_character) 
-//{
-//	std::cout << main_character->getDeadSprite() << std::endl
-//	<< "You have died" << std::endl;
-//}
-
-/*
-void UI::displaySavePrompt() 
-{
-	std::cout << "Do you want to save?" 			<< std::endl
-	<< input_choice::save		<< ") Save" 		<< std::endl
-	<< input_choice::no_save	<< ") Don't Save" 	<< std::endl;
-}
-*/
-
-/*
-int UI::getSaveInput() 
-{
-	int choice;
-	std::cin >> choice;
-	return choice;
-}
-*/
-
-/*
-void UI::displaySaveEntry(std::string character_name, int num) 
-{
-	std::cout << "Save entry " << num << ": " << character_name << std::endl;
-}
-*/
-
-/*
-void UI::displayCarryOn() 
-{
-	std::cout << "Do you want to continue playing?" << std::endl
-	<< input_choice::carry_on 	<< ") Continue" 	<< std::endl 
-	<< input_choice::quit 		<< ") Quit"			<< std::endl;
-}
-*/
