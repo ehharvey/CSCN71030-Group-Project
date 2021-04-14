@@ -1,8 +1,12 @@
 #pragma once
 #include "Character.h"
+#include "RNG.h"
 #include "UI.h"
 
-enum stageType { Drawer = 0, Sink = 1, Oven = 2, Counter = 3 };
+enum stageType { Drawer = 0, DrawerEnd = 1,
+				 Sink = 2, SinkEnd = 3,
+				 Oven = 4, OvenEnd = 5,
+				 Counter = 6, CounterEnd = 7 };
 enum combatOptions {Attack, Dodge, Prepare};
 enum combatStatus { Win, Die, InProgress };
 
