@@ -153,6 +153,7 @@
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="ReadWrite.cpp" />
     <ClCompile Include="Character.cpp" />
+    <ClCompile Include="RNG.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="UI.cpp" />
     <None Include="packages.config" />

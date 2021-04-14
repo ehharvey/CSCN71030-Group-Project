@@ -1,20 +1,19 @@
-#ifndef RNG_H
-#define RNG_H
-
 #pragma once
 
 
-struct CharacterValues {
-    int value_one;
-    int value_two;
-    int value_three;
-    int value_four;
+struct EnemyMobValues {
+    int max_health;
+    int attack;
+    int defence;
+    int speed;
 
-    CharacterValues();
+    EnemyMobValues(int user_max_health, int user_attack, int user_defence, int user_speed);
+};
+
+struct BossValues : EnemyMobValues {
+    BossValues(int user_max_health, int user_attack, int user_defence, int user_speed);
 };
 
 int getEncounterIndex();
 
 int getEnemyIndex();
-
-#endif  // !RNG_H

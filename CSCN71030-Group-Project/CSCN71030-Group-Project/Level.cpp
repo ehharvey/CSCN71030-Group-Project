@@ -123,15 +123,15 @@ int Level::simEnemyCombat(int turn) {
 		break;
 	}
 }
+
 void Level::calculateDamage(Character* attacker, Character* defender) {
 	defender->setHealth(defender->getHealth() - attacker->getAttack()); //subtracts attack from health
 	return;
 }
+
 Level::~Level() {
 	delete enemyCharacter;
 }
-
-
 
 
 
@@ -147,19 +147,109 @@ Level::Level(Character* player, stageType type)
 	switch (type)
 	{
 		case stageType::Drawer:
-		this->enemyCharacter = new DrawerEnemy(10, 10, 10, 10);
-		break;
+		{
+			EnemyMobValues stats(this->getPlayer()->getMaxHealth(),
+								 this->getPlayer()->getAttack(),
+								 this->getPlayer()->getDefence(),
+								 this->getPlayer()->getSpeed());
+			this->enemyCharacter = new DrawerEnemy(stats.max_health, 
+												   stats.attack, 
+												   stats.defence, 
+												   stats.speed);
+			break;
+		}
+		
+
+		case stageType::DrawerEnd:
+		{
+			BossValues stats(this->getPlayer()->getMaxHealth(),
+							 this->getPlayer()->getAttack(),
+							 this->getPlayer()->getDefence(),
+							 this->getPlayer()->getSpeed());
+			this->enemyCharacter = new DrawerBoss(stats.max_health, 
+												  stats.attack, 
+												  stats.defence, 
+												  stats.speed);
+			break;
+		}
 
 		case stageType::Sink:
-		this->enemyCharacter = new SinkEnemy(10, 10, 10, 10);
-		break;
+		{
+			EnemyMobValues stats(this->getPlayer()->getMaxHealth(),
+								 this->getPlayer()->getAttack(),
+								 this->getPlayer()->getDefence(),
+								 this->getPlayer()->getSpeed());
+			this->enemyCharacter = new SinkEnemy(stats.max_health, 
+												 stats.attack, 
+												 stats.defence, 
+												 stats.speed);
+			break;
+		}
+
+		case stageType::SinkEnd:
+		{
+			BossValues stats(this->getPlayer()->getMaxHealth(),
+							 this->getPlayer()->getAttack(),
+							 this->getPlayer()->getDefence(),
+							 this->getPlayer()->getSpeed());
+			this->enemyCharacter = new SinkBoss(stats.max_health, 
+												stats.attack, 
+												stats.defence, 
+												stats.speed);
+			break;
+		}
 
 		case stageType::Oven:
-		this->enemyCharacter = new OvenEnemy(10, 10, 10, 10);
-		break;
+		{
+			EnemyMobValues stats(this->getPlayer()->getMaxHealth(),
+								 this->getPlayer()->getAttack(),
+								 this->getPlayer()->getDefence(),
+								 this->getPlayer()->getSpeed());
+			this->enemyCharacter = new OvenEnemy(stats.max_health, 
+												 stats.attack, 
+												 stats.defence, 
+												 stats.speed);
+			break;
+		}
+
+		case stageType::OvenEnd:
+		{
+			BossValues stats(this->getPlayer()->getMaxHealth(),
+							 this->getPlayer()->getAttack(),
+							 this->getPlayer()->getDefence(),
+							 this->getPlayer()->getSpeed());
+			this->enemyCharacter = new OvenBoss(stats.max_health, 
+												stats.attack, 
+												stats.defence, 
+												stats.speed);
+			break;
+		}
 
 		case stageType::Counter:
-		this->enemyCharacter = new CounterEnemy(10, 10, 10, 10);
+		{
+			EnemyMobValues stats(this->getPlayer()->getMaxHealth(),
+								 this->getPlayer()->getAttack(),
+								 this->getPlayer()->getDefence(),
+								 this->getPlayer()->getSpeed());
+			this->enemyCharacter = new CounterEnemy(stats.max_health, 
+													stats.attack, 
+													stats.defence, 
+													stats.speed);
+			break;
+		}
+
+		case stageType::CounterEnd:
+		{
+			BossValues stats(this->getPlayer()->getMaxHealth(),
+							 this->getPlayer()->getAttack(),
+							 this->getPlayer()->getDefence(),
+							 this->getPlayer()->getSpeed());
+			this->enemyCharacter = new CounterBoss(stats.max_health, 
+												   stats.attack, 
+												   stats.defence, 
+												   stats.speed);
+			break;
+		}
 	}
 }
 
