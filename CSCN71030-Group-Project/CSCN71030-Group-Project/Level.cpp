@@ -251,6 +251,7 @@ combatStatus Level::enterCombat() {
 				ui->enemyNotPrepared();
 			}
 			this->getEnemy()->setPrepared(false);
+			ui->enemyPreparing();
 			valid_user_turn = true;
 			break;
 

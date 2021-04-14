@@ -277,6 +277,13 @@ void UI::enemyAttackHit() {
 	std::cout << "\x1b[" << DEFAULT_FG << "m";
 }
 
+void UI::enemyPreparing()
+{
+	std::cout << "\x1b[" << BRIGHT_RED_FG << "m";
+	std::cout << "\nEnemy is preparing to attack!" << std::endl;
+	std::cout << "\x1b[" << DEFAULT_FG << "m";
+}
+
 void UI::notPrepared()							// Notify user that they were not prepared :( )
 {
 	std::cout << "\x1b[" << BRIGHT_BLUE_FG << "m";
