@@ -199,6 +199,7 @@ int main(int argc, char* argv[]) {
             break;
 
         case exit_game:
+            ui->displayGoodBye();
             exit(EXIT_SUCCESS);
 
         default:

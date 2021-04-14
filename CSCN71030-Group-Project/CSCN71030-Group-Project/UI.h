@@ -43,7 +43,6 @@ public:
 	void get_sprite(Character* character_ptr, Character* enemy_ptr);
 	void game_opening();
 	void gameWin();
-	void new_turn();
 
 	//Enemy output
 	void enemyDodge();
@@ -70,6 +69,7 @@ public:
 	void displayMenu();
 	void displayPickClass();
 	void displayNamePrompt();
+	void displayInvalidInput();
 	void displaySavePrompt();
 
 	
