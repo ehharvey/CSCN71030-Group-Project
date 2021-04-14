@@ -2,6 +2,7 @@
 #include "CppUnitTest.h"
 #include "../CSCN71030-Group-Project/Character.h"
 #include"../CSCN71030-Group-Project/Level.h"
+#include "../CSCN71030-Group-Project/RNG.h"
 
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;

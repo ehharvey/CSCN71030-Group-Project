@@ -103,7 +103,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>$(SolutionDir)CSCN71030-Group-Project\$(Configuration);$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Character.obj;Level.obj;ReadWrite.obj;UI.obj;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Character.obj;Level.obj;ReadWrite.obj;UI.obj;RNG.obj;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
