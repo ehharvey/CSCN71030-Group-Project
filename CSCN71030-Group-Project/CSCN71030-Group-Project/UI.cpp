@@ -4,10 +4,6 @@
 #include <windows.h>
 
 
-void UI::new_turn() {
-
-}
-
 input_choice UI::get_input()
 {
 	std::string user_input;
@@ -236,18 +232,21 @@ void UI::gameWin() {
 
 
 
+                                                                                                                   
+ _____      _____        _____     ____   ____         _____                   _____  _____   ______          ____ 
+|\    \    /    /|  ____|\    \   |    | |    |       |\    \   _____     ____|\    \|\    \ |\     \        |    |
+| \    \  /    / | /     /\    \  |    | |    |       | |    | /    /|   /     /\    \\\    \| \     \       |    |
+|  \____\/    /  //     /  \    \ |    | |    |       \/     / |    ||  /     /  \    \\|    \  \     |      |    |
+ \ |    /    /  /|     |    |    ||    | |    |       /     /_  \   \/ |     |    |    ||     \  |    |      |    |
+  \|___/    /  / |     |    |    ||    | |    |      |     // \  \   \ |     |    |    ||      \ |    |      |    |
+      /    /  /  |\     \  /    /||    | |    |      |    |/   \ |    ||\     \  /    /||    |\ \|    |      |____|
+     /____/  /   | \_____\/____/ ||\___\_|____|      |\ ___/\   \|   /|| \_____\/____/ ||____||\_____/|       ____
+    |     | /     \ |    ||    | /| |    |    |      | |   | \______/ | \ |    ||    | /|    |/ \|   ||      |    |
+    |_____|/       \|____||____|/  \|____|____|       \|___|/\ |    | |  \|____||____|/ |____|   |___|/      |____|
+                                                              \|____|/    
 
-
-
-
-____    ____  ______    __    __     ____    __    ____  ______   .__   __.     __  
-\   \  /   / /  __  \  |  |  |  |    \   \  /  \  /   / /  __  \  |  \ |  |    |  | 
- \   \/   / |  |  |  | |  |  |  |     \   \/    \/   / |  |  |  | |   \|  |    |  | 
-  \_    _/  |  |  |  | |  |  |  |      \            /  |  |  |  | |  . `  |    |  | 
-    |  |    |  `--'  | |  `--'  |       \    /\    /   |  `--'  | |  |\   |    |__| 
-    |__|     \______/   \______/         \__/  \__/     \______/  |__| \__|    (__) 
-                                                                                    
-                                          
+    
+                                                                                                                                                
                                                                                                                                                                                                                                                        
 )";
 	std::string WIN_POST = "You've vanquished your foes, becoming the most power piece of cutlery around.";
@@ -347,9 +346,6 @@ void UI::displayPickClass() {
 	std::cout << input_choice::new_knife << ")" << knife << std::endl << std::endl;
 }
 
-
-// Emil:
-
 void UI::displayBattleIntro(Character* main_character, Character* enemy)
 {
 
@@ -396,15 +392,20 @@ void UI::displayNotPrepared() {
 }
 
 
-void UI::displayWelcome() {						// Not needed since opening handles this
-	std::cout << "Welcome to our game!" << std::endl;
-}
-
 void UI::displayGoodBye()
 {
-	std::cout << "\x1b[" << BRIGHT_CYAN_FG << "m";
-	std::cout << "Good bye!";
-	std::cout << "\x1b[" << DEFAULT_FG << "m";
+
+	std::string Bye = R"(
+  ___            ___          
+ | _ )_  _ ___  | _ )_  _ ___ 
+ | _ \ || / -_) | _ \ || / -_)
+ |___/\_, \___| |___/\_, \___|
+      |__/           |__/     
+                                                                                                                                                                                                                                                                           
+)";
+	std::cout << "\x1b[" << BRIGHT_MAGENTA_FG << "m";
+	std::cout << Bye << std::endl;
+	std::cout << "See you soon!" << std::endl;
 }
 
 
@@ -432,7 +433,11 @@ void UI::invalidCheatCode()
 	std::cout << "Error: Invalid cheat code" << std::endl;
 }
 
-
+void UI::displayInvalidInput() {
+	std::cout << "\x1b[" << GREY_FG << "m";
+	std::cout << "\nInvalid input" << std::endl;
+	std::cout << "\x1b[" << DEFAULT_FG << "m";
+}
 
 
 
