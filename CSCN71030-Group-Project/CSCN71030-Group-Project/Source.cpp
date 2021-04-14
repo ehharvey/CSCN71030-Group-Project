@@ -156,7 +156,6 @@ int main(int argc, char* argv[]) {
             }
         case cheat_code:
             //do something to accept console arguement
-           // cheatCode = ui->getCheatCodes();
             std::cout << argv[1] << std::endl;
             cheatCode = argv[1];
             if (std::string(CheatCode1) == cheatCode) {

@@ -74,7 +74,6 @@ public:
 	input_choice get_input();
 	int getSaveInput();
 	std::string getCharacterName();
-	std::string getCheatCodes();
 
 	// Cheat Codes
 	void invalidCheatCode();
