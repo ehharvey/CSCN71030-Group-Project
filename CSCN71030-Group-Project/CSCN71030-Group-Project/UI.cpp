@@ -386,12 +386,6 @@ std::string UI::getCharacterName()
 	return name;
 }
 
-std::string UI::getCheatCodes() {
-	std::cout << "Enter a cheat code, c'mon you cheater you know it's tempting..." << std::endl;
-	std::string cheatCode;
-	std::cin >> cheatCode;
-	return cheatCode;
-}
 
 void UI::invalidCheatCode()
 {

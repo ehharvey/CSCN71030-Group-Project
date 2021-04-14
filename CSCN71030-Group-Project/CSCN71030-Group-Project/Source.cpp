@@ -162,6 +162,20 @@ int main(int argc, char* argv[]) {
                 ui->gameWin();
                 exit(EXIT_SUCCESS);
             }
+            else if (std::string(CheatCode2) == cheatCode) {        // prints credits
+
+                std::string Credits[3][2] =
+                { {"Rukia","Al-Amiri"}, {"Emil","Harvey"}, {"Cole","Foster"} };
+
+                for (int i = 0; i < 3; i++) {
+                    for (int j = 0; j < 2; j++) {
+                        std::cout << Credits[i][j] << " ";
+                    }
+                    std::cout << " ";
+                }
+                std::cout << std::endl << std::endl << std::endl;
+                user_picked_valid_start = false;
+            }
             else if (std::string(CheatCode3) == cheatCode) {
                 ui->display_Game_Over();
                 exit(EXIT_SUCCESS);

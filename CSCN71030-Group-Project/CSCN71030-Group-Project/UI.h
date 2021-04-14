@@ -3,6 +3,7 @@
 
 // Cheat Codes
 #define CheatCode1 "WIN"
+#define CheatCode2 "CREDITS"
 #define CheatCode3 "FAIL"
 
 // ANSI Colours
