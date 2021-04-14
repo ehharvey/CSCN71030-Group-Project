@@ -409,13 +409,6 @@ void UI::displayGoodBye()
 	std::cout << "See you soon!" << std::endl;
 }
 
-void UI::displayGoodBye()
-{
-	std::cout << "\x1b[" << BRIGHT_CYAN_FG << "m";
-	std::cout << "Good bye!";
-	std::cout << "\x1b[" << DEFAULT_FG << "m";
-}
-
 
 
 
