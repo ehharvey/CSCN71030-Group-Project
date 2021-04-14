@@ -48,6 +48,7 @@ public:
 	void enemyDodge();
 	void enemyNotPrepared();
 	void enemyAttackHit();		// maybe pass value of how many points removed from HP
+	void enemyPreparing();
 
 	// User output
 	void notPrepared();
