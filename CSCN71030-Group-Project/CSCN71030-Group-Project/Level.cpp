@@ -281,6 +281,7 @@ combatStatus Level::enterCombat() {
 	
 	// Temporary
 	if (combat_status == Win) {
+		getPlayer()->setHealth(getPlayer()->getMaxHealth());
 		ui->display_enemy_defeated(getEnemy());
 	}
 

@@ -65,6 +65,7 @@ public:
 	void displayBattleChoices();
 	void displayNotPrepared();
 
+	void displayWelcome();
 	void displayGoodBye();
 	void displayMenu();
 	void displayPickClass();
