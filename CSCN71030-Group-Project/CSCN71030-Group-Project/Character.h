@@ -1,6 +1,3 @@
-#ifndef CHARACTER_H
-#define CHARACTER_H
-
 #pragma once
 #include <string>
 
@@ -117,5 +114,3 @@ class FinalBoss : public Character {
 public:
 	FinalBoss(int max_health, int attack, int defence, int speed); // Constructor
 };
-
-#endif  // !CHARACTER_H

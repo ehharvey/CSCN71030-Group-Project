@@ -1,18 +1,28 @@
 #include <iostream>
 #include "Level.h"
 
-//#include "Stubs.h"
-
-
-Level::Level() {
-	this->playerCharacter = NULL;
-	this->enemyCharacter = NULL;
-	this->type = Drawer;
-}
-Level::Level(Character* player, Character* enemy, stageType type ) {
+Level::Level(Character* player, stageType type)
+{
 	this->playerCharacter = player;
-	this->enemyCharacter = enemy;
 	this->type = type;
+
+	switch (type)
+	{
+		case stageType::Drawer:
+		this->enemyCharacter = new DrawerEnemy(10, 10, 10, 10);
+		break;
+
+		case stageType::Sink:
+		this->enemyCharacter = new SinkEnemy(10, 10, 10, 10);
+		break;
+
+		case stageType::Oven:
+		this->enemyCharacter = new OvenEnemy(10, 10, 10, 10);
+		break;
+
+		case stageType::Counter:
+		this->enemyCharacter = new CounterEnemy(10, 10, 10, 10);
+	}
 }
 
 Character* Level::getPlayer() {
@@ -20,72 +30,6 @@ Character* Level::getPlayer() {
 }
 Character* Level::getEnemy() {
 	return this->enemyCharacter;
-}
-
-int Level::enterCombat(Level* levelInfo) {
-	int userInput = 0;
-	int turn = 0;
-	while (!levelInfo->getPlayer()->getHealth() && !levelInfo->getEnemy()->getHealth()) {
-
-		
-		
-
-		switch (userInput)
-		{
-		case Attack:
-			//if (levelInfo->getPlayer()->isPrepared())
-			{
-				if (simEnemyCombat(turn) == Prepare) {
-					//Player attacks while enemy preps
-					calculateDamage(levelInfo->getPlayer(), levelInfo->getEnemy());
-				}
-				else if (simEnemyCombat(turn) == Dodge) {
-					//enemy dodges player's attack
-				}
-				else if (simEnemyCombat(turn) == Attack) {
-					//both players attack
-					calculateDamage(levelInfo->getPlayer(), levelInfo->getEnemy());
-					calculateDamage(levelInfo->getEnemy(), levelInfo->getPlayer());
-				}
-			}
-			//else
-			{
-				//ui
-			}
-			break;
-		case Dodge:
-			if (simEnemyCombat(turn) == Prepare) {
-				//player dodges, enemy preps
-			}
-			else if (simEnemyCombat(turn) == Dodge) {
-				//both players dodge
-			}
-			else if (simEnemyCombat(turn) == Attack) {
-				//enemy attacks, player dodges
-			}
-			break;
-		case Prepare:
-			//levelInfo->getPlayer()->isPrepared();
-			if (simEnemyCombat(turn) == Prepare) {
-				//both players prep
-				//levelInfo->getEnemy()->isPrepared();
-			}
-			else if (simEnemyCombat(turn) == Dodge) {
-				//player preps, enemy dodges
-			}
-			else if (simEnemyCombat(turn) == Attack) {
-				//player preps, enemy attacks
-				calculateDamage(levelInfo->getEnemy(), levelInfo->getPlayer());
-			}
-			break;
-		default:
-			break;
-		}
-		turn++;
-
-	}
-	return 0;
-
 }
 
 input_choice Level::getEnemyChoice(int turn) {
@@ -127,48 +71,13 @@ void Level::calculateDamage(Character* attacker, Character* defender) {			// Mak
 	defender->setHealth(defender->getHealth() - attacker->getAttack()); //subtracts attack from health
 	return;
 }
-Level::~Level() {
-	delete enemyCharacter;
-}
-
-
-
-
-
-
-
-// Emil:
-
-Level::Level(Character* player, stageType type)
-{
-	this->playerCharacter = player;
-	this->type = type;
-
-	switch (type)
-	{
-		case stageType::Drawer:
-		this->enemyCharacter = new DrawerEnemy(10, 10, 10, 10);
-		break;
-
-		case stageType::Sink:
-		this->enemyCharacter = new SinkEnemy(10, 10, 10, 10);
-		break;
-
-		case stageType::Oven:
-		this->enemyCharacter = new OvenEnemy(10, 10, 10, 10);
-		break;
-
-		case stageType::Counter:
-		this->enemyCharacter = new CounterEnemy(10, 10, 10, 10);
-	}
-}
 
 combatStatus Level::combatShouldContinue() {
-	if (this->getPlayer()->getHealth() == 0)
+	if (this->getPlayer()->getHealth() <= 0)
 	{
 		return Die;
 	}
-	else if (this->getEnemy()->getHealth() == 0)
+	else if (this->getEnemy()->getHealth() <= 0)
 	{
 		return Win;
 	}
@@ -298,5 +207,9 @@ combatStatus Level::enterCombat() {
 
 	// Return based on combat results
 	return combat_status;
+}
+
+Level::~Level() {
+	delete enemyCharacter;
 }
 
